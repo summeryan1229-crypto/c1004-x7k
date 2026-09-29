@@ -1,0 +1,1836 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Case #1004</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Case #1004">
+<meta name="theme-color" content="#141110">
+<meta name="robots" content="noindex,nofollow">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<script>window.SITE_BUILD=true;if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));}</script>
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#141110;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+
+<style>
+:root{
+  color-scheme: dark;
+  --ink:#141110;
+  --ink-2:#1d1917;
+  --ink-3:#272120;
+  --hair:#3a322e;
+  --paper:#e9e1cd;
+  --paper-2:#d9cfb6;
+  --paper-edge:#c3b79a;
+  --graphite:#5d544a;
+  --graphite-2:#7d7367;
+  --bone:#c9c0b2;
+  --bone-dim:#8b8277;
+  --red:#b32b21;
+  --red-bright:#d8483b;
+  --amber:#d9902b;
+  --green:#5f8c56;
+  --shadow:0 18px 40px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box}
+html,body{background:var(--ink)}
+body{
+  margin:0;
+  color:var(--bone);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  background-image:
+    radial-gradient(120% 70% at 50% -10%, rgba(217,144,43,.13), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 3px);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:660px;margin:0 auto;padding-inline:18px;padding-block:0 72px}
+
+/* ---------- header ---------- */
+.topbar{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:40;
+  background:rgba(20,17,16,.93);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--hair);
+  margin-inline:-18px;padding-inline:18px;
+  padding-block:9px;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.topbar .case{font-family:"Courier Prime",monospace;font-size:11.5px;letter-spacing:.14em;color:var(--bone-dim);text-transform:uppercase}
+.topbar .clock{margin-left:auto;font-family:"Courier Prime",monospace;font-size:11.5px;letter-spacing:.1em;color:var(--amber);font-variant-numeric:tabular-nums}
+.topbar .clock b{font-weight:400;color:var(--bone-dim)}
+.bgmbtn{margin-left:auto;background:transparent;border:1px solid var(--hair);color:var(--amber);border-radius:2px;
+  font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.1em;padding:3px 9px;cursor:pointer}
+.bgmbtn.off{color:var(--graphite-2)}
+.bgmbtn + .clock{margin-left:0}
+
+.masthead{padding-block:46px 30px;text-align:center}
+.stamp-top{
+  display:inline-block;font-family:"Courier Prime",monospace;font-size:10.5px;letter-spacing:.3em;
+  color:var(--red-bright);border:1.5px solid var(--red);padding:5px 12px;text-transform:uppercase;
+  transform:rotate(-2.2deg);opacity:.9;
+}
+h1{
+  font-family:"Special Elite","Courier Prime",monospace;
+  font-size:clamp(34px,9vw,54px);line-height:1.02;margin:20px 0 10px;
+  color:var(--paper);text-wrap:balance;font-weight:400;
+}
+.dek{font-family:"Courier Prime",monospace;font-size:13px;color:var(--bone-dim);margin:0 auto;max-width:44ch}
+
+/* ---------- generic paper card ---------- */
+.paper{
+  position:relative;background:var(--paper);color:#241f1a;
+  padding:22px 20px;border-radius:2px;box-shadow:var(--shadow);
+  background-image:repeating-linear-gradient(0deg, rgba(0,0,0,.018) 0 1px, transparent 1px 4px);
+}
+.paper::after{
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:2px;
+  box-shadow:inset 0 0 44px rgba(90,70,40,.16);
+}
+.paper h2,.paper h3{color:#241f1a}
+
+.sectlabel{
+  font-family:"Courier Prime",monospace;font-size:10.5px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--bone-dim);display:flex;align-items:center;gap:10px;
+  margin:0 0 14px;
+}
+.sectlabel::after{content:"";flex:1;height:1px;background:var(--hair)}
+
+/* ---------- briefing ---------- */
+.brief{margin-top:8px}
+.brief p{margin:0 0 12px;font-size:14.5px}
+.brief p:last-child{margin-bottom:0}
+.brief .redline{
+  font-family:"Courier Prime",monospace;font-size:12.5px;color:var(--red);
+  border-top:1px dashed rgba(179,43,33,.4);padding-top:12px;margin-top:16px;
+}
+
+/* ---------- suspect board ---------- */
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+@media(max-width:430px){.board{grid-template-columns:repeat(2,1fr)}}
+.sus{
+  position:relative;background:var(--ink-2);border:1px solid var(--hair);border-radius:2px;
+  padding:11px 9px 10px;text-align:center;overflow:hidden;transition:opacity .4s ease;
+}
+.sus .face{font-size:23px;line-height:1;display:block;filter:grayscale(.35)}
+.sus .nm{font-family:"Courier Prime",monospace;font-size:11px;margin-top:7px;color:var(--bone);letter-spacing:.02em}
+.sus .alibi{font-size:10.5px;color:var(--bone-dim);line-height:1.35;margin-top:5px;min-height:0;display:none}
+.sus.cleared{opacity:.62}
+.sus.cleared .alibi{display:block}
+.sus.cleared .face{filter:grayscale(1)}
+.clearstamp{
+  position:absolute;top:33%;left:50%;
+  transform:translate(-50%,-50%) rotate(-14deg) scale(2.4);
+  font-family:"Special Elite",monospace;font-size:15px;letter-spacing:.14em;
+  color:#6f9a63;border:2px solid #6f9a63;padding:3px 10px;
+  opacity:0;pointer-events:none;border-radius:2px;
+}
+.sus.cleared .clearstamp{animation:thunk .45s cubic-bezier(.2,1.3,.4,1) forwards}
+.sus.charged .clearstamp{color:var(--red-bright);border-color:var(--red-bright)}
+.sus.charged-in .clearstamp{animation:thunk .45s cubic-bezier(.2,1.3,.4,1) forwards}
+.sus.charged .nm{color:var(--red-bright)}
+.sus.charged{border-color:rgba(216,72,59,.5)}
+@keyframes thunk{
+  0%{opacity:0;transform:translate(-50%,-50%) rotate(-14deg) scale(2.4)}
+  60%{opacity:1;transform:translate(-50%,-50%) rotate(-14deg) scale(.92)}
+  100%{opacity:.92;transform:translate(-50%,-50%) rotate(-14deg) scale(1)}
+}
+
+/* ---------- act ---------- */
+.act{margin-top:40px}
+.act-head{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
+.act-num{
+  font-family:"Special Elite",monospace;font-size:12px;letter-spacing:.2em;color:var(--red-bright);
+}
+.act-title{font-family:"Special Elite",monospace;font-size:21px;color:var(--paper);font-weight:400}
+.act.locked .act-title,.act.locked .act-num{color:var(--graphite-2)}
+.sealed{
+  border:1px dashed var(--hair);border-radius:2px;padding:22px 18px;text-align:center;
+  font-family:"Courier Prime",monospace;font-size:12.5px;color:var(--graphite-2);letter-spacing:.08em;
+}
+
+/* ---------- transcript ---------- */
+.log{font-family:"Courier Prime",monospace;font-size:13px}
+.log .loghead{
+  display:flex;justify-content:space-between;gap:8px;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--graphite);border-bottom:1.5px solid rgba(36,31,26,.35);
+  padding-bottom:7px;margin-bottom:10px;flex-wrap:wrap;
+}
+.row{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:7px 0;border-bottom:1px dotted rgba(36,31,26,.22)}
+.row:last-child{border-bottom:0}
+.row .ix{color:var(--graphite);font-size:11.5px;letter-spacing:.04em}
+.row .msg{color:#241f1a;line-height:1.45}
+.row .ts{display:block;color:var(--graphite);font-size:10.5px;letter-spacing:.02em;margin-top:3px}
+
+/* ---------- postcards ---------- */
+.pcs{display:grid;gap:10px}
+.pc{
+  background:var(--paper);color:#241f1a;border-radius:2px;padding:14px 15px;box-shadow:0 8px 20px rgba(0,0,0,.4);
+  display:grid;grid-template-columns:auto 1fr 52px;gap:12px;align-items:start;
+  border-left:3px solid var(--paper-2);
+}
+.pc .shape{width:52px;height:52px;display:block;opacity:.42;transition:opacity .3s ease}
+.pc .shape path{fill:none;stroke:#241f1a;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.pc.done .shape{opacity:1}
+.pc.done .shape path{fill:rgba(95,140,86,.26);stroke:#2d6b33;stroke-width:1.8}
+@media(max-width:430px){
+  .pc{grid-template-columns:auto 1fr 40px;gap:9px}
+  .pc .shape{width:40px;height:40px}
+}
+.pc.done{border-left-color:var(--green);background:var(--paper-2)}
+.pc .pcn{font-family:"Courier Prime",monospace;font-size:10.5px;letter-spacing:.12em;color:var(--graphite);padding-top:2px}
+.pc .q{font-family:"Courier Prime",monospace;font-size:13px;line-height:1.5;font-style:italic;margin:0 0 7px}
+.pc .qfr{
+  font-family:"Courier Prime",monospace;font-size:12px;line-height:1.45;color:var(--graphite);
+  margin:0 0 9px;padding-left:9px;border-left:2px solid rgba(36,31,26,.16);
+}
+.pc .qfr::before{content:"FR ";letter-spacing:.14em;font-size:9.5px;color:rgba(36,31,26,.42)}
+.pc .ans{font-family:"Special Elite",monospace;font-size:15px;color:#1f3a1a;letter-spacing:.06em}
+.pc .pchint{font-family:"Courier Prime",monospace;font-size:11.5px;color:var(--red);margin-top:7px;padding-left:9px;border-left:2px solid rgba(179,43,33,.35)}
+.pc .pchint::before{content:"HINT ";letter-spacing:.14em;font-size:9.5px;opacity:.65}
+.pc .pchint.two::before{content:"AND "}
+.btn.hintbtn{background:transparent;color:var(--graphite);border:1px dashed rgba(36,31,26,.42);padding:8px 12px}
+.btn.hintbtn:hover{background:rgba(179,43,33,.08);color:var(--red)}
+.btn.hintbtn[disabled]{opacity:.3}
+
+/* inputs */
+.entry{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+input[type=text]{
+  flex:1;min-width:0;font-family:"Courier Prime",monospace;font-size:14px;letter-spacing:.1em;
+  background:rgba(36,31,26,.06);border:0;border-bottom:1.5px solid rgba(36,31,26,.4);
+  color:#241f1a;padding:7px 8px;text-transform:uppercase;border-radius:2px 2px 0 0;
+}
+input[type=text]:focus{outline:2px solid var(--amber);outline-offset:1px}
+input[type=text]::placeholder{color:rgba(36,31,26,.34);letter-spacing:.06em}
+.btn{
+  font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  background:#241f1a;color:var(--paper);border:0;padding:9px 15px;border-radius:2px;cursor:pointer;
+}
+.btn:hover{background:#3a312a}
+.btn:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.btn.ghost{background:transparent;color:var(--graphite);border:1px solid rgba(36,31,26,.3)}
+.btn.ghost:hover{background:rgba(36,31,26,.07)}
+.btn.dark{background:var(--ink-3);color:var(--bone);border:1px solid var(--hair)}
+.btn.dark:hover{background:#342c2a}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.shake{animation:shake .38s}
+@keyframes shake{10%,90%{transform:translateX(-2px)}30%,70%{transform:translateX(5px)}50%{transform:translateX(-5px)}}
+.verdict{font-family:"Courier Prime",monospace;font-size:12.5px;margin-top:10px;min-height:1.2em}
+.verdict.bad{color:var(--red)}
+.verdict.good{color:#2d6b33}
+.hintline{font-family:"Courier Prime",monospace;font-size:12.5px;color:var(--red);margin-top:9px}
+
+/* ---------- letter tiles ---------- */
+.anagram{margin-top:16px;border-top:1px dashed rgba(36,31,26,.3);padding-top:15px}
+.anagram .lead{font-family:"Courier Prime",monospace;font-size:12.5px;color:var(--graphite);margin:0 0 12px}
+.slots{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.slot{
+  width:36px;height:44px;border:1.5px solid rgba(36,31,26,.35);border-bottom-width:3px;border-radius:2px;
+  display:grid;place-items:center;font-family:"Special Elite",monospace;font-size:20px;color:#241f1a;
+  background:rgba(255,255,255,.28);cursor:pointer;
+}
+.slot.filled{background:#241f1a;color:var(--paper);border-color:#241f1a}
+.tiles{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.tile{
+  width:36px;height:44px;border:0;border-radius:2px;background:#241f1a;color:var(--paper);
+  font-family:"Special Elite",monospace;font-size:20px;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.35);
+}
+.tile:hover{background:#3a312a}
+.tile.used{opacity:.18;pointer-events:none}
+.tile.pending{opacity:.18;pointer-events:none}
+
+/* ---------- alibi grid ---------- */
+.clues{margin:0 0 16px;padding-left:20px;font-family:"Courier Prime",monospace;font-size:13px;line-height:1.55}
+.clues li{margin-bottom:7px}
+.gridwrap{overflow-x:auto;margin-bottom:8px}
+.gridzone{position:relative}
+.gridzone .gridwrap{
+  position:sticky;top:calc(var(--tb,56px) + env(safe-area-inset-top,0px));z-index:5;
+  background:var(--paper);margin:0 -20px 14px;padding:8px 20px 10px;
+  box-shadow:0 10px 12px -8px rgba(36,31,26,.35);
+}
+table.grid th.colh{vertical-align:bottom;padding:6px 2px}
+table.grid th.colh span{
+  writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;display:inline-block;
+  font-size:12px;letter-spacing:.04em;color:#241f1a;font-weight:700;
+}
+table.grid{border-collapse:collapse;font-family:"Courier Prime",monospace;font-size:12px;margin:0 auto}
+table.grid th,table.grid td{border:1px solid rgba(36,31,26,.3);padding:0;text-align:center}
+table.grid th{color:var(--graphite);font-weight:400;font-size:10.5px;letter-spacing:.06em;padding:5px 6px;background:rgba(36,31,26,.05)}
+table.grid th.rowh{text-align:right;white-space:nowrap;padding-right:9px}
+table.grid td{width:40px;height:34px;cursor:pointer;font-size:16px;color:#241f1a;user-select:none}
+table.grid td:hover{background:rgba(217,144,43,.22)}
+table.grid td.yes{background:rgba(95,140,86,.28);color:#2d6b33}
+table.grid td.no{color:var(--graphite)}
+.legend{font-family:"Courier Prime",monospace;font-size:11px;color:var(--graphite);text-align:center;margin:0 0 14px;line-height:1.5}
+
+/* ---------- calendar lock ---------- */
+.lockbox{margin-top:18px;border-top:1px dashed rgba(36,31,26,.3);padding-top:16px}
+.derive{font-family:"Courier Prime",monospace;font-size:12.5px;margin:0 0 16px;padding-left:20px;line-height:1.55}
+.cal{
+  width:max-content;max-width:100%;margin:0 auto;background:#241f1a;border-radius:4px;padding:0 0 12px;
+  box-shadow:0 14px 30px rgba(0,0,0,.5);overflow:hidden;
+}
+.cal .caltop{
+  background:var(--red);color:#f3ece0;font-family:"Special Elite",monospace;font-size:12px;
+  letter-spacing:.26em;text-align:center;padding:7px 18px;text-transform:uppercase;
+}
+.cal .wheels{display:flex;gap:6px;justify-content:center;padding:14px 14px 6px}
+.wheel{display:flex;flex-direction:column;align-items:center;gap:5px}
+.wheel button{
+  background:transparent;border:0;color:var(--bone-dim);font-size:12px;cursor:pointer;padding:2px 8px;line-height:1;
+}
+.wheel button:hover{color:var(--amber)}
+.digit{
+  width:46px;height:58px;background:#0f0d0c;border-radius:3px;display:grid;place-items:center;
+  font-family:"Special Elite",monospace;font-size:31px;color:var(--paper);
+  box-shadow:inset 0 -1px 0 rgba(255,255,255,.12), inset 0 1px 0 rgba(0,0,0,.6);
+  position:relative;font-variant-numeric:tabular-nums;
+}
+.digit::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.6)}
+.cal.open .caltop{background:var(--green)}
+.calface{
+  display:none;padding:16px 26px 6px;text-align:center;
+}
+.cal.open .calface{display:block;animation:flipin .5s ease}
+.cal.open .wheels{display:none}
+@keyframes flipin{from{opacity:0;transform:rotateX(-70deg)}to{opacity:1;transform:none}}
+.calface .mo{font-family:"Special Elite",monospace;font-size:15px;letter-spacing:.3em;color:var(--amber)}
+.calface .dy{font-family:"Special Elite",monospace;font-size:62px;line-height:1;color:var(--paper)}
+.calhint{font-family:"Courier Prime",monospace;font-size:11px;color:var(--bone-dim);text-align:center;padding:0 14px}
+
+/* ---------- finale ---------- */
+.finale{margin-top:44px}
+.confess{margin-top:12px}
+.confess .rec{
+  font-family:"Courier Prime",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--graphite);border-bottom:1.5px solid rgba(36,31,26,.35);padding-bottom:7px;margin-bottom:14px;
+}
+.confess p{margin:0 0 13px;font-size:14.5px;line-height:1.65}
+.confess p.tw{font-family:"Courier Prime",monospace;font-size:13.5px}
+.sig{font-family:"Special Elite",monospace;font-size:19px;margin-top:20px;color:#241f1a}
+.fridge{
+  margin-top:20px;text-align:center;border-top:2px solid #241f1a;padding-top:18px;
+}
+.fridge .big{font-family:"Special Elite",monospace;font-size:clamp(24px,7vw,34px);color:#241f1a;line-height:1.15}
+.fridge .sub{font-family:"Courier Prime",monospace;font-size:12.5px;color:var(--graphite);margin-top:8px}
+
+.footnote{margin-top:34px;text-align:center;font-family:"Courier Prime",monospace;font-size:11px;color:var(--graphite-2);letter-spacing:.08em}
+.reset{background:none;border:0;color:var(--graphite-2);font:inherit;text-decoration:underline;cursor:pointer;padding:0}
+
+/* ---------- mugshots ---------- */
+.sus{padding:0 0 10px}
+.mug{
+  position:relative;background:#d8cfbb;border-bottom:1px solid var(--hair);
+  aspect-ratio:1/1;max-height:150px;overflow:hidden;display:block;
+}
+.mug img,.mug svg{width:100%;height:100%;display:block;object-fit:cover}
+.mug img{filter:grayscale(.85) contrast(1.12) sepia(.18)}
+.mug .src{
+  position:absolute;left:0;right:0;bottom:0;background:rgba(20,17,16,.72);color:var(--paper);
+  font-family:"Courier Prime",monospace;font-size:7.5px;letter-spacing:.1em;text-align:center;padding:2px 1px;
+}
+.sus .nm{margin-top:8px;padding-inline:8px}
+.sus .alibi{display:block;padding-inline:8px;min-height:2.7em}
+.sus.cleared .alibi{opacity:.8}
+.sus{cursor:pointer}
+.sus:hover .mug{filter:brightness(1.08)}
+.sus.sel{border-color:var(--amber);box-shadow:0 0 0 1px var(--amber)}
+
+/* ---------- interview ---------- */
+.interview{
+  position:relative;margin-top:10px;background:var(--ink-2);border:1px solid var(--hair);
+  border-top:2px solid var(--amber);border-radius:2px;padding:14px 15px;
+}
+.board > .interview{grid-column:1/-1;margin-top:0;animation:slidein .28s ease}
+.board > .interview::before{
+  content:"";position:absolute;top:-9px;left:var(--ax,50%);transform:translateX(-50%);
+  width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;
+  border-bottom:8px solid var(--amber);
+}
+.interview .who{
+  font-family:"Courier Prime",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--amber);margin:0 0 9px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;
+}
+.interview .who span:last-child{color:var(--graphite-2)}
+.interview p{font-family:"Courier Prime",monospace;font-size:12.5px;line-height:1.55;margin:0 0 7px;color:var(--bone)}
+.interview p:last-child{margin-bottom:0}
+.interview p:not(.who):not(.note):not(.add)::before{content:"“"}
+.interview p:not(.who):not(.note):not(.add)::after{content:"”"}
+.interview p.note{color:var(--graphite-2);font-style:italic}
+.interview p.note::before,.interview p.note::after{content:""}
+.tapnote{font-family:"Courier Prime",monospace;font-size:11px;color:var(--graphite-2);margin:9px 0 0;text-align:center}
+
+/* ---------- case facts ---------- */
+.facts{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:12px;
+  background:var(--hair);border:1px solid var(--hair);border-radius:2px;overflow:hidden;
+}
+@media(max-width:430px){.facts{grid-template-columns:1fr}}
+.fact{background:var(--ink-2);padding:9px 11px;display:flex;flex-direction:column;gap:3px}
+.fact .k{font-family:"Courier Prime",monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--graphite-2)}
+.fact .v{font-family:"Special Elite",monospace;font-size:15px;letter-spacing:.1em;color:var(--graphite-2);font-style:italic}
+.fact.set .v{font-style:normal}
+.factlabel{margin:18px 0 8px}
+.factlabel #factCount{color:var(--amber);font-variant-numeric:tabular-nums}
+.fact.set .v{color:var(--amber)}
+
+/* ---------- intro film ---------- */
+#intro[hidden]{display:none}
+#intro{
+  position:fixed;inset:0;z-index:100;background:#0b0a09;display:grid;place-items:center;
+  padding:26px 20px;overflow:hidden;
+}
+#intro.gone{animation:fadeout .7s ease forwards}
+@keyframes fadeout{to{opacity:0;visibility:hidden}}
+#intro::before{
+  content:"";position:absolute;left:50%;top:-30%;width:150%;height:110%;transform:translateX(-50%);
+  background:radial-gradient(50% 50% at 50% 50%, rgba(217,144,43,.16), transparent 70%);pointer-events:none;
+}
+.introin{position:relative;width:100%;max-width:520px;text-align:center}
+.slate{font-family:"Courier Prime",monospace;font-size:11px;letter-spacing:.24em;color:var(--graphite-2);text-transform:uppercase;min-height:1.4em}
+.calrip{margin:26px auto 22px;width:132px;position:relative}
+.calrip .top{background:var(--red);color:#f3ece0;font-family:"Special Elite",monospace;font-size:12px;letter-spacing:.24em;padding:5px;border-radius:3px 3px 0 0}
+.calrip .day{
+  background:var(--paper);color:#241f1a;font-family:"Special Elite",monospace;font-size:58px;line-height:1.25;
+  border-radius:0 0 3px 3px;box-shadow:var(--shadow);
+}
+.calrip.torn .day{animation:rip 1.1s cubic-bezier(.4,0,.6,1) forwards}
+@keyframes rip{
+  0%{transform:none;opacity:1}
+  35%{transform:rotate(-7deg) translateY(6px)}
+  100%{transform:rotate(-22deg) translate(46px,150px);opacity:0}
+}
+.calrip .hole{
+  position:absolute;left:0;right:0;top:27px;bottom:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 6px,transparent 6px 12px);
+  border:1px dashed var(--hair);border-top:0;border-radius:0 0 3px 3px;opacity:0;
+}
+.calrip.torn .hole{animation:fadein .5s .9s ease forwards}
+@keyframes fadein{to{opacity:1}}
+.introlines{min-height:0;transition:min-height .3s;display:flex;flex-direction:column;gap:7px;justify-content:center}
+.playing .introlines{min-height:132px}
+.introlines p{
+  font-family:"Courier Prime",monospace;font-size:14px;line-height:1.5;color:var(--bone);margin:0;
+}
+.introlines p.dim{color:var(--graphite-2)}
+.caret::after{content:"▌";color:var(--amber);animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.assign{
+  display:inline-block;margin-top:20px;font-family:"Special Elite",monospace;font-size:13px;letter-spacing:.16em;
+  color:var(--red-bright);border:2px solid var(--red-bright);padding:7px 14px;border-radius:2px;
+  opacity:0;transform:rotate(-3deg) scale(2.2);
+}
+.assign.on{animation:thunk2 .5s cubic-bezier(.2,1.3,.4,1) forwards}
+@keyframes thunk2{
+  0%{opacity:0;transform:rotate(-3deg) scale(2.2)}
+  60%{opacity:1;transform:rotate(-3deg) scale(.94)}
+  100%{opacity:.95;transform:rotate(-3deg) scale(1)}
+}
+.introbtns{display:flex;gap:9px;justify-content:center;margin-top:24px;flex-wrap:wrap;min-height:40px}
+.pips[hidden],.stage[hidden],.lineup[hidden],.introin[hidden]{display:none}
+.lineup{position:relative;width:100%;max-width:520px;text-align:center}
+.lineTitle{
+  font-family:"Special Elite",monospace;font-size:13px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--amber);margin:0 0 14px;min-height:1.3em;
+}
+.stage{
+  position:relative;width:224px;margin:0 auto;background:var(--paper);border-radius:2px;
+  box-shadow:var(--shadow);padding:10px 12px 4px;
+}
+.stage::after{
+  content:"";position:absolute;inset:0;border-radius:2px;pointer-events:none;
+  box-shadow:inset 0 0 40px rgba(90,70,40,.18);
+}
+.sketch{display:block;width:100%;height:auto}
+.sketch path{
+  fill:none;stroke:#2b2521;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;
+}
+.sketch path.ghost{stroke-width:1.4;opacity:.38;fill:none}
+.sketch path.card{fill:#f4eee2;fill-opacity:0}
+.sketch .chart line{stroke:#bdb197;stroke-width:.8}
+.sketch .chartnum text{fill:#a89c82;font-family:"Courier Prime",monospace;font-size:8px}
+.sketch .boardtxt{opacity:0;transition:opacity .35s ease}
+.sketch .boardtxt.on{opacity:1}
+.sketch .boardtxt text{
+  fill:#3a322c;font-family:"Courier Prime",monospace;font-size:9.5px;letter-spacing:1.2px;
+  text-anchor:middle;stroke:none;
+}
+.pastehead{
+  position:absolute;width:35.7%;aspect-ratio:1/1;object-fit:cover;
+  left:50%;top:6.4%;transform:translateX(-50%) rotate(-3.5deg);
+  filter:grayscale(.85) contrast(1.12) sepia(.18);
+  border:2px solid #f2ece0;box-shadow:0 3px 8px rgba(0,0,0,.45);border-radius:2px;
+}
+.pastehead.on{animation:paste .38s cubic-bezier(.2,1.4,.4,1)}
+@keyframes paste{
+  0%{opacity:0;transform:translateX(-50%) rotate(-16deg) scale(1.7)}
+  70%{opacity:1;transform:translateX(-50%) rotate(-3.5deg) scale(.95)}
+  100%{opacity:1;transform:translateX(-50%) rotate(-3.5deg) scale(1)}
+}
+.susName{
+  font-family:"Special Elite",monospace;font-size:21px;color:var(--paper);margin:16px 0 0;min-height:1.2em;
+}
+.susMotive,.susNote{
+  font-family:"Courier Prime",monospace;font-size:13.5px;line-height:1.5;margin:8px auto 0;max-width:38ch;
+  color:var(--bone);opacity:0;transition:opacity .45s ease;min-height:1.4em;
+}
+.susNote{color:var(--graphite-2);font-size:12.5px;margin-top:5px}
+.susMotive.on,.susNote.on{opacity:1}
+.susMotive.plain::before{content:""}
+.susMotive::before{content:"MOTIVE ";letter-spacing:.18em;font-size:10px;color:var(--red-bright)}
+.pips{display:flex;gap:6px;justify-content:center;margin-top:20px}
+.pips i{width:16px;height:3px;background:var(--hair);border-radius:2px;transition:background .3s}
+.pips i.on{background:var(--amber)}
+.tapon{font-family:"Courier Prime",monospace;font-size:10.5px;letter-spacing:.2em;color:var(--graphite-2);margin:10px 0 0}
+.tapon[hidden]{display:none}
+.finalrow{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin:0 0 18px}
+.finalrow img{
+  width:46px;height:46px;object-fit:cover;border:2px solid #f2ece0;border-radius:2px;
+  filter:grayscale(1) contrast(1.1);box-shadow:0 3px 8px rgba(0,0,0,.45);
+}
+.finalrow img:nth-child(odd){transform:rotate(-2.5deg)}
+.finalrow img:nth-child(even){transform:rotate(2deg)}
+#skipIntro{position:absolute;top:env(safe-area-inset-top,0px);right:0;margin:14px;background:transparent;border:0;color:var(--graphite-2);font-family:"Courier Prime",monospace;font-size:11px;letter-spacing:.14em;cursor:pointer;z-index:101}
+#skipIntro:hover{color:var(--amber)}
+
+/* ---------- witness notes ---------- */
+.nag{
+  position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) rotate(-1.2deg);
+  z-index:90;background:var(--paper);color:#241f1a;font-family:"Special Elite",monospace;font-size:14px;
+  padding:11px 17px;border-radius:2px;box-shadow:var(--shadow);max-width:min(88vw,340px);text-align:center;
+  animation:nagin .45s cubic-bezier(.2,1.2,.4,1);
+}
+.nag.out{animation:nagout .45s ease forwards}
+@keyframes nagin{from{opacity:0;transform:translateX(-50%) rotate(-1.2deg) translateY(16px)}}
+@keyframes nagout{to{opacity:0;transform:translateX(-50%) rotate(-1.2deg) translateY(16px)}}
+
+/* ---------- epilogue ---------- */
+.epilogue[hidden],.fridge[hidden],.interview[hidden],.confess[hidden]{display:none}
+.epilogue{margin-top:24px;border-top:2px solid #241f1a;padding-top:18px}
+.epilogue h3{
+  font-family:"Special Elite",monospace;font-size:14px;letter-spacing:.2em;text-transform:uppercase;
+  color:#241f1a;margin:0 0 14px;text-align:center;font-weight:400;
+}
+.fate{display:grid;grid-template-columns:38px 1fr;gap:11px;align-items:center;padding:7px 0;border-bottom:1px dotted rgba(36,31,26,.22);opacity:0}
+.fate.in{animation:slidein .5s ease forwards}
+@keyframes slidein{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.fate:last-child{border-bottom:0}
+.fate .thumb{width:38px;height:38px;border-radius:2px;overflow:hidden;background:#d8cfbb}
+.fate .thumb img,.fate .thumb svg{width:100%;height:100%;display:block;object-fit:cover}
+.fate .thumb img{filter:grayscale(1) contrast(1.15)}
+.fate .who{font-family:"Courier Prime",monospace;font-size:12px;color:#241f1a;font-weight:700}
+.fate .what{font-family:"Courier Prime",monospace;font-size:12px;color:var(--graphite);line-height:1.4}
+.fate.charged .who{color:var(--red)}
+.fate.charged .what{color:var(--red)}
+
+.interview p.add{color:var(--amber);border-top:1px dashed var(--hair);padding-top:8px;margin-top:9px}
+.interview p.add::before{content:"WITNESS ADDENDUM  ";letter-spacing:.14em;font-size:.78em;color:var(--graphite-2)}
+.interview p.add::after{content:""}
+.pc .ps{font-family:"Special Elite",monospace;font-size:14px;color:var(--red);margin:10px 0 0;transform:rotate(-1deg);transform-origin:left}
+
+.ask{display:block;margin-top:8px;font-size:1.12em;color:#241f1a;font-weight:700}
+.paper strong,.paper b{color:#241f1a;font-weight:700}
+.paper u{text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:3px}
+.brief strong{color:#241f1a}
+.clues b,.derive b{color:var(--red)}
+.hb{color:var(--red)!important}
+.verdict.good{font-weight:700}
+.goback{background:rgba(217,144,43,.18);border:1.5px solid var(--amber);border-radius:2px;padding:12px 14px;margin:0 0 16px;text-align:center}
+.goback p{font-family:"Courier Prime",monospace;font-size:14px;color:#241f1a;margin:0 0 10px;line-height:1.5}
+.goback strong{color:#8a4b00}
+.newtag{position:absolute;top:6px;right:6px;background:var(--amber);color:#141110;font-family:"Courier Prime",monospace;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border-radius:2px;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.55}}
+.tapnote.hot{color:var(--amber)}
+.tapnote strong{color:var(--amber)}
+.fact.set .v{font-weight:700}
+
+/* ---------- phone: bigger type ---------- */
+@media(max-width:600px){
+  body{font-size:17px}
+  .topbar .case,.topbar .clock{font-size:13px}
+  h1{font-size:40px}
+  .dek{font-size:16.5px}
+  .sectlabel{font-size:13px}
+  .brief p{font-size:17.5px}
+  .brief .redline{font-size:15.5px}
+  .loghead,.brief .loghead,.paper .loghead{font-size:12.5px!important}
+  .log{font-size:16.5px}
+  .row{grid-template-columns:58px 1fr}
+  .row .ix{font-size:13.5px}
+  .row .ts{font-size:14px;color:#4a4238}
+  section p[style]{font-size:16px!important}
+  input[type=text]{font-size:17px}
+  .btn{font-size:14px;padding:11px 16px}
+  .verdict,.hintline{font-size:16px}
+  .sus .nm{font-size:14.5px}
+  .sus .alibi{font-size:13px}
+  .mug .src{font-size:9.5px}
+  .newtag{font-size:10.5px}
+  .tapnote{font-size:14.5px}
+  .interview p{font-size:16px}
+  .interview .who{font-size:13px}
+  .fact .k{font-size:12px}
+  .fact .v{font-size:19px}
+  .pc .pcn{font-size:13px}
+  .pc .q{font-size:16.5px}
+  .pc .qfr{font-size:15px}
+  .pc .qfr::before,.pc .pchint::before{font-size:11px}
+  .pc .pchint{font-size:15px}
+  .pc .ans{font-size:19px}
+  .pc .ps{font-size:17px}
+  .anagram .lead{font-size:16px}
+  .goback p{font-size:16px}
+  .clues{font-size:16.5px}
+  .derive{font-size:16.5px}
+  .legend{font-size:13.5px}
+  table.grid th{font-size:12.5px}
+  table.grid td{font-size:19px;height:40px;width:35px}
+  table.grid th{padding:5px 3px}
+  table.grid th.colh span{font-size:13.5px}
+  table.grid td{height:36px}
+  table.grid th.rowh{font-size:12px;padding-right:6px}
+  .calhint{font-size:14.5px}
+  .confess .rec{font-size:12.5px}
+  .confess p{font-size:18px}
+  .confess p.tw{font-size:17px}
+  .sig{font-size:22px}
+  .fate .who,.fate .what{font-size:15px}
+  .fridge .big{font-size:32px}
+  .fridge .sub{font-size:16px}
+  .footnote{font-size:13.5px}
+  .slate{font-size:13.5px}
+  .introlines p{font-size:18px}
+  .susName{font-size:24px}
+  .susMotive{font-size:17px}
+  .susNote{font-size:16px}
+  .tapon{font-size:13px}
+  .nag{font-size:17px}
+  .ednote{font-size:14px}
+  .edbar{font-size:13px}
+}
+
+/* ---------- editor mode ---------- */
+.edbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:95;background:rgba(15,13,12,.96);backdrop-filter:blur(6px);
+  border-top:2px solid var(--amber);padding:9px 14px calc(9px + env(safe-area-inset-bottom,0px));
+  font-family:"Courier Prime",monospace;font-size:11.5px;color:var(--bone);
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;
+}
+.edbar b{color:var(--amber);letter-spacing:.18em;font-weight:700}
+.edbar .ans{color:var(--bone-dim);letter-spacing:.04em}
+.edbar .btn{padding:6px 10px;font-size:10.5px}
+body.editor .wrap{padding-bottom:140px}
+.ednote{
+  font-family:"Courier Prime",monospace;font-size:11.5px;color:#7a4d0f;background:rgba(217,144,43,.14);
+  border-left:3px solid var(--amber);padding:7px 10px;margin:10px 0 0;line-height:1.5;border-radius:2px;
+}
+.ednote::before{content:"EDITOR  ";letter-spacing:.16em;font-size:9.5px;font-weight:700}
+
+/* ---------- home-screen prompt (website build, iPhone Safari only) ---------- */
+#a2hs{position:fixed;inset:0;z-index:200;background:#0b0a09;display:grid;place-items:center;padding:24px 20px}
+#a2hs[hidden]{display:none}
+#a2hs .card{max-width:360px;background:var(--paper);color:#241f1a;border-radius:2px;padding:24px 20px;box-shadow:var(--shadow);text-align:center}
+#a2hs .t{font-family:"Special Elite",monospace;font-size:22px;margin:0 0 6px}
+#a2hs .s{font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin:0 0 16px}
+#a2hs ol{text-align:left;font-family:"Courier Prime",monospace;font-size:16px;line-height:1.6;margin:0 0 18px;padding-left:22px}
+#a2hs ol b{color:var(--red)}
+#a2hs .share{display:inline-block;vertical-align:-3px;width:17px;height:20px}
+#a2hs .skip{background:none;border:0;color:var(--graphite);font-family:"Courier Prime",monospace;font-size:13px;text-decoration:underline;margin-top:14px;cursor:pointer}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001s!important;transition-duration:.001s!important}
+}
+</style>
+
+<div id="a2hs" hidden>
+  <div class="card">
+    <p class="s">Before you open the file</p>
+    <p class="t">Case #1004</p>
+    <ol>
+      <li>Tap <b>Share</b> <svg class="share" viewBox="0 0 17 20" fill="none" stroke="#241f1a" stroke-width="1.6"><path d="M8.5 1v12M4.5 5l4-4 4 4M3 9H1.5v10h14V9H14"/></svg> at the bottom of Safari.</li>
+      <li>Choose <b>Add to Home Screen</b>.</li>
+      <li>Open <b>Case #1004</b> from your home screen. Sound on.</li>
+    </ol>
+    <button class="skip" id="a2hsSkip">play in the browser instead</button>
+  </div>
+</div>
+
+<div id="intro" hidden>
+  <button id="skipIntro">Skip ›</button>
+  <div class="introin">
+    <p class="slate" id="slate"></p>
+    <div class="calrip" id="calrip">
+      <div class="top">October</div>
+      <div class="day">04</div>
+      <div class="hole"></div>
+    </div>
+    <div class="introlines" id="introlines"></div>
+    <span class="assign" id="assign">Case #1004 &mdash; Det. N.</span>
+    <div class="introbtns" id="introbtns"></div>
+  </div>
+
+  <div class="lineup" id="lineup" hidden>
+    <p class="lineTitle" id="lineTitle">Six suspects</p>
+    <div class="stage" id="stage">
+      <svg class="sketch" id="sketch" viewBox="0 0 200 250" aria-hidden="true"></svg>
+      <img class="pastehead" id="pastehead" alt="" hidden>
+    </div>
+    <p class="susName" id="susName"></p>
+    <p class="susMotive" id="susMotive"></p>
+    <p class="susNote" id="susNote"></p>
+    <div class="pips" id="pips"></div>
+    <p class="tapon" id="tapon">tap to continue</p>
+    <div class="introbtns" id="lineBtns"></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <span class="case">Case&nbsp;#1004 &nbsp;·&nbsp; Det. N. &nbsp;·&nbsp; <span id="statusTxt">Open</span></span>
+    <button class="bgmbtn" id="bgmBtn" type="button" aria-label="Music on or off">&#9835; on</button>
+    <span class="clock"><b id="topClock">Midnight in</b> <span id="cd">--:--:--</span></span>
+  </div>
+
+  <header class="masthead">
+    <span class="stamp-top">Confidential</span>
+    <h1>The Missing Birthday</h1>
+    <p class="dek">October 4 has been removed from the calendar. Six suspects. One witness. You have until midnight.</p>
+  </header>
+
+  <section class="paper brief">
+    <div class="loghead" style="font-family:'Courier Prime',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#5d544a;border-bottom:1.5px solid rgba(36,31,26,.35);padding-bottom:7px;margin-bottom:14px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap">
+      <span>Briefing — read once</span><span>Namegata Field Office</span>
+    </div>
+    <p>At approximately 00:00 last night, October 4 was reported missing from the calendar of one <strong>Nasser</strong>. No forced entry. No ransom note. The day is simply gone.</p>
+    <p>Six suspects were in contact with the victim in the days before the disappearance. One witness has come forward and is <em>being extremely helpful</em>.</p>
+    <p><strong>Three pieces of evidence</strong> remain unexamined. <strong>Each one clears two suspects.</strong> Work through all three and the file closes by itself.</p>
+    <p class="redline">RULE OF THE HOUSE: the phone stays face down. No searching. Everything you need is already in your head, or in this file. I'll know. — A.</p>
+  </section>
+
+  <section style="margin-top:34px">
+    <p class="sectlabel">Suspect board</p>
+    <div class="board" id="board"></div>
+    <p class="tapnote" id="tapnote">Tap a suspect to read their statement.</p>
+    <div class="interview" id="interview" hidden></div>
+    <p class="sectlabel factlabel">Established facts &nbsp;<span id="factCount">0 of 3</span></p>
+    <div class="facts" id="factsRow">
+      <div class="fact" id="factTime"><span class="k">Time it happened</span><span class="v">unknown</span></div>
+      <div class="fact" id="factPlace"><span class="k">Where it was taken</span><span class="v">unknown</span></div>
+      <div class="fact" id="factDate"><span class="k">What was taken</span><span class="v">unknown</span></div>
+    </div>
+  </section>
+
+  <!-- ================= ACT I ================= -->
+  <section class="act locked" id="act1">
+    <div class="act-head"><span class="act-num">EVIDENCE A</span><span class="act-title">The Intercepted Log</span></div>
+    <div class="paper">
+      <div class="log">
+        <div class="loghead"><span>Messages recovered — device: victim's</span><span>8 items · order as recovered</span></div>
+        <div id="logRows"></div>
+      </div>
+      <p style="font-family:'Courier Prime',monospace;font-size:12.5px;color:#5d544a;margin:16px 0 10px;border-top:1px dashed rgba(36,31,26,.3);padding-top:13px">
+        The witness picked these eight herself and handed them over without being asked twice. The lab logged them in whatever order they came off the device.<br><strong class="ask">What time did it happen?</strong>
+      </p>
+      <div class="entry">
+        <input type="text" id="in1" placeholder="one word" autocomplete="off" spellcheck="false">
+        <button class="btn" id="go1">Submit</button>
+      </div>
+      <p class="verdict" id="v1"></p>
+      <p class="hintline" id="h1" hidden></p>
+    </div>
+  </section>
+
+  <!-- ================= ACT II ================= -->
+  <section class="act locked" id="act2">
+    <div class="act-head"><span class="act-num">EVIDENCE B</span><span class="act-title">Eight Postcards</span></div>
+    <div id="act2sealed" class="sealed">Sealed until Evidence A is examined.</div>
+    <div id="act2body" hidden>
+      <p style="font-family:'Courier Prime',monospace;font-size:12.5px;color:#8b8277;margin:0 0 14px">
+        Found in the witness's bag. Eight postcards, no signatures, each describing a country without naming it. <strong class="ask">Name all eight.</strong> Their <u>initials</u>, rearranged, spell one place.
+      </p>
+      <div class="pcs" id="pcs"></div>
+      <div class="paper anagram" id="anaBox">
+        <p class="lead">Eight initials. Rearranged, they name <strong>the place where the birthday is being held tonight.</strong></p>
+        <div class="slots" id="slots"></div>
+        <div class="tiles" id="tiles"></div>
+        <div style="display:flex;gap:7px;justify-content:center;margin-top:14px;flex-wrap:wrap">
+          <button class="btn ghost" id="clearSlots">Clear</button>
+          <button class="btn" id="go2">Submit</button>
+        </div>
+        <p class="verdict" id="v2" style="text-align:center"></p>
+        <p class="hintline" id="h2" style="text-align:center" hidden></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ACT III ================= -->
+  <section class="act locked" id="act3">
+    <div class="act-head"><span class="act-num">EVIDENCE C</span><span class="act-title">The Alibi Grid</span></div>
+    <div id="act3sealed" class="sealed">Sealed until Evidence B is examined.</div>
+    <div id="act3body" hidden>
+      <div class="paper">
+        <div class="loghead" style="font-family:'Courier Prime',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#5d544a;border-bottom:1.5px solid rgba(36,31,26,.35);padding-bottom:7px;margin-bottom:14px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <span>Sworn statements</span><span>00:00 JST</span>
+        </div>
+        <p style="font-family:'Courier Prime',monospace;font-size:12.5px;color:#5d544a;margin:0 0 12px">
+          The witness has submitted sworn statements for all six. She wrote them herself. According to her, all six were abroad at midnight &mdash; six suspects, six countries, one each. 
+        </p>
+        <div class="goback">
+          <p><strong>New:</strong> the witness has added a note to every statement on the suspect board. Go back and read them again &mdash; you may find something new.</p>
+          <button class="btn" id="goBoard">&uarr; Back to the suspect board</button>
+        </div>
+        <div class="gridzone">
+        <p class="legend">Tap a cell: blank &rarr; &times; &rarr; &check;. One &check; per row and per column.<br>The grid stays pinned while you scroll through the clues.</p>
+        <div class="gridwrap" id="gridwrap">
+          <table class="grid" id="grid"></table>
+        </div>
+        <ol class="clues">
+          <li>Exactly two of the six were landlocked. <b>Ros&eacute;</b> was not one of them.</li>
+          <li><b>The Junimo's</b> local clock was forty-five minutes off from every whole hour on Earth.</li>
+          <li><b>The Marmot</b> was landlocked.</li>
+          <li><b>StrongZero</b> was in the country with the longest coastline in the world.</li>
+          <li><b>Ros&eacute;</b> and <b>Famichiki</b> were both somewhere with fewer than two land neighbours.</li>
+          <li><b>Famichiki</b> could not have crossed a land border if he tried.</li>
+          <li><b>lil Bieber</b> was the only one south of the equator.</li>
+        </ol>
+        <div style="display:flex;gap:7px;justify-content:center;flex-wrap:wrap">
+          <button class="btn" id="go3">Check alibis</button>
+        </div>
+        <p class="verdict" id="v3" style="text-align:center"></p>
+        <p class="hintline" id="h3" style="text-align:center" hidden></p>
+        </div>
+
+        <div class="lockbox" id="lockbox" hidden>
+          <p style="font-family:'Courier Prime',monospace;font-size:12.5px;color:#5d544a;margin:0 0 12px">
+            Alibis confirmed. One item was recovered from the scene: <strong>a locked desk calendar. Four digits.</strong>
+          </p>
+          <ol class="derive">
+            <li>How many <u>countries</u> does <b>Ros&eacute;'s</b> country border?</li>
+            <li>How many does <b>Famichiki's</b> border?</li>
+            <li>How many <u>oceans</u> does <b>the Marmot's</b> country touch?</li>
+            <li>How many of the six were in <u>Europe or Asia</u>?</li>
+          </ol>
+          <div class="cal" id="cal">
+            <div class="caltop" id="calTop">Locked</div>
+            <div class="wheels" id="wheels"></div>
+            <div class="calface"><div class="mo">October</div><div class="dy">04</div></div>
+            <p class="calhint" id="calHint">Set the four digits, then open.</p>
+            <div style="display:flex;justify-content:center;padding-top:8px" id="openWrap">
+              <button class="btn dark" id="go4">Open</button>
+            </div>
+          </div>
+          <p class="verdict" id="v4" style="text-align:center"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINALE ================= -->
+  <section class="finale" id="finale" hidden>
+    <div class="act-head"><span class="act-num">CASE CLOSED</span><span class="act-title">Statement of the Witness</span></div>
+    <div class="board" id="finalBoard" style="margin-bottom:22px"></div>
+    <div class="paper confess" id="confess" hidden>
+      <div class="rec">Recorded &mdash; October 3, Namegata &mdash; subject: Ange &mdash; no lawyer present</div>
+      <p class="tw">"All six of them have alibis. I know. I gave them the alibis."</p>
+      <p>I did it. But I want it on the record that I did not <em>steal</em> October 4. You can't steal a day. <strong>I moved it.</strong></p>
+      <p>Last year I gave you three questions on one piece of paper and you had all three in fifteen minutes. I took notes. So this year I took the whole day, drove it two hours northeast, and hid it in a wooden house with a fire pit and a very quiet sky.</p>
+      <p>A year ago in Chiba we sat on two camping chairs under all those stars with a bottle between us, and I decided something about you that I have not changed my mind about since. I am aware of what I'm doing here. I'm doing it on purpose.</p>
+      <p>So: <strong class="hb">happy birthday, detective.</strong> The car was the gift. This house is the gift. Tomorrow we have nowhere to be, which is also the gift.</p>
+      <p>There's one more piece of evidence. I put it somewhere cold.</p>
+      <p class="sig">&mdash; Ange</p>
+      <div class="epilogue" id="epilogue" hidden>
+        <h3>What became of them</h3>
+        <div id="fates"></div>
+      </div>
+      <div class="fridge" id="fridgeBlock" hidden>
+        <p class="big">Go look in the fridge.</p>
+        <p class="sub">Bring two glasses. 🥂</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="footnote">Case #1004 &nbsp;·&nbsp; Namegata, Ibaraki &nbsp;·&nbsp; <button class="reset" id="reset">start over</button></p>
+</div>
+
+<script>
+/* ============================ data ============================ */
+/* ---- mugshots: one photograph on file, five artist's impressions ---- */
+const CHART = '<rect width="100" height="100" fill="#d8cfbb"/><g stroke="#bdb197" stroke-width=".7">'+
+  [18,34,50,66,82].map(y=>`<line x1="0" y1="${y}" x2="100" y2="${y}"/>`).join("")+
+  '</g><g fill="#a89c82" font-family="monospace" font-size="5">'+
+  [18,34,50,66,82].map((y,i)=>`<text x="2.5" y="${y-1.5}">${6-i}</text>`).join("")+'</g>';
+const INK="#2b2521";
+const MUG = {
+  rose: '<img src="photos/rose.jpg" alt="">',
+  marmot: '<img src="photos/marmot.jpg" alt="">',
+  junimo: '<img src="photos/junimo.jpg" alt="">',
+  sz: '<img src="photos/strongzero.jpg" alt="">',
+  bieber: `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">${CHART}
+    <g fill="${INK}"><circle cx="50" cy="32" r="16"/>
+    <path d="M50 49 q-15 2 -21 13 -5 9 -5 20 0 9 3 14h46q3 -5 3 -14 0 -11 -5 -20 -6 -11 -21 -13Z"/></g>
+    <path d="M32 84 q18 -13 36 0" fill="none" stroke="#c9bda4" stroke-width="1.4" opacity=".55"/></svg>`,
+  ange: `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">${CHART}
+    <g fill="#8e8371"><circle cx="50" cy="32" r="16"/>
+    <path d="M50 49 q-17 2 -23 14 -5 9 -5 19 0 8 2 14h52q2 -6 2 -14 0 -10 -5 -19 -6 -12 -23 -14Z"/></g>
+    <text x="50" y="72" text-anchor="middle" font-family="monospace" font-size="26" fill="#d8cfbb">?</text></svg>`,
+  fami: '<img src="photos/famichiki.jpg" alt="">',
+};
+const SUSPECTS = [
+  {id:"rose",   name:"Rosé",       src:"Photograph on file",
+   alibi:"Slept nineteen hours. Confirmed by the sofa.",
+   add:"Rosé was somewhere warm on the Atlantic with a box of custard tarts. The sofa is lying.",
+   say:["I was on the sofa. I am always on the sofa. The sofa will confirm this.",
+        "Statement given at 14:00, which for me is the middle of the night.",
+        "I would like it noted that daddy left for two days and nobody asked me."]},
+  {id:"marmot", name:"The Marmot",  src:"Photograph on file",
+   alibi:"At the gym. Obviously.",
+   add:"The Marmot was visiting family. Endless grassland, nomads in tents, no sea in any direction.",
+   say:["I was at the gym. I am always at the gym.",
+        "It was chest day. I do not steal on chest day.",
+        "Ask me about my protein intake. Go on. Ask me."]},
+  {id:"junimo", name:"The Junimo",  src:"Photograph on file",
+   alibi:"In the mines. 47 witnesses, all Junimos.",
+   add:"The Junimo was near the top of the world. Its watch has been slightly wrong ever since.",
+   say:["Wheeee.",
+        "Wheeee wheeee.",
+        "[The witness offered to translate, then declined.]"]},
+  {id:"sz",     name:"StrongZero",  src:"Photograph on file",
+   alibi:"Was 9%. In no condition to steal anything.",
+   add:"StrongZero was somewhere enormous and cold, where people apologise to you when you bump into them.",
+   say:["I do not remember the 3rd. I do not remember the 2nd either.",
+        "Nine percent. NINE. Do you know what that does to a man.",
+        "I was opened at 21:00. What happened after that is not my problem."]},
+  {id:"bieber", name:"lil Bieber",  src:"Artist's impression",
+   alibi:"Declined to comment.",
+   add:"Despite the name, not in Canada. It was spring where he was. In October.",
+   say:["No comment.",
+        "My client has nothing further.",
+        "[Subject is listed in this file as “unexplained”. The witness refused to elaborate.]"]},
+  {id:"fami",   name:"Famichiki",   src:"Photograph on file",
+   alibi:"Was eaten at 23:13. Cannot have acted after that.",
+   add:"Famichiki was on an island of volcanoes and geysers. No neighbours. No FamilyMart.",
+   say:["I was purchased at 23:12 at the FamilyMart by the station.",
+        "I was eaten at 23:13.",
+        "I would like to point out that this makes me the victim here."]},
+];
+const FATES = [
+  ["rose",  "Released without charge. Returned to the sofa."],
+  ["marmot","Released. Went straight to the gym."],
+  ["junimo","Deported to the Valley."],
+  ["sz",    "Confiscated as evidence. Consumed by the investigating officer."],
+  ["bieber","No comment. File remains open."],
+  ["fami",  "Deceased, 23:13. No suspicious circumstances."],
+];
+const CLEAR_ORDER = [["fami","sz"],["rose","marmot"],["junimo","bieber"]];
+
+/* printed in the order they came off the device; sorted by timestamp they spell it */
+const LOG = [
+  ["EX-01","Haha they copied stardew","2026-05-22  12:42"],
+  ["EX-02","Message when home","2025-08-24  02:22"],
+  ["EX-03","I\u2019m reporting you to police","2026-05-13  00:15"],
+  ["EX-04","Try to sleep early tonight","2026-05-26  16:44"],
+  ["EX-05","don\u2019t like you asked me first","2026-05-12  03:03"],
+  ["EX-06","Good and rest this week don\u2019t go lab every day","2026-05-18  00:15"],
+  ["EX-07","No I think I like to go gym at night","2026-05-12  03:06"],
+  ["EX-08","I\u2019m always right","2026-05-12  03:00"],
+];
+
+const CARDS = [
+  {n:"PC-01", q:"In 1923 it turned its back on the sea and moved its capital inland. The city it left behind is still the only one in the world standing on two continents.",
+   f:"En 1923, il a tourné le dos à la mer et transféré sa capitale à l'intérieur des terres. La ville qu'il a laissée derrière lui reste la seule au monde à avoir un pied sur deux continents.",
+   a:["turkey","turkiye","türkiye","turquie","turkei","türkei"], show:"TURKEY", L:"T", hint:"The empire that ruled from the old capital lasted six centuries.", hint2:"The capital moved. The famous city stayed."},
+  {n:"PC-02", q:"Count every fjord and every island, and its coastline would wrap around the Earth two and a half times. It has also said no to Brussels twice.",
+   f:"En comptant chaque fjord et chaque île, son littoral ferait deux fois et demie le tour de la Terre. Il a aussi dit non à Bruxelles à deux reprises.",
+   a:["norway","norge","norvege","norvège"], show:"NORWAY", L:"N", hint:"More coastline than it has any right to, and a very large sovereign wealth fund.", hint2:"Fjords. And two referendums."},
+  {n:"PC-03", q:"Since 2011 it has been the largest country in Africa, and four fifths of it is desert.",
+   f:"Depuis 2011, c'est le plus grand pays d'Afrique, et les quatre cinquièmes de son territoire sont désertiques.",
+   a:["algeria","algerie","algérie"], show:"ALGERIA", L:"A", hint:"Before 2011 the title belonged to Sudan.", hint2:"Its capital shares its name."},
+  {n:"PC-04", q:"Its own people call their country Sakartvelo. The rest of the world calls it by the same name as a US state.",
+   f:"Ses habitants appellent leur pays Sakartvelo. Le reste du monde lui donne le même nom qu'à un État américain.",
+   a:["georgia","georgie","géorgie","sakartvelo"], show:"GEORGIA", L:"G", hint:"Between the Black Sea and the mountains. Eight thousand years of winemaking.", hint2:"Caucasus. Wine. Tbilisi.", ps:"P.S. This is the one we said we’d go to together. I haven’t forgotten."},
+  {n:"PC-05", q:"Its capital's Arabic name simply means “the victorious.”",
+   f:"Le nom arabe de sa capitale signifie tout simplement « la victorieuse ».",
+   a:["egypt","egypte","égypte","misr"], show:"EGYPT", L:"E", hint:"The city was founded in 969 and named for a planet that was rising that night.", hint2:"al-Qāhira."},
+  {n:"PC-06", q:"Its own name for itself means “the eastern realm” — which made more sense back when the empire it ran was bigger.",
+   f:"Le nom qu'il se donne à lui-même signifie « le royaume de l'est » — ce qui avait plus de sens à l'époque où l'empire qu'il dirigeait était bien plus grand.",
+   a:["austria","autriche","osterreich","österreich"], show:"AUSTRIA", L:"A", hint:"It lost an empire in 1918 and kept the coffee houses.", hint2:"Österreich."},
+  {n:"PC-07", q:"The only African country with coastline on both the Atlantic and the Mediterranean — and the only one with a land border with the European Union.",
+   f:"Le seul pays africain à avoir une façade sur l'Atlantique et sur la Méditerranée — et le seul à partager une frontière terrestre avec l'Union européenne.",
+   a:["morocco","maroc","marocco","maghreb"], show:"MOROCCO", L:"M", hint:"The EU border in question is two cities that are legally Spain.", hint2:"Ceuta and Melilla."},
+  {n:"PC-08", q:"Named after silver, which the Spanish came looking for and never really found. Home of the tango, and of Messi.",
+   f:"Nommé d'après l'argent, que les Espagnols sont venus y chercher sans jamais vraiment le trouver. Patrie du tango, et de Messi.",
+   a:["argentina","argentine","argentinien"], show:"ARGENTINA", L:"A", hint:"Its capital's name means “good airs.”", hint2:"Buenos Aires."},
+];
+
+/* country outlines, simplified from Natural Earth 1:110m; viewBox 0 0 100 100 */
+const SHAPES = {
+  TURKEY: "M97.9 61.9 95.4 63.0 93.6 61.4 87.7 60.5 85.5 61.5 76.9 62.4 71.0 64.9 66.8 64.9 64.1 63.7 58.4 65.5 56.8 64.3 56.5 67.9 53.7 70.8 51.9 67.8 53.8 65.4 50.7 65.9 46.4 64.4 42.9 68.2 35.1 68.9 31.0 65.4 25.4 65.2 24.3 67.9 20.7 68.7 15.8 65.2 10.2 65.3 7.1 58.7 3.4 55.1 5.9 50.0 2.7 46.8 8.3 40.5 16.2 40.3 18.4 35.3 28.1 36.1 34.3 31.9 40.2 30.0 48.7 29.9 57.7 34.5 65.0 37.0 71.0 36.0 75.4 36.6 81.4 33.2 86.9 32.9 91.8 36.1 92.7 38.4 92.2 41.6 96.0 43.3 98.0 45.2 94.5 47.1 96.1 54.6 95.1 56.7ZM2.4 31.3 7.6 29.2 12.0 30.1 12.6 32.6 17.1 34.7 16.1 36.3 10.1 36.7 3.6 42.3 2.0 39.2 2.1 37.9 3.3 37.1 4.9 33.0Z",
+  NORWAY: "M90.7 13.9 82.8 17.5 84.1 12.4 80.1 9.5 75.2 12.0 73.7 17.3 70.7 20.6 67.3 18.8 63.2 19.2 59.7 15.3 57.9 17.2 55.9 17.5 55.4 22.3 49.5 21.2 48.7 25.3 45.7 25.2 35.6 48.9 36.7 51.4 35.7 54.3 32.5 54.1 30.5 61.0 30.7 70.7 32.7 74.5 31.7 83.1 27.7 92.3 25.6 87.8 19.4 96.3 15.2 98.0 10.8 94.3 8.7 69.5 11.6 64.8 19.9 58.6 26.1 51.1 39.4 26.7 53.3 12.0 60.2 8.8 65.3 9.2 70.1 3.1 75.8 3.5 81.5 2.0 91.3 7.4 87.2 9.3Z",
+  ALGERIA: "M2.0 53.6 2.0 46.0 9.5 42.2 18.0 39.9 19.8 37.3 25.2 35.2 25.4 31.3 28.1 30.9 30.2 28.9 36.2 28.0 37.1 26.0 35.9 24.9 34.0 16.1 32.2 12.8 36.7 9.9 41.7 9.0 44.6 6.8 49.1 5.2 64.7 3.8 67.0 4.6 71.4 2.5 76.3 2.5 78.2 3.7 81.4 3.4 80.4 6.1 81.2 11.1 80.1 15.5 77.2 18.4 77.6 22.3 84.3 28.9 87.8 43.0 87.4 58.3 85.6 60.5 88.3 64.3 88.5 66.6 90.1 69.5 92.3 68.5 96.0 71.0 98.0 74.3 82.1 84.3 68.7 94.6 62.1 97.0 57.0 97.5 56.9 94.2 51.9 91.8 50.8 89.3Z",
+  GEORGIA: "M2.0 28.1 3.8 25.8 15.9 29.2 37.0 32.3 56.6 41.6 59.1 45.2 67.8 42.2 81.2 46.2 85.6 54.2 94.7 58.7 90.9 61.4 98.0 71.9 96.0 74.2 88.3 73.0 77.6 67.4 74.1 70.6 54.1 73.6 40.3 64.1 25.0 65.0 27.1 56.7 23.5 43.5 15.2 36.3 7.3 34.1Z",
+  EGYPT: "M98.0 92.4 4.4 92.4 4.4 28.4 2.0 21.3 4.0 15.8 2.8 12.0 5.7 7.8 16.2 7.6 35.2 14.0 41.3 11.2 44.6 8.6 51.5 7.9 57.1 9.0 59.3 13.4 61.1 10.5 67.4 12.6 73.6 13.1 77.5 10.9 82.7 26.1 80.4 29.6 78.7 36.3 76.6 40.9 74.8 42.4 68.6 35.6 62.9 23.0 62.1 23.8 65.4 33.1 70.2 42.0 76.2 55.8 81.7 65.5 88.7 75.3 87.2 76.9 87.4 82.6Z",
+  AUSTRIA: "M98.0 42.6 97.0 50.4 89.8 50.4 92.3 54.6 88.0 66.8 85.6 70.0 74.4 70.5 68.0 74.8 57.4 73.3 39.1 68.4 36.2 61.8 23.6 65.1 22.1 68.7 14.3 66.0 7.8 65.5 2.0 62.0 4.0 57.4 3.5 54.0 7.3 53.0 13.8 58.2 15.6 53.2 26.9 54.0 36.1 50.6 42.2 51.2 46.2 55.1 47.4 51.9 45.6 39.5 50.2 37.0 54.7 28.3 64.2 34.4 71.4 26.6 75.9 25.2 85.8 31.0 91.9 30.0 97.8 33.6 96.7 36.0Z",
+  MOROCCO: "M90.6 6.0 92.8 10.2 93.1 14.3 95.2 21.4 96.7 22.8 95.6 25.4 88.0 26.5 85.3 29.0 81.9 29.6 81.6 34.6 74.8 37.2 72.5 40.6 67.7 42.4 61.8 43.4 52.3 48.3 52.4 56.3 51.5 56.3 51.6 59.8 48.0 60.1 46.1 61.6 41.3 60.7 36.4 61.4 34.4 66.6 32.6 67.1 29.8 75.6 21.7 82.8 19.7 92.0 17.3 95.1 16.6 97.5 3.3 98.0 3.6 94.9 5.8 93.1 7.7 89.6 7.4 87.3 9.4 82.6 12.7 78.3 14.6 77.2 16.2 73.3 16.3 69.8 18.4 65.6 22.4 63.2 26.1 56.4 29.2 53.7 34.6 53.0 39.3 48.4 42.2 46.6 47.1 41.0 45.6 32.7 48.7 23.4 52.4 18.9 62.7 13.0 68.5 2.0 72.8 2.0 76.3 4.9 81.9 4.4Z",
+  ARGENTINA: "M64.8 28.4 62.6 41.6 65.8 44.3 65.5 46.5 67.0 47.9 66.9 49.4 64.5 53.4 60.8 55.1 53.0 55.5 53.5 61.3 51.9 62.4 49.4 62.8 47.0 61.7 46.0 62.5 46.3 65.6 48.0 66.6 49.4 65.6 50.2 67.2 45.8 70.1 44.9 75.0 42.5 75.0 40.5 76.6 39.8 79.0 42.3 81.3 44.7 81.9 43.8 84.7 40.9 86.5 39.2 90.2 35.9 92.9 36.7 96.2 38.4 98.0 28.9 96.9 27.9 95.1 27.9 92.7 26.3 92.9 25.4 91.8 25.2 88.5 27.1 87.1 27.9 85.1 27.6 83.5 29.9 76.6 29.6 74.8 30.7 74.2 30.4 73.0 29.2 72.4 30.1 71.1 28.9 69.9 28.4 66.2 29.4 65.6 28.9 61.8 30.2 55.7 31.7 54.6 30.9 48.6 32.8 46.6 32.8 44.0 34.2 40.9 34.2 38.0 32.4 32.0 33.9 28.8 33.7 25.7 34.6 22.8 38.0 17.9 37.3 16.7 37.7 10.5 40.4 8.9 41.0 4.8 43.1 2.0 46.4 2.8 47.9 5.0 48.8 2.5 51.7 2.6 56.7 8.4 58.8 8.9 64.4 12.5 64.8 13.9 62.3 18.6 67.7 20.0 69.6 19.5 71.9 17.1 72.3 14.3 73.6 13.7 74.8 15.5 74.8 18.0 71.0 21.0Z",
+};
+
+const SUS3 = [
+  {id:"rose",   label:"Rosé"},
+  {id:"marmot", label:"The Marmot"},
+  {id:"junimo", label:"The Junimo"},
+  {id:"sz",     label:"StrongZero"},
+  {id:"bieber", label:"lil Bieber"},
+  {id:"fami",   label:"Famichiki"},
+];
+const CTRY = ["CAN","CHL","ISL","MNG","NPL","PRT"];
+const CNAME = {CAN:"Canada",CHL:"Chile",ISL:"Iceland",MNG:"Mongolia",NPL:"Nepal",PRT:"Portugal"};
+const SOLUTION = {rose:"PRT", marmot:"MNG", junimo:"NPL", sz:"CAN", bieber:"CHL", fami:"ISL"};
+const CODE = "1004";
+
+/* ============================ state ============================ */
+const KEY = "case1004.v1";
+const blank = () => ({act:1, cards:Array(8).fill(false), cardTries:Array(8).fill(0), cardHint:Array(8).fill(0),
+  tries:{1:0,2:0,3:0,4:0}, slots:Array(8).fill(null), grid:{}, dials:[0,0,0,0], done:false, seen:false});
+let S = blank();
+function load(){ try{ const r = localStorage.getItem(KEY); if(r) S = Object.assign(blank(), JSON.parse(r)); }catch(e){} }
+function save(){ if(EDITOR) return; try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+/* ---- editor mode: everything unlocked, nothing saved to the real game progress ---- */
+const EDKEY = "case1004.editor";
+let EDITOR = false;
+try{ EDITOR = localStorage.getItem(EDKEY)==="1"; }catch(e){}
+try{ if(/editor/i.test(location.hash+location.search)){ EDITOR = true; localStorage.setItem(EDKEY,"1"); } }catch(e){}
+function setEditor(on){
+  try{ on ? localStorage.setItem(EDKEY,"1") : localStorage.removeItem(EDKEY); }catch(e){}
+  try{ if(!on && /editor/i.test(location.hash)) history.replaceState(null,"",location.pathname+location.search); }catch(e){}
+  location.reload();
+}
+function solvedState(){
+  const s = blank();
+  s.act = 3; s.done = true; s.seen = true; s.gridOk = true;
+  s.cards = Array(8).fill(true);
+  const used = new Set();
+  s.slots = "NAMEGATA".split("").map(ch=>{
+    const i = CARDS.findIndex((c,j)=>c.L===ch && !used.has(j)); used.add(i); return i;
+  });
+  Object.entries(SOLUTION).forEach(([id,c])=>{ s.grid[id+"|"+c] = 2; });
+  s.dials = CODE.split("").map(Number);
+  return s;
+}
+function edNote(afterSel, html){
+  const el = document.querySelector(afterSel); if(!el) return;
+  const p = document.createElement("p"); p.className = "ednote"; p.innerHTML = html;
+  el.after(p);
+}
+function editorDecorate(){
+  document.body.classList.add("editor");
+  /* leave Evidence A answerable so the wrong-answer messages can be tried out */
+  $("#in1").disabled = false; $("#go1").disabled = false; $("#in1").value = "";
+  $("#v1").className = "verdict"; $("#v1").textContent = "";
+  edNote("#v1", "Answer: MIDNIGHT (timestamps in order → M-I-D-N-I-G-H-T).<br>Wrong answer → “Not it. The answer is one English word.” (non-letters: “…letters only.”)<br>After 3 wrong: “the order they are printed in means nothing…”<br>After 5 wrong: “put them in the order they were actually sent, then read the first letter of each.”");
+  edNote("#v2", "Answer: NAMEGATA.<br>After 2 wrong: “you drove past the name on a road sign this afternoon.”<br>After 4 wrong: “it's in Ibaraki, it has eight letters, and it starts with N.”");
+  edNote("#v3", "Solution: Rosé–Portugal · Marmot–Mongolia · Junimo–Nepal · StrongZero–Canada · lil Bieber–Chile · Famichiki–Iceland.<br>After 2 wrong: “start with clue 2…” · After 4 wrong: full giveaway hint.");
+  edNote("#v4", "Code 1004 = Portugal borders 1 · Iceland 0 · Mongolia 0 oceans · 4 in Europe or Asia (PRT, ISL, MNG, NPL).<br>After 3 wrong the calendar shows the full breakdown.");
+  const bar = document.createElement("div");
+  bar.className = "edbar";
+  bar.innerHTML = `<b>EDITOR MODE</b><span class="ans">MIDNIGHT · NAMEGATA · 1004</span>
+    <button class="btn dark" id="edIntro">Play intro</button>
+    <button class="btn dark" id="edEnd">Replay ending</button>
+    <button class="btn dark" id="edExit">Exit editor</button>`;
+  document.body.appendChild(bar);
+  $("#edIntro").addEventListener("click", ()=>{ try{ sessionStorage.setItem("case1004.playintro","1"); }catch(e){} location.reload(); });
+  $("#edExit").addEventListener("click", ()=>setEditor(false));
+  $("#edEnd").addEventListener("click", ()=>{
+    $("#confess").hidden = true; $("#epilogue").hidden = true; $("#fridgeBlock").hidden = true;
+    $("#fates").innerHTML = "";
+    closeCase(false);
+  });
+}
+/* secret door: tap the red CONFIDENTIAL stamp five times quickly */
+(function(){
+  let taps = [], stamp = document.querySelector(".stamp-top");
+  if(!stamp) return;
+  stamp.style.cursor = "default";
+  stamp.addEventListener("click", ()=>{
+    const now = Date.now(); taps = taps.filter(t=>now-t<2500); taps.push(now);
+    if(taps.length>=5){ taps = []; setEditor(!EDITOR); }
+  });
+})();
+
+/* ============================ sound ============================ */
+let AC=null;
+function ac(){ try{ if(navigator.audioSession) navigator.audioSession.type="playback"; }catch(e){} if(!AC){ try{ AC=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } if(AC&&AC.state==="suspended") AC.resume(); return AC; }
+function tone(f,dur,type,vol,slide){
+  const c=ac(); if(!c) return;
+  const o=c.createOscillator(), g=c.createGain();
+  o.type=type||"square"; o.frequency.setValueAtTime(f,c.currentTime);
+  if(slide) o.frequency.exponentialRampToValueAtTime(Math.max(40,slide), c.currentTime+dur);
+  g.gain.setValueAtTime(0.0001,c.currentTime);
+  g.gain.exponentialRampToValueAtTime(vol||0.14, c.currentTime+0.008);
+  g.gain.exponentialRampToValueAtTime(0.0001, c.currentTime+dur);
+  o.connect(g); g.connect(c.destination); o.start(); o.stop(c.currentTime+dur+0.02);
+}
+function noise(dur,vol,cut){
+  const c=ac(); if(!c) return;
+  const n=Math.floor(c.sampleRate*dur), b=c.createBuffer(1,n,c.sampleRate), d=b.getChannelData(0);
+  for(let i=0;i<n;i++) d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2);
+  const s=c.createBufferSource(); s.buffer=b;
+  const f=c.createBiquadFilter(); f.type="lowpass"; f.frequency.value=cut||1400;
+  const g=c.createGain(); g.gain.value=vol||0.3;
+  s.connect(f); f.connect(g); g.connect(c.destination); s.start();
+}
+const sfx = {
+  click(){ tone(1600,0.025,"square",0.05); },
+  dial(){ tone(900,0.03,"square",0.07); noise(0.04,0.1,2600); },
+  wrong(){ tone(150,0.28,"sawtooth",0.1,90); },
+  stamp(){ noise(0.16,0.42,900); tone(90,0.16,"sine",0.22,55); },
+  good(){ tone(660,0.09,"triangle",0.12); setTimeout(()=>tone(880,0.13,"triangle",0.12),95); },
+  unlock(){ noise(0.1,0.3,3000); setTimeout(()=>{ tone(180,0.14,"square",0.16,120); noise(0.22,0.45,600); },130);
+            setTimeout(()=>{ tone(523,0.12,"triangle",0.12); },420);
+            setTimeout(()=>{ tone(659,0.12,"triangle",0.12); },540);
+            setTimeout(()=>{ tone(784,0.3,"triangle",0.13); },660); },
+};
+
+/* ============================ background music ============================ */
+const BGM_KEY = "case1004.music", BGM_VOL = 0.3;
+let bgmOn = true; try{ bgmOn = localStorage.getItem(BGM_KEY)!=="off"; }catch(e){}
+const bgm = new Audio("audio/clockwork.mp3"); bgm.loop = true; bgm.preload = "auto";
+let bgmGain = null, bgmPlaying = false, bgmEnded = false;
+function bgmWire(){
+  if(bgmGain!==null) return;
+  const c = ac(); if(!c){ bgmGain = false; return; }
+  try{ const src = c.createMediaElementSource(bgm); bgmGain = c.createGain(); bgmGain.gain.value = 0;
+       src.connect(bgmGain); bgmGain.connect(c.destination); }catch(e){ bgmGain = false; }
+}
+function bgmLevel(v, sec){
+  if(bgmGain){ const t = AC.currentTime; bgmGain.gain.cancelScheduledValues(t);
+    bgmGain.gain.setValueAtTime(bgmGain.gain.value, t); bgmGain.gain.linearRampToValueAtTime(v, t + sec); }
+  else { bgm.volume = Math.max(0, Math.min(1, v)); }
+}
+function bgmStart(){
+  if(!bgmOn || bgmEnded || bgmPlaying) return;
+  bgmWire();
+  if(!bgmGain) bgm.volume = 0;
+  const pr = bgm.play();
+  bgmPlaying = true;
+  if(pr && pr.catch) pr.catch(()=>{ bgmPlaying = false; });
+  bgmLevel(BGM_VOL, 2.5);
+}
+function bgmStop(sec){
+  if(!bgmPlaying) return;
+  bgmLevel(0, sec||0.4);
+  setTimeout(()=>{ if(!bgmOn || bgmEnded || document.hidden){ bgm.pause(); bgmPlaying = false; } }, (sec||0.4)*1000 + 60);
+}
+function bgmPaint(){ const b = document.getElementById("bgmBtn"); if(!b) return;
+  const on = bgmOn && !bgmEnded; b.innerHTML = on ? "&#9835; on" : "&#9835; off"; b.classList.toggle("off", !on); }
+function bgmToggle(){
+  if(bgmOn && !bgmEnded && bgmPlaying){ bgmOn = false; bgmStop(0.4); }
+  else { bgmOn = true; bgmEnded = false; bgmStart(); }
+  try{ localStorage.setItem(BGM_KEY, bgmOn ? "on" : "off"); }catch(e){}
+  bgmPaint();
+}
+document.addEventListener("visibilitychange", ()=>{
+  if(document.hidden){ if(bgmPlaying){ bgm.pause(); bgmPlaying = false; } }
+});
+addEventListener("pageshow", bgmPaint);
+
+/* ============================ helpers ============================ */
+const $ = s => document.querySelector(s);
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z]/g,"");
+function shakeIt(el){ el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); }
+
+/* ============================ countdown ============================ */
+function tick(){
+  const now=new Date();
+  if(now.getMonth()===9 && now.getDate()===4){
+    $("#topClock").textContent="October 4";
+    $("#cd").textContent=String(now.getHours()).padStart(2,"0")+":"+String(now.getMinutes()).padStart(2,"0");
+    return;
+  }
+  const t=new Date(now); t.setHours(24,0,0,0);
+  let s=Math.max(0,Math.floor((t-now)/1000));
+  const h=String(Math.floor(s/3600)).padStart(2,"0");
+  const m=String(Math.floor(s%3600/60)).padStart(2,"0");
+  const q=String(s%60).padStart(2,"0");
+  $("#cd").textContent = h+":"+m+":"+q;
+}
+setInterval(tick,1000); tick();
+function syncTopbar(){ const t=document.querySelector(".topbar"); if(t) document.documentElement.style.setProperty("--tb", t.offsetHeight+"px"); }
+addEventListener("resize", syncTopbar); syncTopbar();
+try{ new ResizeObserver(syncTopbar).observe(document.querySelector(".topbar")); }catch(e){}
+try{ document.fonts.ready.then(syncTopbar); }catch(e){}
+
+/* ============================ suspect board ============================ */
+const byId = id => SUSPECTS.find(s=>s.id===id);
+function card(s, cls){
+  return `<div class="sus ${cls||""}" data-id="${s.id}">
+      <div class="mug">${MUG[s.id]}<span class="src">${s.src}</span></div>
+      <div class="nm">${s.name}</div>
+      <div class="alibi">${s.alibi}</div>
+      <span class="clearstamp">${(cls||"").indexOf("charged")>=0?"Charged":"Cleared"}</span>
+    </div>`;
+}
+function clearedSet(){
+  const c = new Set();
+  const n = S.done ? CLEAR_ORDER.length : S.act-1 + (S.gridOk?1:0);
+  for(let i=0;i<n && i<CLEAR_ORDER.length;i++) CLEAR_ORDER[i].forEach(x=>c.add(x));
+  return c;
+}
+function renderBoard(){
+  const cleared = clearedSet();
+  parkInterview();
+  $("#board").innerHTML = SUSPECTS.map(s=>card(s, cleared.has(s.id)?"cleared":"")).join("");
+  $("#board").querySelectorAll(".sus").forEach(el=>{
+    el.addEventListener("click",()=>interview(el.dataset.id));
+    el.classList.toggle("sel", el.dataset.id===openInt);
+  });
+  if(openInt){ const keep=openInt; openInt=null; interview(keep, true); }
+  const newNotes = S.act>=3 && !S.done;
+  $("#board").querySelectorAll(".sus").forEach(el=>{ if(newNotes && byId(el.dataset.id).add){ el.insertAdjacentHTML("beforeend",'<span class="newtag">new note</span>'); } });
+  $("#tapnote").innerHTML = newNotes ? "<strong>The witness has added notes.</strong> Tap each suspect to read them." : "Tap a suspect to read their statement.";
+  $("#tapnote").classList.toggle("hot", newNotes);
+  $("#statusTxt").textContent = S.done ? "Closed" : (cleared.size ? cleared.size+"/6 cleared" : "Open");
+}
+let openInt = null;
+function parkInterview(){
+  const box = $("#interview");
+  if(box.parentElement !== $("#board")) return;
+  $("#factsRow").before(box);
+}
+/* drop the statement in as a full-width row right under the tapped suspect */
+function placeInterview(){
+  const board = $("#board"), box = $("#interview");
+  const cards = [...board.querySelectorAll(".sus")];
+  const i = cards.findIndex(e=>e.dataset.id===openInt);
+  if(i < 0){ parkInterview(); box.hidden = true; return; }
+  const cols = Math.max(1, getComputedStyle(board).gridTemplateColumns.split(" ").filter(Boolean).length);
+  const col = i % cols, rowEnd = (Math.floor(i/cols) + 1) * cols;
+  const after = cards[rowEnd] || null;
+  if(after) board.insertBefore(box, after); else board.appendChild(box);
+  box.style.setProperty("--ax", ((col + 0.5) / cols * 100).toFixed(2) + "%");
+}
+function interview(id, quiet){
+  const box = $("#interview");
+  const close = () => {
+    openInt = null; box.hidden = true; parkInterview();
+    $("#board").querySelectorAll(".sus").forEach(e=>e.classList.remove("sel"));
+  };
+  if(openInt===id && !quiet){ close(); sfx.click(); return; }
+  openInt = id;
+  const s = byId(id);
+  box.hidden = false;
+  box.innerHTML = `<p class="who"><span>Statement — ${s.name}</span><span>Recorded 3 Oct</span></p>` +
+    s.say.map(t=>t.startsWith("[") ? `<p class="note">${t.slice(1,-1)}</p>` : `<p>${t}</p>`).join("") +
+    (s.add && (S.act>=3 || S.done) ? `<p class="add">${s.add}</p>` : "");
+  $("#board").querySelectorAll(".sus").forEach(e=>e.classList.toggle("sel", e.dataset.id===id));
+  placeInterview();
+  if(quiet) return;
+  box.scrollIntoView({behavior:"smooth", block:"nearest"});
+  sfx.click();
+}
+let reflow;
+addEventListener("resize", ()=>{
+  if(!openInt) return;
+  clearTimeout(reflow);
+  reflow = setTimeout(placeInterview, 120);
+});
+
+/* ---------- case facts ---------- */
+const FACT_EL = {time:"#factTime", place:"#factPlace", date:"#factDate"};
+function setFact(k, text, animate){
+  const el = $(FACT_EL[k]); if(!el) return;
+  const v = el.querySelector(".v");
+  el.classList.add("set");
+  if(!animate){ v.textContent = text; return; }
+  v.textContent = "";
+  let i = 0;
+  const step = () => {
+    if(i >= text.length) return;
+    v.textContent += text[i++];
+    if(text[i-1] !== " ") sfx.click();
+    setTimeout(step, 58);
+  };
+  step();
+}
+function paintFacts(animate){
+  const n = (S.done ? 3 : Math.max(0, Math.min(2, S.act-1)));
+  const c = $("#factCount"); if(c) c.textContent = n + " of 3";
+  if(S.act>=2 || S.done) setFact("time","MIDNIGHT", animate===2);
+  if(S.act>=3 || S.done) setFact("place","NAMEGATA", animate===3);
+  if(S.done) setFact("date","OCTOBER 4", animate===4);
+}
+
+/* ---------- clear two suspects where he is actually looking ---------- */
+function stampHere(afterEl, ids){
+  const strip = document.createElement("div");
+  strip.className = "board";
+  strip.style.marginTop = "12px";
+  strip.style.gridTemplateColumns = "repeat(2,minmax(0,1fr))";
+  strip.style.maxWidth = "330px";
+  strip.innerHTML = ids.map(id=>card(byId(id))).join("");
+  afterEl.appendChild(strip);
+  ids.forEach((id,i)=>setTimeout(()=>{
+    const el = strip.querySelectorAll(".sus")[i];
+    if(el){ el.classList.add("cleared"); sfx.stamp(); }
+  }, 260 + i*420));
+  return strip;
+}
+
+/* ============================ act 1 ============================ */
+$("#logRows").innerHTML = LOG.map(r=>`
+  <div class="row"><div class="ix">${r[0]}</div>
+  <div class="msg">${r[1]}<span class="ts">${r[2]}</span></div></div>`).join("");
+
+$("#go1").addEventListener("click", ()=>{
+  const raw = $("#in1").value.trim();
+  if(!raw) return;
+  const val = norm(raw);
+  if(val==="midnight"){
+    sfx.good(); $("#v1").className="verdict good"; $("#v1").textContent="00:00. Famichiki was eaten at 23:13. StrongZero had been open since 21:00. Both cleared.";
+    $("#in1").value="MIDNIGHT"; $("#in1").disabled=true; $("#go1").disabled=true;
+    advance(2, $("#act1 .paper"));
+  } else {
+    sfx.wrong(); shakeIt($("#in1"));
+    S.tries[1]++; save();
+    $("#v1").className="verdict bad";
+    const oneWord = /^[a-zÀ-ɏ]+$/i.test(raw);
+    $("#v1").textContent = oneWord ? "Not it. The answer is one English word." : "Not it. Answer with one English word — letters only.";
+    if(S.tries[1]>=5){ $("#h1").hidden=false; $("#h1").textContent="Hint: put them in the order they were actually sent, then read the first letter of each."; }
+    else if(S.tries[1]>=3){ $("#h1").hidden=false; $("#h1").textContent="Hint: the order they are printed in means nothing. One column on this page is not decoration."; }
+  }
+});
+$("#in1").addEventListener("keydown", e=>{ if(e.key==="Enter") $("#go1").click(); });
+
+/* ============================ act 2 ============================ */
+const lvl = i => (S.cardHint && S.cardHint[i]) || 0;
+function renderCards(){
+  const svg = c => `<svg class="shape" viewBox="0 0 100 100" aria-hidden="true"><path d="${SHAPES[c.show]}"/></svg>`;
+  $("#pcs").innerHTML = CARDS.map((c,i)=>{
+    if(S.cards[i]) return `<div class="pc done"><div class="pcn">${c.n}</div><div>
+      <p class="q">${c.q}</p><p class="qfr">${c.f}</p><div class="ans">${c.show} &nbsp;·&nbsp; ${c.L}</div>${c.ps?`<p class="ps">${c.ps}</p>`:""}${EDITOR?`<p class="pchint">${c.hint}</p><p class="pchint two">${c.hint2}</p><p class="ednote">Accepted: ${c.a.join(", ")}</p>`:""}</div>${svg(c)}</div>`;
+    return `<div class="pc"><div class="pcn">${c.n}</div><div>
+      <p class="q">${c.q}</p>
+      <p class="qfr">${c.f}</p>
+      <div class="entry"><input type="text" data-i="${i}" placeholder="country" autocomplete="off" spellcheck="false">
+      <button class="btn ghost" data-go="${i}">Name it</button>
+      <button class="btn hintbtn" data-hb="${i}" ${lvl(i)>=2?"disabled":""}>${lvl(i)===0?"Hint":"Still stuck?"}</button></div>
+      <p class="pchint" ${lvl(i)>=1?"":"hidden"}>${lvl(i)>=1?c.hint:""}</p>
+      <p class="pchint two" ${lvl(i)>=2?"":"hidden"}>${lvl(i)>=2?c.hint2:""}</p>
+      </div>${svg(c)}</div>`;
+  }).join("");
+  $("#pcs").querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>tryCard(+b.dataset.go)));
+  $("#pcs").querySelectorAll("[data-hb]").forEach(b=>b.addEventListener("click",()=>{
+    const i=+b.dataset.hb;
+    if(!S.cardHint) S.cardHint=Array(8).fill(0);
+    S.cardHint[i]=Math.min(2,(S.cardHint[i]||0)+1); save(); sfx.click(); renderCards();
+  }));
+  $("#pcs").querySelectorAll("input[data-i]").forEach(inp=>inp.addEventListener("keydown",e=>{
+    if(e.key==="Enter") tryCard(+inp.dataset.i);
+  }));
+  renderTiles();
+}
+function tryCard(i){
+  const inp = $(`#pcs input[data-i="${i}"]`); if(!inp) return;
+  const v = norm(inp.value); if(!v) return;
+  if(CARDS[i].a.includes(v)){
+    S.cards[i]=true; save(); sfx.good(); renderCards();
+  } else {
+    sfx.wrong(); shakeIt(inp); S.cardTries[i]++; save();
+  }
+}
+function renderTiles(){
+  const slots = $("#slots"), tiles = $("#tiles");
+  slots.innerHTML = S.slots.map((v,i)=>`<div class="slot ${v!==null?"filled":""}" data-s="${i}">${v!==null?CARDS[v].L:""}</div>`).join("");
+  tiles.innerHTML = CARDS.map((c,i)=>{
+    const used = S.slots.includes(i);
+    const pending = !S.cards[i];
+    return `<button class="tile ${used?"used":""} ${pending?"pending":""}" data-t="${i}">${pending?"?":c.L}</button>`;
+  }).join("");
+  tiles.querySelectorAll("[data-t]").forEach(b=>b.addEventListener("click",()=>{
+    const i=+b.dataset.t, free=S.slots.indexOf(null);
+    if(free<0) return; S.slots[free]=i; save(); sfx.click(); renderTiles();
+  }));
+  slots.querySelectorAll("[data-s]").forEach(d=>d.addEventListener("click",()=>{
+    const i=+d.dataset.s; if(S.slots[i]===null) return; S.slots[i]=null; save(); sfx.click(); renderTiles();
+  }));
+}
+$("#clearSlots").addEventListener("click", ()=>{ S.slots=Array(8).fill(null); save(); sfx.click(); renderTiles(); });
+$("#go2").addEventListener("click", ()=>{
+  if(S.slots.includes(null)){ $("#v2").className="verdict bad"; $("#v2").textContent="Fill all eight."; return; }
+  const word = S.slots.map(i=>CARDS[i].L).join("");
+  if(word==="NAMEGATA"){
+    sfx.good(); $("#v2").className="verdict good"; $("#v2").textContent="Namegata, Ibaraki. Where you are sitting right now. Rosé and The Marmot never left Tokyo. Both cleared.";
+    $("#go2").disabled=true; $("#clearSlots").disabled=true;
+    advance(3, $("#anaBox"));
+  } else {
+    sfx.wrong(); shakeIt($("#slots"));
+    S.tries[2]++; save();
+    $("#v2").className="verdict bad"; $("#v2").textContent="Not a place.";
+    if(S.tries[2]>=4){ $("#h2").hidden=false; $("#h2").textContent="Hint: it's in Ibaraki, it has eight letters, and it starts with N."; }
+    else if(S.tries[2]>=2){ $("#h2").hidden=false; $("#h2").textContent="Hint: you drove past the name on a road sign this afternoon."; }
+  }
+});
+
+/* ============================ act 3 ============================ */
+function renderGrid(){
+  let html = "<tr><th></th>" + CTRY.map(c=>`<th class="colh"><span>${CNAME[c]}</span></th>`).join("") + "</tr>";
+  SUS3.forEach(s=>{
+    html += `<tr><th class="rowh">${s.label}</th>` + CTRY.map(c=>{
+      const st = S.grid[s.id+"|"+c] || 0;
+      return `<td data-k="${s.id}|${c}" class="${st===2?"yes":st===1?"no":""}">${st===2?"✓":st===1?"×":""}</td>`;
+    }).join("") + "</tr>";
+  });
+  $("#grid").innerHTML = html;
+  $("#grid").querySelectorAll("td[data-k]").forEach(td=>td.addEventListener("click",()=>{
+    const k=td.dataset.k; S.grid[k]=((S.grid[k]||0)+1)%3; save(); sfx.click(); renderGrid();
+  }));
+}
+$("#goBoard").addEventListener("click", ()=>{ sfx.click(); $("#board").scrollIntoView({behavior:"smooth",block:"start"}); });
+$("#go3").addEventListener("click", ()=>{
+  const picks={};
+  for(const s of SUS3){
+    const ys = CTRY.filter(c=>S.grid[s.id+"|"+c]===2);
+    if(ys.length!==1){
+      sfx.wrong(); $("#v3").className="verdict bad";
+      $("#v3").textContent="Every suspect needs exactly one ✓.";
+      bumpHint3(); return;
+    }
+    picks[s.id]=ys[0];
+  }
+  const ok = SUS3.every(s=>picks[s.id]===SOLUTION[s.id]);
+  if(ok){
+    sfx.good(); $("#v3").className="verdict good"; $("#v3").textContent=V3OK;
+    $("#go3").disabled=true;
+    const first = !S.gridOk; S.gridOk = true; save();
+    if(first){
+      const host = document.createElement("div"); $("#v3").after(host);
+      stampHere(host, CLEAR_ORDER[2]);
+      setTimeout(()=>{ renderBoard(); }, 1000);
+    }
+    setTimeout(()=>{ $("#lockbox").hidden=false; $("#lockbox").scrollIntoView({behavior:"smooth",block:"center"}); }, first?1600:0);
+  } else {
+    sfx.wrong(); $("#v3").className="verdict bad"; $("#v3").textContent="At least one alibi is impossible.";
+    bumpHint3();
+  }
+});
+const V3OK = "The statements hold together. The Junimo was in Nepal and lil Bieber in Chile. Both cleared.";
+function bumpHint3(){
+  S.tries[3]++; save();
+  if(S.tries[3]>=4){ $("#h3").hidden=false; $("#h3").textContent="Hint: Nepal runs on UTC+5:45. Canada has the longest coastline. Iceland borders nobody. Chile is the only one below the equator."; }
+  else if(S.tries[3]>=2){ $("#h3").hidden=false; $("#h3").textContent="Hint: start with clue 2. Only one country on Earth runs 45 minutes off the hour."; }
+}
+
+/* ---------- calendar lock ---------- */
+function renderWheels(){
+  $("#wheels").innerHTML = S.dials.map((d,i)=>`
+    <div class="wheel">
+      <button data-up="${i}" aria-label="digit ${i+1} up">▲</button>
+      <div class="digit">${d}</div>
+      <button data-dn="${i}" aria-label="digit ${i+1} down">▼</button>
+    </div>`).join("");
+  $("#wheels").querySelectorAll("[data-up]").forEach(b=>b.addEventListener("click",()=>{
+    const i=+b.dataset.up; S.dials[i]=(S.dials[i]+1)%10; save(); sfx.dial(); renderWheels();
+  }));
+  $("#wheels").querySelectorAll("[data-dn]").forEach(b=>b.addEventListener("click",()=>{
+    const i=+b.dataset.dn; S.dials[i]=(S.dials[i]+9)%10; save(); sfx.dial(); renderWheels();
+  }));
+}
+$("#go4").addEventListener("click", ()=>{
+  if(S.dials.join("")===CODE){
+    sfx.unlock();
+    $("#cal").classList.add("open");
+    $("#calTop").textContent="Open";
+    $("#calHint").textContent="It was never missing.";
+    $("#openWrap").hidden=true;
+    $("#v4").className="verdict good"; $("#v4").textContent="";
+    S.done=true; save(); renderBoard(); paintFacts(4);
+    closeCase(false);
+  } else {
+    sfx.wrong(); shakeIt($("#cal"));
+    S.tries[4]++; save();
+    $("#v4").className="verdict bad"; $("#v4").textContent="It doesn't turn.";
+    if(S.tries[4]>=3) $("#calHint").textContent="Portugal borders one. Iceland borders none. Mongolia touches no ocean. Europe or Asia: Portugal, Iceland, Mongolia, Nepal.";
+  }
+});
+
+
+/* ============================ endgame ============================ */
+const ANGE = {id:"ange", name:"Ange", src:"No photograph on file",
+  alibi:"Witness. Was extremely helpful throughout."};
+function closeCase(instant){
+  bgmEnded = true; bgmStop(instant ? 0.2 : 5); bgmPaint();
+  $("#topClock").textContent = "Birthday in";
+  const fin = $("#finale"); fin.hidden = false;
+  const fb = $("#finalBoard");
+  fb.innerHTML = SUSPECTS.map(s=>card(s)).join("") + card(ANGE, "charged");
+  const cards = [...fb.querySelectorAll(".sus")];
+  const conf = $("#confess");
+  const kids = [...conf.children].filter(el=>el.id!=="epilogue" && el.id!=="fridgeBlock");
+
+  if(instant){
+    cards.forEach((el,i)=>el.classList.add(i<6?"cleared":"charged-in"));
+    conf.hidden=false; kids.forEach(el=>el.style.opacity=1);
+    $("#epilogue").hidden=false; renderFates(true);
+    $("#fridgeBlock").hidden=false;
+    return;
+  }
+
+  cards.forEach(el=>{ if(el.dataset.id!=="ange") el.style.visibility="hidden"; });
+  const ac = cards[6]; ac.style.opacity="0";
+  setTimeout(()=>fin.scrollIntoView({behavior:"smooth",block:"start"}), 1300);
+
+  let t = 2200;
+  SUSPECTS.forEach((s,i)=>setTimeout(()=>{
+    const el = cards[i]; el.style.visibility=""; el.classList.add("cleared");
+    if(i%2===0) sfx.stamp();
+  }, t + i*230));
+  t += 6*230 + 700;
+
+  setTimeout(()=>{
+    ac.style.opacity=""; ac.style.animation="slidein .6s ease forwards";
+    setTimeout(()=>{ ac.classList.add("charged-in"); sfx.stamp(); tone(160,.5,"sawtooth",.13,80); }, 520);
+  }, t);
+  t += 1900;
+
+  setTimeout(()=>{
+    conf.hidden=false;
+    kids.forEach(el=>el.style.opacity=0);
+    let d = 0;
+    kids.forEach((el,i)=>{
+      setTimeout(()=>{
+        el.style.transition="opacity .8s ease"; el.style.opacity=1;
+        if(i>0) sfx.click();
+      }, d);
+      d += (i===1) ? 2600 : 1400;
+    });
+    setTimeout(()=>{
+      $("#epilogue").hidden=false; renderFates(false);
+      setTimeout(()=>{ $("#fridgeBlock").hidden=false; sfx.good(); }, 7*720 + 900);
+    }, d + 600);
+  }, t);
+}
+function renderFates(instant){
+  const rows = FATES.concat([["ange","Charged. Sentenced to one (1) more year. Renewable."]]);
+  $("#fates").innerHTML = rows.map(([id,what],i)=>{
+    const s = id==="ange" ? ANGE : byId(id);
+    return `<div class="fate ${id==="ange"?"charged":""} ${instant?"in":""}" data-i="${i}">
+      <div class="thumb">${MUG[id]}</div>
+      <div><div class="who">${s.name}</div><div class="what">${what}</div></div></div>`;
+  }).join("");
+  if(instant) return;
+  $("#fates").querySelectorAll(".fate").forEach((el,i)=>setTimeout(()=>{
+    el.classList.add("in"); sfx.click();
+  }, i*720));
+}
+
+/* ============================ flow ============================ */
+function advance(n, host){
+  const first = S.act < n;
+  if(first){ S.act = n; save(); }
+  if(!first){ unlockAct(n); renderBoard(); return; }
+  if(host) stampHere(host, CLEAR_ORDER[n-2] || []);
+  setTimeout(()=>{ paintFacts(n); renderBoard(); }, 1000);
+  setTimeout(()=>{
+    unlockAct(n);
+    setTimeout(()=>{ $("#act"+n).scrollIntoView({behavior:"smooth",block:"start"}); }, 450);
+  }, 2000);
+}
+function unlockAct(n){
+  const a = $("#act"+n); if(!a) return;
+  a.classList.remove("locked");
+  if(n===2){ $("#act2sealed").hidden=true; $("#act2body").hidden=false; renderCards(); }
+  if(n===3){ $("#act3sealed").hidden=true; $("#act3body").hidden=false; renderGrid(); renderWheels(); }
+}
+
+
+/* ============================ opening film ============================ */
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+let introDone = false;
+const INTRO_LINES = [
+  ["At 00:00, October 4 was removed from the calendar.", false],
+  ["No forced entry. No ransom note.", false],
+  ["Six suspects had contact with the victim.", false],
+  ["One witness has come forward.", false],
+  ["She is being extremely helpful.", true],
+];
+function endIntro(){
+  if(introDone) return; introDone = true;
+  S.seen = true; save();
+  const el = $("#intro");
+  document.body.style.overflow = "";
+  const b = document.documentElement.style.scrollBehavior;
+  document.documentElement.style.scrollBehavior = "auto";
+  window.scrollTo(0, 0);
+  document.documentElement.style.scrollBehavior = b;
+  el.classList.add("gone");
+  setTimeout(()=>{ el.hidden = true; }, 700);
+}
+async function typeLine(el, text, speed){
+  el.classList.add("caret");
+  for(let i=0;i<text.length;i++){
+    if(introDone) { el.textContent = text; break; }
+    el.textContent += text[i];
+    if(text[i] !== " " && i%2===0) sfx.click();
+    await sleep(speed);
+  }
+  el.classList.remove("caret");
+}
+async function playIntro(){
+  const lines = $("#introlines"), btns = $("#introbtns");
+  btns.innerHTML = "";
+  document.querySelector(".introin").classList.add("playing");
+  await sleep(500);
+  if(introDone) return;
+  $("#calrip").classList.add("torn");
+  noise(0.5, 0.34, 2200); tone(120, 0.4, "sawtooth", 0.09, 70);
+  await sleep(1500);
+  for(const [text, dim] of INTRO_LINES){
+    if(introDone) return;
+    const p = document.createElement("p");
+    if(dim) p.className = "dim";
+    lines.appendChild(p);
+    await typeLine(p, text, dim ? 90 : 62);
+    await sleep(dim ? 1600 : 1100);
+  }
+  if(introDone) return;
+  $("#assign").classList.add("on"); sfx.stamp();
+  await sleep(900);
+  if(introDone) return;
+  const b = document.createElement("button");
+  b.className = "btn"; b.textContent = "Begin";
+  b.addEventListener("click", ()=>{ btns.innerHTML = ""; playLineup(); }, {once:true});
+  btns.appendChild(b);
+  b.focus({preventScroll:true});
+}
+
+/* ============================ the lineup film ============================ */
+/* one drawn body per suspect, photo pasted on as the head */
+const BODY = {
+  neck:"M92 90 L90 108 M108 90 L110 108",
+  torso:"M60 120 q40 -17 80 0 l5 70 q-45 13 -90 0 Z",
+  armL:"M62 124 q-7 15 2 24",
+  armR:"M138 124 q7 15 -2 24",
+  legs:"M84 190 l-5 52 M116 190 l5 52",
+  feet:"M67 242 q12 6 24 0 M109 242 q12 6 24 0",
+  board:"M54 145 h92 v36 h-92 Z",
+  grip:"M64 143 q-4 5 0 9 M136 143 q4 5 0 9",
+};
+/* the height chart behind them, same one as the mugshots */
+const CHART_SVG =
+  [40,70,100,130,160,190,220].map(y=>`<line x1="0" y1="${y}" x2="200" y2="${y}"/>`).join("") +
+  '<line x1="0" y1="244" x2="200" y2="244" stroke-width="1.6"/>';
+const CHART_NUM = [40,70,100,130,160,190,220]
+  .map((y,i)=>`<text x="5" y="${y-3}">${7-i}</text>`).join("");
+const FILM = [
+  {id:"rose", name:"Rosé", no:"01",
+   motive:"A whole weekend with nobody home to play with her.",
+   note:"She has stated, on the record, that if you go anyway she will pee on the bed."},
+  {id:"marmot", name:"The Marmot", no:"02",
+   props:["M162 220 l10 3 -6 23 Z","M163 220 l-5 -9 M167 220 l0 -11 M171 222 l7 -8"],
+   motive:"Birthdays mean cake. Cake is not in the meal plan.",
+   note:"He has asked for carrots instead. Repeatedly."},
+  {id:"junimo", name:"The Junimo", no:"03",
+   props:["M156 219 h21 v21 h-21 Z","M177 224 l13 -7","M158 219 v-6 h17 v6"],
+   motive:"It is Fall. The crops are ready and a day away is a day left in the ground.",
+   note:"Wheeee. (Recorded as a denial.)"},
+  {id:"sz", name:"StrongZero", no:"04",
+   props:["M158 211 h15 v29 h-15 Z","M158 211 q8 -4 15 0","M159 221 h13"],
+   motive:"Nobody drinks chūhai on a birthday. They open something with a cork.",
+   note:"He takes this personally."},
+  {id:"bieber", name:"lil Bieber", no:"05",
+   motive:"He does not like birthdays. He likes a quiet day with TikTak and nobody else in it.",
+   note:"He considers October 4 an interruption."},
+  {id:"fami", name:"Famichiki", no:"06",
+   props:["M154 214 h22 l-3 26 h-16 Z","M154 214 l4 -8 h14 l4 8","M160 224 h10"],
+   motive:"On a birthday there is cake. On a birthday nobody eats fried chicken.",
+   note:"He has been passed over before."},
+];
+const PHOTO = {rose:"photos/rose.jpg", marmot:"photos/marmot.jpg", junimo:"photos/junimo.jpg",
+               sz:"photos/strongzero.jpg", bieber:"photos/bieber.svg", fami:"photos/famichiki.jpg"};
+
+let advanceNow = null;
+function beat(ms){
+  return new Promise(res=>{
+    const done = () => { clearTimeout(t); advanceNow = null; res(); };
+    const t = setTimeout(done, ms);
+    advanceNow = done;
+  });
+}
+function drawFigure(f){
+  const svg = $("#sketch");
+  const ds = [
+    {d:BODY.neck}, {d:BODY.torso}, {d:BODY.armL}, {d:BODY.armR},
+    {d:BODY.legs}, {d:BODY.feet}, ...(f.props||[]).map(d=>({d})),
+    {d:BODY.board, card:true}, {d:BODY.grip},
+  ];
+  svg.innerHTML =
+    `<g class="chart">${CHART_SVG}</g><g class="chartnum">${CHART_NUM}</g>` +
+    "<g>" + ds.map(o=>{
+      const c = o.card ? " card" : "";
+      return `<path class="ghost${c}" transform="translate(1 .8)" d="${o.d}"/><path class="${c.trim()}" d="${o.d}"/>`;
+    }).join("") + "</g>" +
+    `<g class="boardtxt"><text x="100" y="160">CASE 1004</text><text x="100" y="173">SUSPECT ${f.no}</text></g>`;
+  let delay = 0, last = 0;
+  svg.querySelectorAll("g:not(.chart):not(.chartnum):not(.boardtxt) path").forEach((pth,i)=>{
+    const len = pth.getTotalLength();
+    const dur = Math.min(.5, len/420);
+    pth.style.strokeDasharray = len;
+    pth.style.strokeDashoffset = len;
+    pth.style.transition = `stroke-dashoffset ${dur}s linear ${delay}s, fill-opacity .3s ease ${delay+dur}s`;
+    requestAnimationFrame(()=>{ pth.style.strokeDashoffset = 0; pth.style.fillOpacity = 1; });
+    last = delay + dur;
+    if(i % 2) delay += Math.min(.22, len/900);
+  });
+  const txt = svg.querySelector(".boardtxt");
+  setTimeout(()=>txt.classList.add("on"), (last + .15) * 1000);
+  if(delay > 0) scratch(Math.min(1.2, delay + .3));
+}
+function scratch(sec){
+  const n = Math.max(3, Math.round(sec*7));
+  for(let i=0;i<n;i++) setTimeout(()=>noise(0.045, 0.1, 5200), i*(sec*1000/n));
+}
+async function playLineup(){
+  $(".introin").hidden = true;
+  const lu = $("#lineup"); lu.hidden = false;
+  lu.addEventListener("click", ()=>{ if(advanceNow) advanceNow(); });
+  $("#pips").innerHTML = FILM.map(()=>"<i></i>").join("");
+  const pips = [...$("#pips").children];
+  const head = $("#pastehead");
+
+  await beat(1200);
+  for(let i=0;i<FILM.length;i++){
+    if(introDone) return;
+    const f = FILM[i];
+    pips.forEach((p,j)=>p.classList.toggle("on", j<=i));
+    $("#susName").textContent = "";
+    $("#susMotive").classList.remove("on"); $("#susNote").classList.remove("on");
+    head.hidden = true; head.classList.remove("on");
+    drawFigure(f);
+    await beat(1000);
+    if(introDone) return;
+    head.src = PHOTO[f.id]; head.hidden = false;
+    void head.offsetWidth; head.classList.add("on");
+    noise(0.1, 0.3, 1100); tone(110, 0.1, "sine", 0.14, 70);
+    await beat(550);
+    if(introDone) return;
+    await typeLine($("#susName"), f.name, 70);
+    $("#susMotive").textContent = f.motive; $("#susMotive").classList.add("on");
+    await beat(3400);
+    if(introDone) return;
+    $("#susNote").textContent = f.note; $("#susNote").classList.add("on");
+    await beat(3800);
+  }
+  if(introDone) return;
+  $("#lineTitle").textContent = "All six have alibis";
+  $("#stage").hidden = true; $("#pips").hidden = true; $("#tapon").hidden = true;
+  $("#susName").textContent = "";
+  $("#susMotive").classList.remove("on"); $("#susNote").classList.remove("on");
+  const row = document.createElement("div");
+  row.className = "finalrow";
+  row.innerHTML = FILM.map(f=>`<img src="${PHOTO[f.id]}" alt="">`).join("");
+  $("#susName").after(row);
+  await beat(700);
+  $("#susMotive").classList.add("plain");
+  $("#susMotive").textContent = "Clear all six and October 4 comes back.";
+  $("#susMotive").classList.add("on");
+  await beat(900);
+  if(introDone) return;
+  const b = document.createElement("button");
+  b.className = "btn"; b.textContent = "Open the case file";
+  b.addEventListener("click", endIntro);
+  $("#lineBtns").appendChild(b);
+  b.focus({preventScroll:true});
+}
+
+function showIntro(){
+  const el = $("#intro");
+  try{ history.scrollRestoration = "manual"; }catch(e){}
+  document.body.style.overflow = "hidden";
+  window.scrollTo(0, 0);
+  el.hidden = false;
+  $("#slate").textContent = "Namegata, Ibaraki · 3 October 2026";
+  const b = document.createElement("button");
+  b.className = "btn"; b.textContent = "Open the file";
+  b.addEventListener("click", ()=>{ ac(); playIntro(); }, {once:true});
+  $("#introbtns").appendChild(b);
+  $("#skipIntro").addEventListener("click", endIntro);
+}
+
+/* ============================ the witness is watching ============================ */
+const NAGS = ["You left. I saw. — A.", "Still watching.", "Okay but was it worth it."];
+let awayAt = 0, nagged = 0;
+document.addEventListener("visibilitychange", ()=>{
+  if(document.hidden){ awayAt = Date.now(); return; }
+  if(EDITOR || !awayAt || S.done || nagged >= NAGS.length) return;
+  const gone = (Date.now() - awayAt) / 1000; awayAt = 0;
+  if(gone < 20) return;
+  const n = document.createElement("div");
+  n.className = "nag"; n.textContent = NAGS[nagged++];
+  document.body.appendChild(n);
+  setTimeout(()=>{ n.classList.add("out"); setTimeout(()=>n.remove(), 500); }, 5200);
+});
+
+function needsHomeScreen(){
+  if(!window.SITE_BUILD) return false;
+  const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1);
+  const standalone = window.navigator.standalone === true || matchMedia("(display-mode: standalone)").matches;
+  let skipped = false; try{ skipped = sessionStorage.getItem("case1004.browser")==="1"; }catch(e){}
+  return ios && !standalone && !skipped;
+}
+function boot(){
+  if(needsHomeScreen()){
+    const o = $("#a2hs"); o.hidden = false;
+    $("#a2hsSkip").addEventListener("click", ()=>{ try{ sessionStorage.setItem("case1004.browser","1"); }catch(e){} o.hidden = true; boot(); }, {once:true});
+    return;
+  }
+  let edIntro = false;
+  if(EDITOR){
+    S = solvedState();
+    try{ edIntro = sessionStorage.getItem("case1004.playintro")==="1"; sessionStorage.removeItem("case1004.playintro"); }catch(e){}
+  } else load();
+  renderBoard(); paintFacts(0);
+  $("#act1").classList.remove("locked");
+  if(edIntro || (!S.seen && !S.done)) showIntro(); else introDone = true;
+  if(S.act>=2){
+    unlockAct(2);
+    $("#in1").value="MIDNIGHT"; $("#in1").disabled=true; $("#go1").disabled=true;
+    $("#v1").className="verdict good"; $("#v1").textContent="00:00. Famichiki was eaten at 23:13. StrongZero had been open since 21:00. Both cleared.";
+  } else { renderTiles(); }
+  if(S.act>=3){
+    unlockAct(3);
+    $("#v2").className="verdict good"; $("#v2").textContent="Namegata, Ibaraki. Where you are sitting right now. Rosé and The Marmot never left Tokyo. Both cleared.";
+    $("#go2").disabled=true; $("#clearSlots").disabled=true;
+  }
+  if(S.gridOk && !S.done){
+    $("#lockbox").hidden=false; $("#go3").disabled=true;
+    $("#v3").className="verdict good"; $("#v3").textContent=V3OK;
+  }
+  if(S.done){
+    $("#lockbox").hidden=false; $("#go3").disabled=true;
+    $("#v3").className="verdict good"; $("#v3").textContent=V3OK;
+    $("#cal").classList.add("open"); $("#calTop").textContent="Open";
+    $("#calHint").textContent="It was never missing."; $("#openWrap").hidden=true;
+    closeCase(true);
+  }
+  if(EDITOR) editorDecorate();
+}
+$("#reset").addEventListener("click", ()=>{
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  location.reload();
+});
+document.getElementById("bgmBtn").addEventListener("click", e=>{ e.stopPropagation(); ac(); bgmToggle(); });
+/* browsers only allow sound after a tap: start the music on the first tap anywhere, and again after the tab comes back */
+document.addEventListener("pointerdown", e=>{ if(e.target.closest && e.target.closest("#bgmBtn")) return; ac(); bgmStart(); });
+bgmPaint();
+
+if(window.claude && window.claude.hot){
+  window.claude.hot.snapshot(()=>S);
+  window.claude.hot.ready(d=>{ if(d && d.act){ S=Object.assign(blank(),d); try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} } boot(); });
+} else { boot(); }
+</script>
+
+</body></html>
