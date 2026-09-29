@@ -12,7 +12,7 @@
 <style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#141110;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=UnifrakturCook:wght@700&display=swap">
 
 <style>
 :root{
@@ -39,7 +39,7 @@ html,body{background:var(--ink)}
 body{
   margin:0;
   color:var(--bone);
-  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  font-family:"Lora",Georgia,serif;
   font-size:15px;
   line-height:1.6;
   background-image:
@@ -869,7 +869,142 @@ body.editor .wrap{padding-bottom:140px}
 #a2hs .share{display:inline-block;vertical-align:-3px;width:17px;height:20px}
 #a2hs .skip{background:none;border:0;color:var(--graphite);font-family:"Courier Prime",monospace;font-size:13px;text-decoration:underline;margin-top:14px;cursor:pointer}
 
+/* ================= visual pass ================= */
+/* 1 · mugshots fill the card */
+.mug{max-height:none;aspect-ratio:1/1;width:100%}
+/* 3 · intro spacing */
+#skipIntro{white-space:nowrap}
+.assign:not(.on){display:none}
+/* 4 · mugshot height chart + placard */
+.mug .plac{position:absolute;top:6px;left:6px;z-index:2;background:#141110;color:var(--paper);font-family:"Courier Prime",monospace;
+  font-size:9px;letter-spacing:.12em;padding:2px 6px;border-radius:1px;box-shadow:0 1px 3px rgba(0,0,0,.5);font-variant-numeric:tabular-nums}
+.sus.cleared .plac{background:#2d4a28}
+@media(max-width:600px){.mug .plac{font-size:10.5px}}
+/* 5a · Evidence A: tractor-feed printout */
+#act1 .paper{padding-inline:38px}
+#act1 .paper::before{content:"";position:absolute;top:0;bottom:0;left:0;right:0;pointer-events:none;border-radius:2px;
+  background:
+    radial-gradient(circle at 13px 50%,var(--ink) 4px,transparent 4.6px) left top/26px 22px repeat-y,
+    radial-gradient(circle at 13px 50%,var(--ink) 4px,transparent 4.6px) right top/26px 22px repeat-y,
+    linear-gradient(to bottom,rgba(36,31,26,.28) 50%,transparent 50%) 26px 0/1px 6px repeat-y,
+    linear-gradient(to bottom,rgba(36,31,26,.28) 50%,transparent 50%) calc(100% - 26px) 0/1px 6px repeat-y}
+@media(max-width:600px){#act1 .paper{padding-inline:34px}}
+/* 5b · postcards: airmail edge + postmark when solved */
+.pc{position:relative;overflow:hidden}
+.pc,.pc.done{background-image:repeating-linear-gradient(135deg,var(--red) 0 9px,transparent 9px 14px,#2f4a7a 14px 23px,transparent 23px 28px);
+  background-size:100% 4px;background-repeat:no-repeat;background-position:top left;padding-top:18px}
+.pc.done::after{content:"RECEIVED";position:absolute;right:10px;bottom:10px;width:66px;height:66px;border-radius:50%;
+  border:2px solid rgba(45,107,51,.7);box-shadow:inset 0 0 0 3px var(--paper-2),inset 0 0 0 4px rgba(45,107,51,.55);
+  display:grid;place-items:center;font-family:"Special Elite",monospace;font-size:10px;letter-spacing:.14em;color:rgba(45,107,51,.8);
+  transform:rotate(-14deg);pointer-events:none;animation:postmark .45s cubic-bezier(.2,1.3,.4,1) both}
+@keyframes postmark{from{opacity:0;transform:rotate(-14deg) scale(2.2)}to{opacity:1;transform:rotate(-14deg) scale(1)}}
+/* 5c · Evidence C: graph-paper notebook */
+#act3body > .paper{background-image:linear-gradient(rgba(47,74,122,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(47,74,122,.09) 1px,transparent 1px);
+  background-size:16px 16px;border-left:3px double rgba(179,43,33,.35)}
+/* 6 · sealed evidence bag + tear */
+.sealed{position:relative;overflow:hidden;background:#b8955a;border:0;border-radius:3px;color:#3a2c18;
+  padding:58px 18px 22px;box-shadow:inset 0 0 40px rgba(90,60,20,.3),0 12px 26px rgba(0,0,0,.45);font-weight:700}
+.sealed::before,.sealed::after{content:"EVIDENCE · DO NOT OPEN · EVIDENCE · DO NOT OPEN · EVIDENCE · DO NOT OPEN · EVIDENCE · DO NOT OPEN";
+  position:absolute;top:16px;background:var(--red);color:#f3ece0;font-family:"Special Elite",monospace;font-size:11px;font-weight:400;
+  letter-spacing:.2em;padding:5px 0;white-space:nowrap;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,.35);transform:rotate(-2deg)}
+.sealed::before{left:-4%;width:54%;text-align:right;transform-origin:left center}
+.sealed::after{left:50%;right:-4%;text-align:left;text-indent:-.4em;transform-origin:right center}
+.sealed.tearing::before{animation:tearL .8s cubic-bezier(.5,0,.8,.4) forwards}
+.sealed.tearing::after{animation:tearR .8s cubic-bezier(.5,0,.8,.4) forwards}
+.sealed.tearing{animation:sealout .45s .55s ease forwards}
+@keyframes tearL{20%{transform:rotate(-6deg)}100%{transform:translate(-40%,60px) rotate(-24deg);opacity:0}}
+@keyframes tearR{20%{transform:rotate(3deg)}100%{transform:translate(40%,70px) rotate(20deg);opacity:0}}
+@keyframes sealout{to{opacity:0;transform:scale(.97)}}
+.reveal{animation:slidein .6s ease both}
+/* 8 · rejected stamp */
+.rej{position:fixed;z-index:150;pointer-events:none;font-family:"Special Elite",monospace;font-size:20px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--red-bright);border:3px solid var(--red-bright);padding:3px 12px;border-radius:3px;
+  background:rgba(233,225,205,.55);animation:rej 1.3s cubic-bezier(.2,1.3,.4,1) forwards}
+@keyframes rej{
+  0%{opacity:0;transform:translate(-50%,-50%) rotate(-8deg) scale(2.4)}
+  16%{opacity:1;transform:translate(-50%,-50%) rotate(-8deg) scale(.92)}
+  24%{transform:translate(-50%,-50%) rotate(-8deg) scale(1)}
+  75%{opacity:.95;transform:translate(-50%,-50%) rotate(-8deg) scale(1)}
+  100%{opacity:0;transform:translate(-50%,-50%) rotate(-8deg) scale(1)}}
+/* 9 · fact lands */
+.fact.land{animation:factglow 1.6s ease}
+.fact.land .v{animation:factdrop .5s cubic-bezier(.2,1.3,.4,1)}
+@keyframes factglow{0%,30%{background:rgba(217,144,43,.24)}100%{background:var(--ink-2)}}
+@keyframes factdrop{from{opacity:0;transform:translateY(-14px) rotate(-3deg)}to{opacity:1;transform:none}}
+#factCount{display:inline-block}
+#factCount.bump{animation:bump .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes bump{40%{transform:scale(1.45);color:var(--paper)}}
+/* 10 · scroll reveal + suspects dealt in */
+.rvon .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rvon .rv.rv-in{opacity:1;transform:none}
+.board.deal .sus{animation:deal .55s cubic-bezier(.2,1.2,.4,1) both}
+.board.deal .sus:nth-child(2){animation-delay:.08s}.board.deal .sus:nth-child(3){animation-delay:.16s}
+.board.deal .sus:nth-child(4){animation-delay:.24s}.board.deal .sus:nth-child(5){animation-delay:.32s}
+.board.deal .sus:nth-child(6){animation-delay:.4s}
+@keyframes deal{from{opacity:0;transform:translateY(-16px) rotate(-3deg) scale(1.05)}to{opacity:1;transform:none}}
+/* 11 · lamp flicker + film grain */
+body::before{content:"";position:fixed;left:50%;top:-20vh;width:140vw;height:80vh;transform:translateX(-50%);pointer-events:none;z-index:0;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(217,144,43,.10),transparent 70%);animation:lamp 7s steps(1) infinite}
+@keyframes lamp{0%,100%{opacity:1}41%{opacity:.82}42%{opacity:1}43%{opacity:.7}44%{opacity:1}77%{opacity:.9}78%{opacity:1}}
+body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:35;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain .9s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(0,0)}}
+.wrap{position:relative;z-index:1}
+/* 12 · calendar wobble before the rip */
+.calrip .day{transform-origin:85% 0}
+.calrip.torn .day{animation:rip 1.6s cubic-bezier(.4,0,.6,1) forwards}
+@keyframes rip{
+  0%{transform:none;opacity:1}
+  10%{transform:rotate(2.5deg)}
+  20%{transform:rotate(-3deg)}
+  28%{transform:rotate(1.5deg)}
+  36%{transform:rotate(0)}
+  50%{transform:rotate(-8deg) translateY(6px)}
+  100%{transform:rotate(-24deg) translate(46px,160px);opacity:0}}
+.calrip.torn .hole{animation:fadein .5s 1.3s ease forwards}
+
+/* ---------- lineup v2: round sketched heads, outfits, props, personality ---------- */
+.stage{background-color:var(--tint,var(--paper));transition:background-color .5s ease}
+.sketch path.shirt:not(.ghost){fill:var(--shirt,#f4eee2);fill-opacity:0}
+.headgrp{position:absolute;left:12px;top:10px;width:200px;height:250px;pointer-events:none;transform-origin:100px 92px;z-index:2}
+.headgrp .pastehead{left:60px;top:7px;width:80px;height:80px;transform:none;border:0;border-radius:50%;box-shadow:none;
+  filter:sepia(.28) saturate(.8) contrast(1.05);-webkit-mask-image:radial-gradient(closest-side,#000 84%,transparent 100%);mask-image:radial-gradient(closest-side,#000 84%,transparent 100%)}
+.headgrp .pastehead.on{animation:paste2 .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes paste2{0%{opacity:0;transform:scale(1.9) rotate(-16deg)}70%{opacity:1;transform:scale(.93) rotate(2deg)}100%{opacity:1;transform:none}}
+.acc{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.acc path,.acc circle{stroke:#2b2521;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.acc .ring{fill:none;stroke-width:2.3;stroke-dasharray:270;stroke-dashoffset:270}
+.acc.on .ring{transition:stroke-dashoffset .45s ease-out;stroke-dashoffset:0}
+.acc .it{opacity:0;transform-box:fill-box;transform-origin:center}
+.acc.on .it{animation:accpop .42s cubic-bezier(.2,1.6,.4,1) forwards;animation-delay:var(--d,.35s)}
+@keyframes accpop{from{opacity:0;transform:scale(0) rotate(-25deg)}to{opacity:1;transform:none}}
+.acc .hic{font-family:"Special Elite",monospace;font-size:13px;fill:#2b2521;stroke:none}
+.acc.on .tw{animation:accpop .42s cubic-bezier(.2,1.6,.4,1) forwards,twinkle 1.1s ease-in-out infinite alternate;animation-delay:var(--d,.35s),calc(var(--d,.35s) + .45s)}
+@keyframes twinkle{to{transform:scale(.55) rotate(40deg)}}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:4;border-radius:2px}
+.flash.on{animation:flash .55s ease-out}
+@keyframes flash{0%{opacity:.95}100%{opacity:0}}
+.stage.idle-tilt .headgrp{animation:tilt 2.4s ease-in-out infinite alternate}
+.stage.idle-flex .headgrp{animation:flexbob .42s ease-in-out infinite alternate}
+.stage.idle-hop .headgrp{animation:hop .9s cubic-bezier(.3,0,.5,1) infinite}
+.stage.idle-sway .headgrp{animation:sway 1.9s ease-in-out infinite alternate}
+.stage.idle-nod .headgrp{animation:nod 1.3s ease-in-out infinite}
+.stage.idle-tremble .headgrp{animation:tremble .12s steps(2) infinite}
+@keyframes tilt{from{transform:rotate(-7deg)}to{transform:rotate(5deg)}}
+@keyframes flexbob{to{transform:translateY(-3px)}}
+@keyframes hop{0%,100%{transform:translateY(0) scale(1.06,.94)}15%{transform:translateY(0) scale(.95,1.05)}45%{transform:translateY(-14px) scale(1)}75%{transform:translateY(0) scale(1.05,.95)}}
+@keyframes sway{from{transform:rotate(-9deg) translateX(-3px)}to{transform:rotate(8deg) translateX(3px)}}
+@keyframes nod{0%,60%,100%{transform:none}75%{transform:translateY(3px) rotate(2deg)}}
+@keyframes tremble{0%{transform:translateX(-1.2px)}100%{transform:translateX(1.2px)}}
+.finalrow img{border-radius:50%;border:3px solid var(--ring,#f2ece0);filter:sepia(.28) saturate(.8)}
+.finalrow img:nth-child(odd),.finalrow img:nth-child(even){transform:none}
+.finalrow img{animation:deal .5s cubic-bezier(.2,1.3,.4,1) both}
+.finalrow img:nth-child(2){animation-delay:.08s}.finalrow img:nth-child(3){animation-delay:.16s}.finalrow img:nth-child(4){animation-delay:.24s}.finalrow img:nth-child(5){animation-delay:.32s}.finalrow img:nth-child(6){animation-delay:.4s}
+
 @media(prefers-reduced-motion:reduce){
+  .rvon .rv{opacity:1;transform:none}
+  body::after{animation:none}
   *{animation-duration:.001s!important;transition-duration:.001s!important}
 }
 </style>
@@ -905,7 +1040,11 @@ body.editor .wrap{padding-bottom:140px}
     <p class="lineTitle" id="lineTitle">Six suspects</p>
     <div class="stage" id="stage">
       <svg class="sketch" id="sketch" viewBox="0 0 200 250" aria-hidden="true"></svg>
-      <img class="pastehead" id="pastehead" alt="" hidden>
+      <div class="headgrp" id="headgrp">
+        <img class="pastehead" id="pastehead" alt="" hidden>
+        <svg class="acc" id="acc" viewBox="0 0 200 250" aria-hidden="true"></svg>
+      </div>
+      <div class="flash" id="flash"></div>
     </div>
     <p class="susName" id="susName"></p>
     <p class="susMotive" id="susMotive"></p>
@@ -1395,7 +1534,13 @@ addEventListener("pageshow", bgmPaint);
 /* ============================ helpers ============================ */
 const $ = s => document.querySelector(s);
 const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z]/g,"");
-function shakeIt(el){ el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); }
+function shakeIt(el){ el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); rejectStamp(el); }
+function rejectStamp(el){
+  const r = el.getBoundingClientRect(), s = document.createElement("span");
+  s.className = "rej"; s.textContent = "Rejected";
+  s.style.left = (r.left + r.width/2) + "px"; s.style.top = (r.top + r.height/2) + "px";
+  document.body.appendChild(s); setTimeout(()=>s.remove(), 1350);
+}
 
 /* ============================ countdown ============================ */
 function tick(){
@@ -1422,7 +1567,7 @@ try{ document.fonts.ready.then(syncTopbar); }catch(e){}
 const byId = id => SUSPECTS.find(s=>s.id===id);
 function card(s, cls){
   return `<div class="sus ${cls||""}" data-id="${s.id}">
-      <div class="mug">${MUG[s.id]}<span class="src">${s.src}</span></div>
+      <div class="mug">${MUG[s.id]}<span class="plac">1004&middot;0${SUSPECTS.indexOf(s)+1}</span><span class="src">${s.src}</span></div>
       <div class="nm">${s.name}</div>
       <div class="alibi">${s.alibi}</div>
       <span class="clearstamp">${(cls||"").indexOf("charged")>=0?"Charged":"Cleared"}</span>
@@ -1495,20 +1640,30 @@ addEventListener("resize", ()=>{
 
 /* ---------- case facts ---------- */
 const FACT_EL = {time:"#factTime", place:"#factPlace", date:"#factDate"};
+/* animated facts wait until they're actually on screen */
+const factIO = ("IntersectionObserver" in window) ? new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting && e.target._pend){ const f = e.target._pend; e.target._pend = null; factIO.unobserve(e.target); f(); }
+}), {threshold:.6}) : null;
 function setFact(k, text, animate){
   const el = $(FACT_EL[k]); if(!el) return;
   const v = el.querySelector(".v");
   el.classList.add("set");
   if(!animate){ v.textContent = text; return; }
-  v.textContent = "";
-  let i = 0;
-  const step = () => {
-    if(i >= text.length) return;
-    v.textContent += text[i++];
-    if(text[i-1] !== " ") sfx.click();
-    setTimeout(step, 58);
+  v.textContent = "· · ·";
+  const run = () => {
+    v.textContent = "";
+    el.classList.remove("land"); void el.offsetWidth; el.classList.add("land");
+    const c = $("#factCount"); if(c){ c.classList.remove("bump"); void c.offsetWidth; c.classList.add("bump"); }
+    let i = 0;
+    const step = () => {
+      if(i >= text.length) return;
+      v.textContent += text[i++];
+      if(text[i-1] !== " ") sfx.click();
+      setTimeout(step, 58);
+    };
+    setTimeout(step, 240);
   };
-  step();
+  if(factIO){ el._pend = run; factIO.unobserve(el); factIO.observe(el); } else run();
 }
 function paintFacts(animate){
   const n = (S.done ? 3 : Math.max(0, Math.min(2, S.act-1)));
@@ -1854,7 +2009,7 @@ function advance(n, host){
   setTimeout(()=>{ paintFacts(n); renderBoard(); }, 1000);
   setTimeout(()=>{
     playTransition(n-1, n, ()=>{
-      unlockAct(n); paintFiled();
+      unlockAct(n, true); paintFiled();
       const t = $("#act"+n).getBoundingClientRect().top + scrollY - 70;
       const b = document.documentElement.style.scrollBehavior;
       document.documentElement.style.scrollBehavior = "auto"; window.scrollTo(0, Math.max(0,t));
@@ -1862,11 +2017,18 @@ function advance(n, host){
     });
   }, 2200);
 }
-function unlockAct(n){
+function unlockAct(n, anim){
   const a = $("#act"+n); if(!a) return;
   a.classList.remove("locked");
   if(n===2){ $("#act2sealed").hidden=true; $("#act2body").hidden=false; renderCards(); }
   if(n===3){ $("#act3sealed").hidden=true; $("#act3body").hidden=false; renderGrid(); renderWheels(); }
+  /* first unlock: keep the seal up behind the folder transition, then tear it once the overlay clears */
+  if(anim && (n===2 || n===3)){
+    const s = $("#act"+n+"sealed"), b = $("#act"+n+"body");
+    s.hidden = false; b.hidden = true;
+    setTimeout(()=>{ s.classList.add("tearing"); try{ noise(0.3, 0.26, 2400); }catch(e){} }, 3400);
+    setTimeout(()=>{ s.hidden = true; s.classList.remove("tearing"); b.hidden = false; b.classList.add("reveal"); }, 4400);
+  }
 }
 
 
@@ -1982,6 +2144,43 @@ const FILM = [
 ];
 const PHOTO = {rose:"photos/rose.jpg", marmot:"photos/marmot.jpg", junimo:"photos/junimo.jpg",
                sz:"photos/strongzero.jpg", bieber:"photos/bieber.svg", fami:"photos/famichiki.jpg"};
+/* per-suspect look: backdrop tint, outfit, face crop, idle personality, and what gets doodled on */
+const DROP = (x,y)=>`<path d="M${x} ${y} q5 8 0 12 q-5 -4 0 -12Z" fill="#a9cfe6"/>`;
+const STAR = (x,y)=>`<path d="M${x} ${y-6} l1.8 4.2 4.2 .6 -3.2 3 .9 4.4 -3.7 -2.2 -3.7 2.2 .9 -4.4 -3.2 -3 4.2 -.6Z" fill="#f3d36b"/>`;
+const LOOK = {
+  rose:{tint:"#f0dcd8", shirt:"#e9a9b3", pos:"38% 42%", idle:"tilt", acc:[
+    `<path d="M70 13 l-15 -10 l2 19 Z" fill="#e58a9a"/><path d="M70 13 l15 -10 l-2 19 Z" fill="#e58a9a"/><circle cx="70" cy="13" r="3.6" fill="#c94f63"/>`,
+    `<path d="M129 9 q4 4 0 8 M133 5 q4 4 8 0 M145 9 q-4 4 0 8 M133 21 q4 -4 8 0" stroke="#c3241a" stroke-width="2.2" fill="none"/>`]},
+  marmot:{tint:"#e2e5cf", shirt:"#d6655a", pos:"50% 22%", idle:"flex", acc:[
+    `<path d="M63 30 q37 -17 74 0 l-1 8 q-36 -15 -72 0 Z" fill="#c3241a"/><path d="M84 25 l1 7 M100 22 v8 M116 25 l-1 7" stroke="#f3ece0" stroke-width="1.6"/>`,
+    DROP(147,36), DROP(50,48)]},
+  junimo:{tint:"#d8e8d4", shirt:"#86b872", pos:"50% 55%", idle:"hop", acc:[
+    `<path d="M100 8 v-9" fill="none"/><path d="M100 -1 q-12 -9 -17 2 q10 5 17 -2Z" fill="#7fb069"/><path d="M100 -3 q10 -11 17 -2 q-8 7 -17 2Z" fill="#a6d17f"/>`,
+    `<path d="M152 18 v11 M146.5 23.5 h11" stroke="#d9902b" stroke-width="2.2"/>`, `<path d="M46 56 v9 M41.5 60.5 h9" stroke="#d9902b" stroke-width="2.2"/>`]},
+  sz:{tint:"#ece8c8", shirt:"#e9d664", pos:"50% 40%", idle:"sway", acc:[
+    STAR(62,10), STAR(140,4), STAR(150,40),
+    `<text x="146" y="70" class="hic">hic!</text>`], tw:[0,1,2]},
+  bieber:{tint:"#d9dde7", shirt:"#565c70", pos:"50% 50%", idle:"nod", acc:[
+    `<path d="M86.5 29 h12 q0 8 -6 8 q-6 0 -6 -8Z M101.5 29 h12 q0 8 -6 8 q-6 0 -6 -8Z" fill="#141110" style="stroke:#f2ece0"/><path d="M98.5 30 h3 M86.5 29 l-4 -1.5 M113.5 29 l4 -1.5" fill="none" style="stroke:#f2ece0"/><path d="M89 31 h3" stroke="#fff" stroke-width="1.2"/>`,
+    `<path d="M83 117 q17 17 34 0" stroke="#d9a53b" stroke-width="2.6" stroke-dasharray="2 2.4" fill="none"/><circle cx="100" cy="127" r="4" fill="#d9a53b" stroke-width="1.4"/>`]},
+  fami:{tint:"#f0dcc3", shirt:"#ef9e4a", pos:"50% 30%", idle:"tremble", acc:[
+    DROP(52,26), DROP(146,20), `<text x="144" y="60" class="hic">!!</text>`]},
+};
+function dressUp(f){
+  const L = LOOK[f.id] || {}, st = $("#stage"), acc = $("#acc");
+  st.className = "stage";
+  st.style.setProperty("--tint", L.tint || ""); st.style.setProperty("--shirt", L.shirt || "#f4eee2");
+  $("#pastehead").style.objectPosition = L.pos || "50% 50%";
+  acc.classList.remove("on");
+  acc.innerHTML = '<path class="ring" d="M101 6 C125 6 141 24 140 47 C139 71 122 88 99 87 C76 86 59 70 60 46 C61 24 77 8 97 6.5"/>' +
+    (L.acc||[]).map((s,i)=>`<g class="it${(L.tw||[]).includes(i)?" tw":""}" style="--d:${(.4+i*.16).toFixed(2)}s">${s}</g>`).join("");
+}
+function dressOn(f){
+  const L = LOOK[f.id] || {}, fl = $("#flash");
+  fl.classList.remove("on"); void fl.offsetWidth; fl.classList.add("on");
+  requestAnimationFrame(()=>$("#acc").classList.add("on"));
+  setTimeout(()=>{ if(L.idle) $("#stage").classList.add("idle-"+L.idle); }, 900);
+}
 
 let advanceNow = null;
 function beat(ms){
@@ -1994,14 +2193,14 @@ function beat(ms){
 function drawFigure(f){
   const svg = $("#sketch");
   const ds = [
-    {d:BODY.neck}, {d:BODY.torso}, {d:BODY.armL}, {d:BODY.armR},
+    {d:BODY.neck}, {d:BODY.torso, shirt:true}, {d:BODY.armL}, {d:BODY.armR},
     {d:BODY.legs}, {d:BODY.feet}, ...(f.props||[]).map(d=>({d})),
     {d:BODY.board, card:true}, {d:BODY.grip},
   ];
   svg.innerHTML =
     `<g class="chart">${CHART_SVG}</g><g class="chartnum">${CHART_NUM}</g>` +
     "<g>" + ds.map(o=>{
-      const c = o.card ? " card" : "";
+      const c = o.card ? " card" : o.shirt ? " shirt" : "";
       return `<path class="ghost${c}" transform="translate(1 .8)" d="${o.d}"/><path class="${c.trim()}" d="${o.d}"/>`;
     }).join("") + "</g>" +
     `<g class="boardtxt"><text x="100" y="160">CASE 1004</text><text x="100" y="173">SUSPECT ${f.no}</text></g>`;
@@ -2040,11 +2239,13 @@ async function playLineup(){
     $("#susName").textContent = "";
     $("#susMotive").classList.remove("on"); $("#susNote").classList.remove("on");
     head.hidden = true; head.classList.remove("on");
+    dressUp(f);
     drawFigure(f);
     await beat(1000);
     if(introDone) return;
     head.src = PHOTO[f.id]; head.hidden = false;
     void head.offsetWidth; head.classList.add("on");
+    dressOn(f);
     noise(0.1, 0.3, 1100); tone(110, 0.1, "sine", 0.14, 70);
     await beat(550);
     if(introDone) return;
@@ -2062,7 +2263,7 @@ async function playLineup(){
   $("#susMotive").classList.remove("on"); $("#susNote").classList.remove("on");
   const row = document.createElement("div");
   row.className = "finalrow";
-  row.innerHTML = FILM.map(f=>`<img src="${PHOTO[f.id]}" alt="">`).join("");
+  row.innerHTML = FILM.map(f=>`<img src="${PHOTO[f.id]}" alt="" style="--ring:${(LOOK[f.id]||{}).shirt||"#f2ece0"};object-position:${(LOOK[f.id]||{}).pos||"50% 50%"}">`).join("");
   $("#susName").after(row);
   await beat(700);
   $("#susMotive").classList.add("plain");
@@ -2664,6 +2865,19 @@ if(window.claude && window.claude.hot){
   window.claude.hot.snapshot(()=>S);
   window.claude.hot.ready(d=>{ if(d && d.act){ S=Object.assign(blank(),d); try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} } boot(); });
 } else { boot(); }
+
+/* scroll reveal; the suspect board deals its cards in the first time it's seen */
+(function(){
+  if(!("IntersectionObserver" in window)) return;
+  document.documentElement.classList.add("rvon");
+  const deal = () => { const b = $("#board"); b.classList.add("deal"); setTimeout(()=>b.classList.remove("deal"), 1400); };
+  const io = new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    e.target.classList.add("rv-in"); io.unobserve(e.target);
+    if(e.target.querySelector("#board")) deal();
+  }), {threshold:.06, rootMargin:"0px 0px -6% 0px"});
+  document.querySelectorAll(".masthead, .wrap > section, .wrap > .footnote").forEach(e=>{ e.classList.add("rv"); io.observe(e); });
+})();
 </script>
 
 </body></html>
