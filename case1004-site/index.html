@@ -612,6 +612,235 @@ table.grid td.no{color:var(--graphite)}
   .edbar{font-size:13px}
 }
 
+/* ---------- slim top: just music + countdown, tucked in the corner ---------- */
+.topbar{
+  position:fixed;top:calc(env(safe-area-inset-top,0px) + 6px);right:8px;left:auto;margin:0;
+  padding:3px 4px 3px 4px;gap:6px;flex-wrap:nowrap;width:auto;
+  background:rgba(20,17,16,.72);border:0;border-radius:999px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  opacity:.8;
+}
+.topbar .case{display:none}
+.topbar .bgmbtn{margin-left:0;border:0;padding:2px 8px;font-size:11px;border-radius:999px;background:rgba(255,255,255,.04)}
+.topbar .clock{margin-left:0;padding-right:8px;font-size:11px;letter-spacing:.06em}
+.topbar .clock b{font-size:10px}
+@media(max-width:600px){ .topbar .case,.topbar .clock{font-size:11px} }
+.masthead{padding-top:58px}
+
+/* ---------- warm-up: stakeout (whack-a-suspect) ---------- */
+#drill{position:fixed;inset:0;z-index:120;background:#0b0a09;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 18px) 16px calc(env(safe-area-inset-bottom,0px) + 18px);overflow:hidden}
+#drill[hidden]{display:none}
+#drill.gone{animation:fadeout .6s ease forwards}
+#drill::before{content:"";position:absolute;left:50%;top:-25%;width:150%;height:100%;transform:translateX(-50%);
+  background:radial-gradient(50% 50% at 50% 50%, rgba(217,144,43,.14), transparent 70%);pointer-events:none}
+.dr-in{position:relative;width:100%;max-width:420px;text-align:center}
+.dr-kick{font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--red-bright);margin:0}
+.dr-title{font-family:"Special Elite",monospace;font-size:30px;color:var(--paper);margin:8px 0 10px;line-height:1.1}
+.dr-rules{font-family:"Courier Prime",monospace;font-size:15.5px;color:var(--bone);line-height:1.55;margin:0 auto 18px;max-width:34ch}
+.dr-rules b{color:var(--amber)}
+.dr-hud{display:flex;justify-content:space-between;align-items:baseline;font-family:"Courier Prime",monospace;
+  color:var(--bone-dim);font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0 4px 10px}
+.dr-hud strong{font-family:"Special Elite",monospace;font-size:26px;color:var(--paper);letter-spacing:.02em;font-weight:400}
+.dr-hud .t strong{color:var(--amber)}
+.dr-bar{height:4px;background:var(--hair);border-radius:2px;margin:0 4px 14px;overflow:hidden}
+.dr-bar i{display:block;height:100%;width:100%;background:var(--amber);transform-origin:left}
+.cab{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:12px;background:#2b2420;border-radius:4px;
+  box-shadow:inset 0 0 0 2px #3a302a, 0 20px 40px rgba(0,0,0,.6)}
+.drawer{position:relative;aspect-ratio:1/1;border-radius:3px;overflow:hidden;background:#141110;
+  box-shadow:inset 0 10px 18px rgba(0,0,0,.85);cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.drawer::after{content:"";position:absolute;left:0;right:0;bottom:0;height:24%;background:linear-gradient(#5a4c42,#43382f);
+  border-top:2px solid #6d5d50;z-index:3;pointer-events:none}
+.drawer::before{content:"";position:absolute;left:38%;right:38%;bottom:8%;height:5px;border-radius:3px;background:#c9b48a;z-index:4;pointer-events:none}
+.pop{position:absolute;left:9%;right:9%;top:6%;bottom:18%;transform:translateY(110%);transition:transform .14s ease-out;z-index:2;pointer-events:none}
+.pop.up{transform:translateY(0)}
+.pop img,.pop svg{width:100%;height:100%;object-fit:cover;display:block;border:2px solid #f2ece0;border-radius:2px;
+  filter:grayscale(.75) contrast(1.1) sepia(.15);box-shadow:0 4px 10px rgba(0,0,0,.6)}
+.pop .det{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-14deg) scale(2.2);opacity:0;
+  font-family:"Special Elite",monospace;font-size:13px;letter-spacing:.1em;color:#fff;background:rgba(179,43,33,.92);
+  border:2px solid #fff;padding:2px 6px;white-space:nowrap;border-radius:2px}
+.pop.hit .det{animation:det .3s cubic-bezier(.2,1.3,.4,1) forwards}
+.pop.hit img,.pop.hit svg{filter:grayscale(1) brightness(.75)}
+.pop.oops .det{background:rgba(217,144,43,.95);color:#141110;border-color:#141110}
+@keyframes det{to{opacity:1;transform:translate(-50%,-50%) rotate(-14deg) scale(1)}}
+.dr-toast{position:absolute;left:50%;top:-6px;transform:translate(-50%,-100%);font-family:"Special Elite",monospace;
+  font-size:15px;color:#141110;background:var(--amber);padding:6px 12px;border-radius:2px;white-space:nowrap;
+  animation:toast 1.6s ease forwards;pointer-events:none;z-index:5}
+@keyframes toast{0%{opacity:0;transform:translate(-50%,-80%)}12%{opacity:1;transform:translate(-50%,-100%)}80%{opacity:1}100%{opacity:0}}
+.dr-count{position:absolute;inset:0;display:grid;place-items:center;font-family:"Special Elite",monospace;font-size:88px;
+  color:var(--paper);background:rgba(11,10,9,.7);z-index:6;border-radius:4px}
+.dr-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.dr-skip{background:none;border:0;color:var(--graphite-2);font-family:"Courier Prime",monospace;font-size:13px;
+  text-decoration:underline;margin-top:16px;cursor:pointer}
+.dr-result{font-family:"Courier Prime",monospace;font-size:16px;color:var(--bone);line-height:1.6;margin:0 0 6px}
+.dr-result b{color:var(--amber);font-weight:700}
+.badge{display:inline-block;margin:10px 0 4px;padding:14px 22px;border:2px solid var(--amber);border-radius:50% / 40%;
+  font-family:"Special Elite",monospace;color:var(--amber);font-size:15px;letter-spacing:.18em;text-transform:uppercase;
+  transform:rotate(-4deg) scale(2);opacity:0}
+.badge.on{animation:thunk2 .55s cubic-bezier(.2,1.3,.4,1) forwards}
+.badge small{display:block;font-size:11px;letter-spacing:.2em;color:var(--bone-dim);margin-top:3px}
+
+.witcard{align-self:center;margin:6px auto 2px;background:#f2ece0;padding:6px 6px 4px;border-radius:2px;width:132px;
+  box-shadow:0 8px 20px rgba(0,0,0,.6);transform:rotate(-4deg) scale(1.6);opacity:0;transition:transform .38s cubic-bezier(.2,1.4,.4,1),opacity .3s}
+.witcard.on{transform:rotate(-4deg) scale(1);opacity:1}
+.witcard img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;filter:grayscale(.85) contrast(1.12) sepia(.18)}
+.witcard span{display:block;font-family:"Special Elite",monospace;font-size:12px;color:#241f1a;letter-spacing:.03em;margin-top:4px;white-space:nowrap}
+.dr-wit{display:flex;align-items:center;gap:12px;text-align:left;margin:0 auto 20px;max-width:330px;
+  background:rgba(217,144,43,.1);border:1px solid rgba(217,144,43,.45);border-radius:3px;padding:10px 12px}
+.dr-wit img{width:72px;height:72px;object-fit:cover;border:2px solid #f2ece0;border-radius:2px;transform:rotate(-3deg);flex:none;
+  filter:grayscale(.85) contrast(1.12) sepia(.18)}
+.dr-wit p{margin:0;font-family:"Courier Prime",monospace;font-size:15px;line-height:1.45;color:var(--bone)}
+.dr-wit b{color:var(--amber)}
+.pop.w img{outline:3px solid var(--amber);outline-offset:-3px}
+
+/* ---------- postcard answer row: roomy on phones ---------- */
+.pc input[type=text]{background:rgba(255,255,255,.6);border:1.5px solid rgba(36,31,26,.45);border-bottom-width:2.5px;border-radius:3px}
+@media(max-width:600px){
+  .pc{grid-template-columns:1fr 46px;gap:8px 10px}
+  .pc .pcn{grid-column:1/-1;padding-top:0}
+  .pc .shape{grid-column:2;grid-row:2;width:46px;height:46px}
+  .pc .entry{gap:8px}
+  .pc .entry input[type=text]{flex:1 1 100%;min-height:46px;font-size:17px}
+  .pc .entry .btn{flex:1 1 0;min-height:42px}
+}
+
+/* ---------- evidence transition: file one folder, open the next ---------- */
+#xfer{position:fixed;inset:0;z-index:130;background:rgba(11,10,9,.95);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;opacity:0;transition:opacity .45s ease;padding:24px 16px}
+#xfer.on{opacity:1}
+#xfer .cap{font-family:"Courier Prime",monospace;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim);
+  margin:0 0 22px;min-height:1.4em;text-align:center;transition:opacity .3s}
+#xfer .cap b{color:var(--amber);font-weight:700}
+.stage2{position:relative;width:min(84vw,340px);height:230px;perspective:1100px}
+.fold{position:absolute;inset:0;transition:transform 1s cubic-bezier(.6,0,.3,1),opacity .8s}
+.fold .tab{position:absolute;top:-22px;left:0;height:26px;padding:4px 14px;background:#b8955a;border-radius:6px 6px 0 0;
+  font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.2em;color:#3a2c18;font-weight:700}
+.fold .inside{position:absolute;inset:0;background:#a8854c;border-radius:0 6px 6px 6px;box-shadow:0 22px 44px rgba(0,0,0,.6)}
+.fold .inside::after{content:"";position:absolute;inset:14px 14px 14px 18px;background:var(--paper);border-radius:2px;
+  background-image:repeating-linear-gradient(0deg, transparent 0 17px, rgba(36,31,26,.12) 17px 18px)}
+.fold .cover{position:absolute;inset:0;background:#c9a86a;border-radius:0 6px 6px 6px;transform-origin:left center;
+  transition:transform 1.3s cubic-bezier(.5,0,.2,1);backface-visibility:hidden;display:flex;flex-direction:column;
+  justify-content:center;padding:22px 24px;box-shadow:inset 0 0 40px rgba(90,60,20,.25)}
+.fold .cover .lab{font-family:"Courier Prime",monospace;font-size:13px;letter-spacing:.26em;color:#5a4424;margin:0 0 6px}
+.fold .cover .ttl{font-family:"Special Elite",monospace;font-size:26px;color:#2a1f12;margin:0;line-height:1.15}
+.fold .cover .ans{font-family:"Courier Prime",monospace;font-size:14px;color:#5a4424;margin:10px 0 0;letter-spacing:.08em}
+.fold .fst{position:absolute;right:18px;bottom:22px;font-family:"Special Elite",monospace;font-size:26px;letter-spacing:.14em;
+  color:var(--red);border:3px solid var(--red);padding:2px 12px;border-radius:3px;opacity:0;transform:rotate(-12deg) scale(2.4)}
+.fold .fst.on{animation:fst .45s cubic-bezier(.2,1.3,.4,1) forwards}
+@keyframes fst{to{opacity:.9;transform:rotate(-12deg) scale(1)}}
+.fold.in{transform:translateY(120%)}
+.fold.away{transform:translateX(-140%) rotate(-8deg);opacity:0}
+.fold.next{transform:translateX(140%) rotate(6deg)}
+.fold.open .cover{transform:rotateY(-165deg)}
+.fold .go{position:absolute;inset:0;display:grid;place-items:center;font-family:"Special Elite",monospace;font-size:22px;
+  color:#241f1a;letter-spacing:.12em;z-index:1;opacity:0;transition:opacity .4s .5s}
+.fold.open .go{opacity:1}
+
+/* solved evidence collapses into a filed slip */
+.filedslip{display:none}
+.act.filed > :not(.act-head):not(.filedslip){display:none}
+.act.filed.peek > :not(.act-head):not(.filedslip){display:block}
+.act.filed .filedslip{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between;
+  border:1px dashed rgba(95,140,86,.6);background:rgba(95,140,86,.08);border-radius:3px;padding:12px 14px;margin-bottom:10px}
+.filedslip .fs-t{font-family:"Courier Prime",monospace;font-size:14px;color:var(--bone);line-height:1.5}
+.filedslip .fs-t b{color:#8fbf83;letter-spacing:.14em}
+.filedslip .fs-t strong{font-family:"Special Elite",monospace;color:var(--paper);font-weight:400;letter-spacing:.08em}
+.filedslip button{background:none;border:1px solid var(--hair);color:var(--bone-dim);font-family:"Courier Prime",monospace;
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:2px;cursor:pointer}
+#act2body > p .ask{color:var(--amber)}
+#act2body > p u{text-decoration-color:var(--amber)}
+@media(max-width:600px){ .fold .cover .ttl{font-size:23px} #xfer .cap{font-size:13px} .filedslip .fs-t{font-size:15px} }
+
+/* ---------- alibi grid: bigger, bold names ---------- */
+table.grid th.rowh{font-weight:700;color:#241f1a;font-size:13px}
+table.grid th.colh span{font-size:14px}
+table.grid td{width:42px;height:42px;font-size:20px}
+@media(max-width:600px){
+  .gridzone .gridwrap{margin:0 -14px 14px;padding:8px 6px 10px}
+  table.grid th.rowh{font-size:13.5px;padding-right:7px}
+  table.grid th.colh span{font-size:14.5px}
+  table.grid td{width:39px;height:44px;font-size:21px}
+}
+
+/* ---------- red-string board ---------- */
+.cork{position:relative;aspect-ratio:100/120;border-radius:4px;margin:0 0 30px;background-color:#a9824f;
+  background-image:radial-gradient(rgba(60,35,10,.28) 1px, transparent 1.6px),radial-gradient(rgba(255,235,200,.14) 1px, transparent 1.6px);
+  background-size:7px 7px,11px 11px;background-position:0 0,3px 5px;
+  box-shadow:inset 0 0 0 9px #5e4027,inset 0 0 0 11px #3f2a18,inset 0 0 50px rgba(0,0,0,.35),0 22px 44px rgba(0,0,0,.55)}
+.cork .pol{position:absolute;background:#f2ece0;padding:5px 5px 0;box-shadow:0 6px 14px rgba(0,0,0,.45);
+  transform:rotate(var(--r)) translateY(-18px) scale(1.12);opacity:0;transition:transform .35s cubic-bezier(.2,1.4,.4,1),opacity .25s;z-index:1}
+.cork .pol.in{transform:rotate(var(--r));opacity:1}
+.cork .pol img,.cork .pol svg{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;filter:grayscale(.85) contrast(1.1) sepia(.2)}
+.cork .pol span{display:block;font-family:"Courier Prime",monospace;font-size:10.5px;font-weight:700;color:#241f1a;text-align:center;padding:4px 0 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cork .pol.big span{font-size:12px}
+.cork .pol em{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%) rotate(-14deg) scale(2);opacity:0;font-style:normal;
+  font-family:"Special Elite",monospace;letter-spacing:.1em;border:2px solid;padding:1px 6px;border-radius:2px;white-space:nowrap}
+.cork .pol .clr{color:#4f8a45;border-color:#4f8a45;font-size:11px;background:rgba(242,236,224,.75)}
+.cork .pol.in .clr{animation:det .35s .15s cubic-bezier(.2,1.3,.4,1) forwards}
+.cork .pol .chg{color:#fff;background:rgba(179,43,33,.92);border-color:#fff;font-size:17px;z-index:4}
+.cork .pol.charged .chg{animation:det .4s cubic-bezier(.2,1.3,.4,1) forwards}
+.cork .pol.big.charged{animation:pulse2 .6s ease}
+@keyframes pulse2{50%{transform:rotate(-2deg) scale(1.06)}}
+.cork .stk{position:absolute;width:22%;background:#f3d36b;color:#3a2c18;font-family:"Special Elite",monospace;font-size:12px;text-align:center;
+  padding:9px 2px 7px;box-shadow:0 4px 8px rgba(0,0,0,.35);transform:rotate(var(--r)) scale(1.2);opacity:0;transition:transform .3s cubic-bezier(.2,1.4,.4,1),opacity .2s;z-index:1}
+.cork .stk.in{transform:rotate(var(--r));opacity:1}
+.cork .strings{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;overflow:visible}
+.cork .str{fill:none;stroke:#c3241a;stroke-width:.55;stroke-linecap:round;stroke-dasharray:120;stroke-dashoffset:120;transition:stroke-dashoffset .7s ease-in-out;filter:drop-shadow(0 .4px .3px rgba(0,0,0,.4))}
+.cork .str.drawn{stroke-dashoffset:0}
+.cork .pins circle{fill:#d8483b;stroke:#5a1510;stroke-width:.3;opacity:0;transition:opacity .2s}
+.cork.done .pins circle,.cork .pol.in ~ .strings .pins circle{opacity:1}
+
+/* ---------- newspaper ---------- */
+.newswrap{margin:0 0 34px;perspective:900px}
+.news{background:#ece4cf;color:#1e1a16;padding:14px 16px 18px;box-shadow:0 20px 40px rgba(0,0,0,.55);border-radius:1px;
+  background-image:repeating-linear-gradient(0deg, rgba(0,0,0,.02) 0 1px, transparent 1px 3px);opacity:0}
+.news.spin{animation:spinin 1.5s cubic-bezier(.15,.75,.3,1) forwards}
+.news.still{opacity:1;transform:rotate(-1.5deg)}
+@keyframes spinin{from{transform:rotate(-1080deg) scale(.04);opacity:0}25%{opacity:1}to{transform:rotate(-1.5deg) scale(1);opacity:1}}
+.nh-top{display:flex;justify-content:space-between;gap:6px;font-family:Georgia,"Times New Roman",serif;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #1e1a16;padding-bottom:4px}
+.nh-mast{font-family:"UnifrakturCook","Old English Text MT",Georgia,serif;font-weight:700;font-size:clamp(28px,8.5vw,40px);text-align:center;margin:6px 0 2px;letter-spacing:.01em}
+.nh-rule{border-top:3px double #1e1a16;margin:0 0 8px}
+.nh-head{font-family:Georgia,"Times New Roman",serif;font-weight:900;font-size:clamp(26px,8vw,38px);line-height:1.02;text-transform:uppercase;text-align:center;margin:6px 0 8px;letter-spacing:-.01em}
+.nh-sub{font-family:Georgia,serif;font-style:italic;font-size:16px;text-align:center;margin:0 0 12px;border-bottom:1px solid rgba(30,26,22,.4);padding-bottom:10px}
+.nh-body{font-family:Georgia,"Times New Roman",serif;font-size:14.5px;line-height:1.45;text-align:justify;hyphens:auto}
+.nh-body p{margin:0 0 8px}
+.nh-fig{float:left;width:44%;margin:2px 12px 6px 0}
+.nh-fig img,.nh-fig svg{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;filter:grayscale(1) contrast(1.25) brightness(1.05);border:1px solid #1e1a16}
+.nh-fig figcaption{font-size:11px;font-style:italic;margin-top:3px}
+
+/* ---------- letter typing ---------- */
+#confess p{transition:opacity .4s}
+#confess p.typing::after{content:"\258C";color:var(--red);animation:blink 1s steps(2) infinite;margin-left:1px}
+
+/* ---------- cake ---------- */
+.cakebox{margin-top:24px;border-top:2px solid #241f1a;padding-top:18px;text-align:center}
+.cakebox h3{font-family:"Special Elite",monospace;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:#241f1a;margin:0 0 6px;font-weight:400}
+.cake-lead{font-family:"Special Elite",monospace;font-size:22px;color:#241f1a;margin:0 0 4px}
+.cake{width:min(70vw,260px);height:auto;display:block;margin:0 auto}
+.cake .flame{cursor:pointer;transform-box:fill-box;transform-origin:50% 100%;animation:flick .18s ease-in-out infinite alternate}
+.cake .flame.out{animation:none;opacity:0;transition:opacity .25s}
+@keyframes flick{from{transform:scale(1,1)}to{transform:scale(.9,1.08) skewX(2deg)}}
+.cake .smoke path{fill:none;stroke:#8b8277;stroke-width:2;stroke-linecap:round;opacity:0}
+.cake .smoke.on path{animation:smoke 1.8s ease-out forwards}
+@keyframes smoke{0%{opacity:.8;transform:translateY(0)}100%{opacity:0;transform:translateY(-26px)}}
+.cake-hint{font-family:"Courier Prime",monospace;font-size:15px;color:#5d544a;margin:8px 0 12px}
+.cake-hint b{color:var(--red)}
+.breath{width:180px;height:6px;margin:6px auto 0;background:rgba(36,31,26,.15);border-radius:3px;overflow:hidden}
+.breath i{display:block;height:100%;background:var(--amber);transform-origin:left;transform:scaleX(0);transition:transform .08s}
+.confetti{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:160}
+
+/* ---------- easter egg pop-up + ID card ---------- */
+.eggpop{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);z-index:170;
+  display:flex;align-items:center;gap:12px;background:var(--paper);color:#241f1a;padding:10px 16px 10px 10px;border-radius:3px;
+  box-shadow:var(--shadow);transition:transform .45s cubic-bezier(.2,1.3,.4,1);max-width:min(92vw,380px)}
+.eggpop.on{transform:translate(-50%,0)}
+.eggpop img{width:64px;height:64px;object-fit:cover;border:2px solid #fff;border-radius:2px;transform:rotate(-4deg);flex:none}
+.eggpop p{margin:0;font-family:"Courier Prime",monospace;font-size:16px;line-height:1.35}
+.idcard{width:100%;max-width:400px;border-radius:14px;box-shadow:0 20px 44px rgba(0,0,0,.6);transform:rotate(-2deg) scale(.6);opacity:0;
+  transition:transform .5s cubic-bezier(.2,1.3,.4,1),opacity .3s;-webkit-touch-callout:default}
+.idcard.on{transform:rotate(-2deg) scale(1);opacity:1}
+label#idShoot{display:inline-block}
+@media(max-width:600px){ .nh-top{font-size:9px} .nh-top span:nth-child(2){display:none} .cork .pol span{font-size:9.5px} .cork .stk{font-size:11px} .nh-body{font-size:15px} .cake-hint{font-size:16px} }
+
 /* ---------- editor mode ---------- */
 .edbar{
   position:fixed;left:0;right:0;bottom:0;z-index:95;background:rgba(15,13,12,.96);backdrop-filter:blur(6px);
@@ -832,7 +1061,8 @@ body.editor .wrap{padding-bottom:140px}
   <!-- ================= FINALE ================= -->
   <section class="finale" id="finale" hidden>
     <div class="act-head"><span class="act-num">CASE CLOSED</span><span class="act-title">Statement of the Witness</span></div>
-    <div class="board" id="finalBoard" style="margin-bottom:22px"></div>
+    <div class="cork" id="cork"></div>
+    <div class="newswrap" id="newsWrap" hidden><div class="news" id="news"></div></div>
     <div class="paper confess" id="confess" hidden>
       <div class="rec">Recorded &mdash; October 3, Namegata &mdash; subject: Ange &mdash; no lawyer present</div>
       <p class="tw">"All six of them have alibis. I know. I gave them the alibis."</p>
@@ -846,6 +1076,7 @@ body.editor .wrap{padding-bottom:140px}
         <h3>What became of them</h3>
         <div id="fates"></div>
       </div>
+      <div class="cakebox" id="cakeBox" hidden></div>
       <div class="fridge" id="fridgeBlock" hidden>
         <p class="big">Go look in the fridge.</p>
         <p class="sub">Bring two glasses. 🥂</p>
@@ -873,10 +1104,7 @@ const MUG = {
     <g fill="${INK}"><circle cx="50" cy="32" r="16"/>
     <path d="M50 49 q-15 2 -21 13 -5 9 -5 20 0 9 3 14h46q3 -5 3 -14 0 -11 -5 -20 -6 -11 -21 -13Z"/></g>
     <path d="M32 84 q18 -13 36 0" fill="none" stroke="#c9bda4" stroke-width="1.4" opacity=".55"/></svg>`,
-  ange: `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">${CHART}
-    <g fill="#8e8371"><circle cx="50" cy="32" r="16"/>
-    <path d="M50 49 q-17 2 -23 14 -5 9 -5 19 0 8 2 14h52q2 -6 2 -14 0 -10 -5 -19 -6 -12 -23 -14Z"/></g>
-    <text x="50" y="72" text-anchor="middle" font-family="monospace" font-size="26" fill="#d8cfbb">?</text></svg>`,
+  ange: '<img src="photos/ange.jpg" alt="">',
   fami: '<img src="photos/famichiki.jpg" alt="">',
 };
 const SUSPECTS = [
@@ -1039,11 +1267,13 @@ function editorDecorate(){
   bar.className = "edbar";
   bar.innerHTML = `<b>EDITOR MODE</b><span class="ans">MIDNIGHT · NAMEGATA · 1004</span>
     <button class="btn dark" id="edIntro">Play intro</button>
+    <button class="btn dark" id="edDrill">Play warm-up</button>
     <button class="btn dark" id="edEnd">Replay ending</button>
     <button class="btn dark" id="edExit">Exit editor</button>`;
   document.body.appendChild(bar);
   $("#edIntro").addEventListener("click", ()=>{ try{ sessionStorage.setItem("case1004.playintro","1"); }catch(e){} location.reload(); });
   $("#edExit").addEventListener("click", ()=>setEditor(false));
+  $("#edDrill").addEventListener("click", ()=>{ ac(); showDrill(true); });
   $("#edEnd").addEventListener("click", ()=>{
     $("#confess").hidden = true; $("#epilogue").hidden = true; $("#fridgeBlock").hidden = true;
     $("#fates").innerHTML = "";
@@ -1094,6 +1324,30 @@ const sfx = {
             setTimeout(()=>{ tone(659,0.12,"triangle",0.12); },540);
             setTimeout(()=>{ tone(784,0.3,"triangle",0.13); },660); },
 };
+
+/* ============================ haptics ============================ */
+/* Android: Vibration API. iPhone (iOS 18+): Safari has no vibration API, but toggling a hidden
+   <input switch> gives a light system haptic tap, so each "on" beat of a pattern becomes one tap. */
+const IS_IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1);
+const HAPTIC_LBL = (()=>{ try{
+  const inp = document.createElement("input"); inp.type = "checkbox"; inp.setAttribute("switch",""); inp.id = "hapticSw";
+  inp.setAttribute("aria-hidden","true"); inp.tabIndex = -1;
+  const lbl = document.createElement("label"); lbl.htmlFor = "hapticSw"; lbl.setAttribute("aria-hidden","true");
+  const hide = "position:fixed;left:-200px;top:0;width:1px;height:1px;opacity:0;pointer-events:none";
+  inp.style.cssText = hide; lbl.style.cssText = hide;
+  document.body.append(inp, lbl); return lbl;
+}catch(e){ return null; } })();
+function buzz(pattern){
+  try{ if(typeof navigator.vibrate === "function" && !IS_IOS){ navigator.vibrate(pattern); return; } }catch(e){}
+  if(!IS_IOS || !HAPTIC_LBL) return;
+  let t = 0;
+  pattern.forEach((ms,i)=>{ if(i%2===0) setTimeout(()=>{ try{ HAPTIC_LBL.click(); }catch(e){} }, t); t += ms; });
+}
+const HAPT = { tap:[18], dial:[8], good:[25,70,35], wrong:[70], big:[40,90,40,90,160] };
+["good","wrong","stamp","unlock","dial"].forEach(k=>{
+  const f = sfx[k];
+  sfx[k] = function(){ f.apply(this, arguments); buzz(k==="good"?HAPT.good:k==="wrong"?HAPT.wrong:k==="unlock"?HAPT.big:k==="dial"?HAPT.dial:HAPT.tap); };
+});
 
 /* ============================ background music ============================ */
 const BGM_KEY = "case1004.music", BGM_VOL = 0.3;
@@ -1159,7 +1413,7 @@ function tick(){
   $("#cd").textContent = h+":"+m+":"+q;
 }
 setInterval(tick,1000); tick();
-function syncTopbar(){ const t=document.querySelector(".topbar"); if(t) document.documentElement.style.setProperty("--tb", t.offsetHeight+"px"); }
+function syncTopbar(){ const t=document.querySelector(".topbar"); if(t) document.documentElement.style.setProperty("--tb", (t.offsetHeight+12)+"px"); }
 addEventListener("resize", syncTopbar); syncTopbar();
 try{ new ResizeObserver(syncTopbar).observe(document.querySelector(".topbar")); }catch(e){}
 try{ document.fonts.ready.then(syncTopbar); }catch(e){}
@@ -1185,7 +1439,7 @@ function renderBoard(){
   parkInterview();
   $("#board").innerHTML = SUSPECTS.map(s=>card(s, cleared.has(s.id)?"cleared":"")).join("");
   $("#board").querySelectorAll(".sus").forEach(el=>{
-    el.addEventListener("click",()=>interview(el.dataset.id));
+    el.addEventListener("click",()=>{ interview(el.dataset.id); if(el.dataset.id==="rose") roseEgg(); });
     el.classList.toggle("sel", el.dataset.id===openInt);
   });
   if(openInt){ const keep=openInt; openInt=null; interview(keep, true); }
@@ -1315,7 +1569,7 @@ function renderCards(){
     return `<div class="pc"><div class="pcn">${c.n}</div><div>
       <p class="q">${c.q}</p>
       <p class="qfr">${c.f}</p>
-      <div class="entry"><input type="text" data-i="${i}" placeholder="country" autocomplete="off" spellcheck="false">
+      <div class="entry"><input type="text" data-i="${i}" placeholder="type the country" autocomplete="off" spellcheck="false">
       <button class="btn ghost" data-go="${i}">Name it</button>
       <button class="btn hintbtn" data-hb="${i}" ${lvl(i)>=2?"disabled":""}>${lvl(i)===0?"Hint":"Still stuck?"}</button></div>
       <p class="pchint" ${lvl(i)>=1?"":"hidden"}>${lvl(i)>=1?c.hint:""}</p>
@@ -1448,7 +1702,7 @@ $("#go4").addEventListener("click", ()=>{
     $("#openWrap").hidden=true;
     $("#v4").className="verdict good"; $("#v4").textContent="";
     S.done=true; save(); renderBoard(); paintFacts(4);
-    closeCase(false);
+    setTimeout(()=>playTransition(3, 4, ()=>{ paintFiled(); }).then(()=>closeCase(false)), 1800);
   } else {
     sfx.wrong(); shakeIt($("#cal"));
     S.tries[4]++; save();
@@ -1459,59 +1713,71 @@ $("#go4").addEventListener("click", ()=>{
 
 
 /* ============================ endgame ============================ */
-const ANGE = {id:"ange", name:"Ange", src:"No photograph on file",
+const ANGE = {id:"ange", name:"Ange", src:"Witness photograph",
   alibi:"Witness. Was extremely helpful throughout."};
-function closeCase(instant){
+let finaleToken = 0, LETTER_ORIG = null;
+function pinSound(){ noise(0.05, 0.25, 2500); tone(900, 0.03, "square", 0.05); buzz([8]); }
+async function closeCase(instant){
+  const token = ++finaleToken;
   bgmEnded = true; bgmStop(instant ? 0.2 : 5); bgmPaint();
   $("#topClock").textContent = "Birthday in";
   const fin = $("#finale"); fin.hidden = false;
-  const fb = $("#finalBoard");
-  fb.innerHTML = SUSPECTS.map(s=>card(s)).join("") + card(ANGE, "charged");
-  const cards = [...fb.querySelectorAll(".sus")];
+  const cork = $("#cork"); cork.innerHTML = corkHTML(); cork.classList.remove("done");
+  const nw = $("#newsWrap"), news = $("#news"); news.innerHTML = newsHTML(); news.className = "news";
   const conf = $("#confess");
-  const kids = [...conf.children].filter(el=>el.id!=="epilogue" && el.id!=="fridgeBlock");
+  const kids = [...conf.children].filter(el=>!["epilogue","cakeBox","fridgeBlock"].includes(el.id));
+  if(!LETTER_ORIG) LETTER_ORIG = kids.map(k=>k.innerHTML); else kids.forEach((k,i)=>{ k.innerHTML = LETTER_ORIG[i]; });
+  $("#epilogue").hidden = true; $("#fridgeBlock").hidden = true; $("#cakeBox").hidden = true;
 
   if(instant){
-    cards.forEach((el,i)=>el.classList.add(i<6?"cleared":"charged-in"));
-    conf.hidden=false; kids.forEach(el=>el.style.opacity=1);
-    $("#epilogue").hidden=false; renderFates(true);
-    $("#fridgeBlock").hidden=false;
+    cork.classList.add("done");
+    cork.querySelectorAll(".pol,.stk").forEach(e=>e.classList.add("in"));
+    cork.querySelectorAll(".str").forEach(e=>e.classList.add("drawn"));
+    $("#corkAnge").classList.add("charged");
+    nw.hidden = false; news.classList.add("still");
+    conf.hidden = false; kids.forEach(el=>el.style.opacity = 1);
+    $("#epilogue").hidden = false; renderFates(true);
+    await showCake(true);
+    if(token!==finaleToken) return;
+    $("#fridgeBlock").hidden = false;
     return;
   }
-
-  cards.forEach(el=>{ if(el.dataset.id!=="ange") el.style.visibility="hidden"; });
-  const ac = cards[6]; ac.style.opacity="0";
-  setTimeout(()=>fin.scrollIntoView({behavior:"smooth",block:"start"}), 1300);
-
-  let t = 2200;
-  SUSPECTS.forEach((s,i)=>setTimeout(()=>{
-    const el = cards[i]; el.style.visibility=""; el.classList.add("cleared");
-    if(i%2===0) sfx.stamp();
-  }, t + i*230));
-  t += 6*230 + 700;
-
-  setTimeout(()=>{
-    ac.style.opacity=""; ac.style.animation="slidein .6s ease forwards";
-    setTimeout(()=>{ ac.classList.add("charged-in"); sfx.stamp(); tone(160,.5,"sawtooth",.13,80); }, 520);
-  }, t);
-  t += 1900;
-
-  setTimeout(()=>{
-    conf.hidden=false;
-    kids.forEach(el=>el.style.opacity=0);
-    let d = 0;
-    kids.forEach((el,i)=>{
-      setTimeout(()=>{
-        el.style.transition="opacity .8s ease"; el.style.opacity=1;
-        if(i>0) sfx.click();
-      }, d);
-      d += (i===1) ? 2600 : 1400;
-    });
-    setTimeout(()=>{
-      $("#epilogue").hidden=false; renderFates(false);
-      setTimeout(()=>{ $("#fridgeBlock").hidden=false; sfx.good(); }, 7*720 + 900);
-    }, d + 600);
-  }, t);
+  nw.hidden = true; conf.hidden = true;
+  await sleep(400); fin.scrollIntoView({behavior:"smooth", block:"start"});
+  await sleep(1000);
+  for(const p of cork.querySelectorAll(".pol:not(.big)")){ if(token!==finaleToken) return; p.classList.add("in"); pinSound(); await sleep(340); }
+  for(const n of cork.querySelectorAll(".stk")){ if(token!==finaleToken) return; n.classList.add("in"); pinSound(); await sleep(240); }
+  await sleep(400);
+  $("#corkAnge").classList.add("in"); sfx.stamp(); await sleep(900);
+  for(const st of cork.querySelectorAll(".str")){ if(token!==finaleToken) return; st.classList.add("drawn"); tone(200+Math.random()*90, .09, "triangle", .05); buzz([6]); await sleep(300); }
+  await sleep(1000);
+  if(token!==finaleToken) return;
+  $("#corkAnge").classList.add("charged"); cork.classList.add("done");
+  sfx.stamp(); tone(160, .5, "sawtooth", .13, 80); buzz(HAPT.big);
+  await sleep(2600);
+  if(token!==finaleToken) return;
+  nw.hidden = false; nw.scrollIntoView({behavior:"smooth", block:"center"});
+  await sleep(500);
+  news.classList.add("spin"); noise(1.3, .22, 1400);
+  await sleep(1550); sfx.stamp();
+  await sleep(4200);
+  if(token!==finaleToken) return;
+  conf.hidden = false; kids.forEach(el=>el.style.opacity = 0);
+  conf.scrollIntoView({behavior:"smooth", block:"start"});
+  await sleep(800);
+  await typeLetter(kids, token);
+  if(token!==finaleToken) return;
+  await sleep(700);
+  $("#epilogue").hidden = false; renderFates(false);
+  $("#epilogue").scrollIntoView({behavior:"smooth", block:"start"});
+  await sleep(7*720 + 900);
+  if(token!==finaleToken) return;
+  const waitCake = showCake(false);
+  $("#cakeBox").scrollIntoView({behavior:"smooth", block:"center"});
+  await waitCake;
+  if(token!==finaleToken) return;
+  $("#fridgeBlock").hidden = false; sfx.good();
+  setTimeout(()=>$("#fridgeBlock").scrollIntoView({behavior:"smooth", block:"center"}), 200);
 }
 function renderFates(instant){
   const rows = FATES.concat([["ange","Charged. Sentenced to one (1) more year. Renewable."]]);
@@ -1527,6 +1793,58 @@ function renderFates(instant){
   }, i*720));
 }
 
+/* ============================ evidence transitions ============================ */
+const EVI = {
+  1:{lab:"EVIDENCE A", ttl:"The Intercepted Log", ans:"MIDNIGHT", cleared:"Famichiki & StrongZero cleared"},
+  2:{lab:"EVIDENCE B", ttl:"Eight Postcards", ans:"NAMEGATA", cleared:"Ros\u00e9 & The Marmot cleared"},
+  3:{lab:"EVIDENCE C", ttl:"The Alibi Grid", ans:"1004", cleared:"The Junimo & lil Bieber cleared"},
+  4:{lab:"CASE FILE", ttl:"Statement of the Witness", ans:"", cleared:""},
+};
+function folderHTML(e, cls, withStamp){
+  return `<div class="fold ${cls}"><div class="tab">${e.lab}</div><div class="inside"></div>
+    <div class="go">Opening&hellip;</div>
+    <div class="cover"><p class="lab">${e.lab}</p><p class="ttl">${e.ttl}</p>${e.ans?`<p class="ans">Answer: ${e.ans}</p>`:""}
+      ${withStamp?'<span class="fst">Solved</span>':""}</div></div>`;
+}
+function playTransition(from, to, behind){
+  return new Promise(res=>{
+    const el = document.createElement("div"); el.id = "xfer";
+    const a = EVI[from], b = EVI[to];
+    el.innerHTML = `<p class="cap" id="xcap"><b>${a.lab}</b> &mdash; solved</p>
+      <div class="stage2">${folderHTML(a,"in",true)}${folderHTML(b,"next",false)}</div>`;
+    document.body.appendChild(el);
+    const [fa, fb] = el.querySelectorAll(".fold");
+    const cap = el.querySelector("#xcap");
+    const T = (ms, fn)=>setTimeout(fn, ms);
+    requestAnimationFrame(()=>{ el.classList.add("on"); requestAnimationFrame(()=>fa.classList.remove("in")); });
+    noise(0.3, 0.18, 900);
+    T(1000, ()=>{ fa.querySelector(".fst").classList.add("on"); sfx.stamp(); });
+    T(2100, ()=>{ if(a.cleared) cap.innerHTML = a.cleared; });
+    T(3300, ()=>{ fa.classList.add("away"); noise(0.35, 0.22, 1600); if(behind) behind(); });
+    T(3650, ()=>{ fb.classList.remove("next"); cap.innerHTML = to===4 ? "<b>All evidence filed</b>" : `Next: <b>${b.lab}</b>`; });
+    T(4900, ()=>{ fb.classList.add("open"); buzz(HAPT.good); noise(0.28, 0.25, 2600); tone(523,.1,"triangle",.08); T(120,()=>tone(784,.16,"triangle",.08)); });
+    T(6400, ()=>{ el.classList.remove("on"); });
+    T(6850, ()=>{ el.remove(); res(); });
+  });
+}
+function paintFiled(){
+  const solved = n => EDITOR ? false : (n===3 ? S.done : S.act > n);
+  [1,2,3].forEach(n=>{
+    const a = $("#act"+n); if(!a) return;
+    let slip = a.querySelector(".filedslip");
+    if(!slip){
+      const e = EVI[n];
+      slip = document.createElement("div"); slip.className = "filedslip";
+      slip.innerHTML = `<span class="fs-t"><b>FILED</b> &nbsp;Answer: <strong>${e.ans}</strong><br>${e.cleared}</span><button type="button">Reopen</button>`;
+      slip.querySelector("button").addEventListener("click", ()=>{
+        const on = a.classList.toggle("peek"); slip.querySelector("button").textContent = on ? "Close" : "Reopen"; sfx.click();
+      });
+      a.querySelector(".act-head").after(slip);
+    }
+    a.classList.toggle("filed", solved(n));
+  });
+}
+
 /* ============================ flow ============================ */
 function advance(n, host){
   const first = S.act < n;
@@ -1535,9 +1853,14 @@ function advance(n, host){
   if(host) stampHere(host, CLEAR_ORDER[n-2] || []);
   setTimeout(()=>{ paintFacts(n); renderBoard(); }, 1000);
   setTimeout(()=>{
-    unlockAct(n);
-    setTimeout(()=>{ $("#act"+n).scrollIntoView({behavior:"smooth",block:"start"}); }, 450);
-  }, 2000);
+    playTransition(n-1, n, ()=>{
+      unlockAct(n); paintFiled();
+      const t = $("#act"+n).getBoundingClientRect().top + scrollY - 70;
+      const b = document.documentElement.style.scrollBehavior;
+      document.documentElement.style.scrollBehavior = "auto"; window.scrollTo(0, Math.max(0,t));
+      document.documentElement.style.scrollBehavior = b;
+    });
+  }, 2200);
 }
 function unlockAct(n){
   const a = $("#act"+n); if(!a) return;
@@ -1568,6 +1891,7 @@ function endIntro(){
   document.documentElement.style.scrollBehavior = b;
   el.classList.add("gone");
   setTimeout(()=>{ el.hidden = true; }, 700);
+  if(!S.drillDone && !S.done && !EDITOR) showDrill(false);
 }
 async function typeLine(el, text, speed){
   el.classList.add("caret");
@@ -1594,6 +1918,13 @@ async function playIntro(){
     if(dim) p.className = "dim";
     lines.appendChild(p);
     await typeLine(p, text, dim ? 90 : 62);
+    if(text.startsWith("One witness")){
+      const w = document.createElement("div"); w.className = "witcard";
+      w.innerHTML = '<img src="photos/ange.jpg" alt=""><span>Witness &middot; Ange</span>';
+      lines.appendChild(w); requestAnimationFrame(()=>w.classList.add("on"));
+      noise(0.1, 0.3, 1100); tone(110, 0.1, "sine", 0.14, 70);
+      await sleep(1400);
+    }
     await sleep(dim ? 1600 : 1100);
   }
   if(introDone) return;
@@ -1760,6 +2091,507 @@ function showIntro(){
   $("#skipIntro").addEventListener("click", endIntro);
 }
 
+/* ============================ warm-up: the stakeout ============================ */
+const DRILL_GOAL = 15, DRILL_SECS = 30;
+const DRILL_WHO = ["rose","marmot","junimo","sz","bieber","fami"];
+const DRILL_LINES = {rose:"Rosé resisted. Briefly.", marmot:"The Marmot asked to finish his set.", junimo:"Wheeee.",
+  sz:"StrongZero went quietly. 9% quietly.", bieber:"lil Bieber: no comment.", fami:"Famichiki is still warm."};
+let drillRun = null;
+function showDrill(fromEditor){
+  let el = $("#drill");
+  if(!el){ el = document.createElement("div"); el.id = "drill"; document.body.appendChild(el); }
+  el.classList.remove("gone"); el.hidden = false;
+  document.body.style.overflow = "hidden";
+  el.innerHTML = `<div class="dr-in">
+    <p class="dr-kick">Before you open the file</p>
+    <p class="dr-title">The Stakeout</p>
+    <p class="dr-rules">The suspects keep hiding in the evidence cabinet. <b>Tap them</b> when they pop out.<br>
+      Catch <b>${DRILL_GOAL}</b> in <b>${DRILL_SECS} seconds</b> to earn your badge.</p>
+    <div class="dr-wit"><img src="photos/ange.jpg" alt=""><p><b>This is the witness, Ange.</b><br>She is not a suspect. Do not tap her.</p></div>
+    <div class="dr-btns"><button class="btn" id="drGo">Start the stakeout</button></div>
+    <button class="dr-skip" id="drSkip">skip training</button></div>`;
+  $("#drGo").addEventListener("click", ()=>{ ac(); bgmStart(); drillPlay(fromEditor); });
+  $("#drSkip").addEventListener("click", ()=>drillFinish(fromEditor, true));
+}
+function drillPlay(fromEditor){
+  const el = $("#drill");
+  el.innerHTML = `<div class="dr-in">
+    <div class="dr-hud"><span>Caught <strong id="drScore">0</strong> &nbsp;goal ${DRILL_GOAL}</span><span class="t"><strong id="drTime">${DRILL_SECS}</strong> s</span></div>
+    <div class="dr-bar"><i id="drBar"></i></div>
+    <div class="cab" id="cab" style="position:relative">${Array.from({length:9},(_,i)=>`<div class="drawer" data-d="${i}"><div class="pop"></div></div>`).join("")}</div>
+    </div>`;
+  const R = drillRun = {score:0, witness:0, over:false, timers:[], busy:new Set(), start:0};
+  const drawers = [...el.querySelectorAll(".drawer")];
+  const toast = (txt)=>{ const t=document.createElement("div"); t.className="dr-toast"; t.textContent=txt; $("#cab").appendChild(t); setTimeout(()=>t.remove(),1700); };
+  drawers.forEach((d,i)=>d.addEventListener("pointerdown", e=>{
+    e.preventDefault();
+    const pop = d.querySelector(".pop");
+    if(R.over || !pop.classList.contains("up") || pop.classList.contains("hit")) return;
+    pop.classList.add("hit");
+    if(pop.dataset.who==="ange"){
+      R.witness++; R.score = Math.max(0, R.score-1); pop.classList.add("oops");
+      sfx.wrong(); toast(R.witness===1 ? "The witness is not a suspect." : R.witness===2 ? "She is being extremely helpful." : "Detective. Please.");
+    } else {
+      R.score++; sfx.stamp();
+      if(R.score===DRILL_GOAL) toast("Badge earned. Keep going.");
+      else if(Math.random()<.28) toast(DRILL_LINES[pop.dataset.who]);
+    }
+    $("#drScore").textContent = R.score;
+    R.timers.push(setTimeout(()=>hide(i), 330));
+  }));
+  function hide(i){
+    const pop = drawers[i].querySelector(".pop");
+    pop.classList.remove("up"); R.busy.delete(i);
+    setTimeout(()=>{ pop.className="pop"; }, 160);
+  }
+  function popOne(){
+    if(R.over) return;
+    const free = [...Array(9).keys()].filter(i=>!R.busy.has(i));
+    if(free.length){
+      const i = free[Math.floor(Math.random()*free.length)];
+      const elapsed = (performance.now()-R.start)/1000;
+      const who = Math.random() < .14 ? "ange" : DRILL_WHO[Math.floor(Math.random()*DRILL_WHO.length)];
+      const pop = drawers[i].querySelector(".pop");
+      pop.className = "pop" + (who==="ange" ? " w" : ""); pop.dataset.who = who;
+      pop.innerHTML = (who==="ange" ? MUG.ange : `<img src="${PHOTO[who]}" alt="">`) + `<span class="det">${who==="ange"?"Witness":"Detained"}</span>`;
+      R.busy.add(i);
+      requestAnimationFrame(()=>requestAnimationFrame(()=>pop.classList.add("up")));
+      tone(who==="ange"?330:520, .05, "triangle", .06);
+      const stay = Math.max(620, 1250 - elapsed*22);
+      R.timers.push(setTimeout(()=>{ if(!pop.classList.contains("hit")) hide(i); }, stay));
+    }
+  }
+  function spawn(){
+    if(R.over) return;
+    popOne();
+    const elapsed = (performance.now()-R.start)/1000;
+    const gap = Math.max(380, 820 - elapsed*16);
+    R.timers.push(setTimeout(spawn, gap * (0.75 + Math.random()*0.5)));
+    if(elapsed > 12 && Math.random() < .35) R.timers.push(setTimeout(popOne, 160));
+  }
+  // 3-2-1
+  const cd = document.createElement("div"); cd.className = "dr-count"; $("#cab").appendChild(cd);
+  let n = 3; cd.textContent = n; sfx.dial();
+  const step = setInterval(()=>{
+    n--; if(n>0){ cd.textContent = n; sfx.dial(); return; }
+    clearInterval(step); cd.textContent = "Go"; sfx.good();
+    setTimeout(()=>cd.remove(), 350);
+    R.start = performance.now(); spawn();
+    const tick = ()=>{
+      if(R.over) return;
+      const left = Math.max(0, DRILL_SECS - (performance.now()-R.start)/1000);
+      $("#drTime").textContent = Math.ceil(left);
+      $("#drBar").style.transform = `scaleX(${left/DRILL_SECS})`;
+      if(left<=0){ drillEnd(fromEditor); return; }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, 700);
+}
+function drillEnd(fromEditor){
+  const R = drillRun; R.over = true; R.timers.forEach(clearTimeout);
+  const won = R.score >= DRILL_GOAL;
+  S.drillTries = (S.drillTries||0) + 1;
+  S.drillBest = Math.max(S.drillBest||0, R.score); save();
+  const pass = won || S.drillTries >= 2;
+  const witnessLine = R.witness===0 ? "You left the witness alone. Good instincts." :
+    `You detained the witness <b>${R.witness}</b> time${R.witness>1?"s":""}. She has filed a complaint.`;
+  $("#drill").innerHTML = `<div class="dr-in">
+    <p class="dr-kick">Stakeout report</p>
+    <p class="dr-title">${won ? "Badge issued" : pass ? "Close enough" : "They got away"}</p>
+    <p class="dr-result">Suspects caught: <b>${R.score}</b> (goal ${DRILL_GOAL})</p>
+    <p class="dr-result">${witnessLine}</p>
+    ${pass ? `<div class="badge" id="badge">Det. N.<small>Case #1004</small></div>` : `<p class="dr-result">Try again. They're getting cocky.</p>`}
+    <div class="dr-btns">
+      ${pass ? `<button class="btn" id="drOpen">Continue</button>` : `<button class="btn" id="drAgain">Try again</button>`}
+      ${pass && !won ? `<button class="btn dark" id="drAgain">One more go</button>` : ""}
+    </div></div>`;
+  if(pass){ setTimeout(()=>{ const b=$("#badge"); if(b){ b.classList.add("on"); sfx.stamp(); } }, 350); }
+  else sfx.wrong();
+  const again = $("#drAgain"); if(again) again.addEventListener("click", ()=>drillPlay(fromEditor));
+  const open = $("#drOpen"); if(open) open.addEventListener("click", ()=>idStep(fromEditor));
+}
+function drillFinish(fromEditor, skipped){
+  if(drillRun){ drillRun.over = true; drillRun.timers.forEach(clearTimeout); }
+  if(!fromEditor){ S.drillDone = true; save(); }
+  const el = $("#drill"); el.classList.add("gone");
+  document.body.style.overflow = "";
+  setTimeout(()=>{ el.hidden = true; }, 600);
+  window.scrollTo(0,0);
+}
+
+/* ============================ easter eggs ============================ */
+function meow(){
+  const c = ac(); if(!c) return;
+  const t = c.currentTime;
+  const o = c.createOscillator(), o2 = c.createOscillator(), f = c.createBiquadFilter(), g = c.createGain();
+  o.type = "sawtooth"; o2.type = "triangle";
+  [[o,1],[o2,2]].forEach(([osc,m])=>{
+    osc.frequency.setValueAtTime(520*m, t);
+    osc.frequency.linearRampToValueAtTime(880*m, t+0.18);
+    osc.frequency.linearRampToValueAtTime(760*m, t+0.34);
+    osc.frequency.linearRampToValueAtTime(430*m, t+0.62);
+  });
+  f.type = "bandpass"; f.Q.value = 2.2;
+  f.frequency.setValueAtTime(900, t); f.frequency.linearRampToValueAtTime(1700, t+0.2); f.frequency.linearRampToValueAtTime(800, t+0.62);
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.35, t+0.05);
+  g.gain.setValueAtTime(0.35, t+0.4); g.gain.exponentialRampToValueAtTime(0.0001, t+0.66);
+  o.connect(f); o2.connect(f); f.connect(g); g.connect(c.destination);
+  o.start(t); o2.start(t); o.stop(t+0.7); o2.stop(t+0.7);
+  buzz([20,60,20]);
+}
+function eggPop(photo, text){
+  const el = document.createElement("div"); el.className = "eggpop";
+  el.innerHTML = `<img src="${photo}" alt=""><p>${text}</p>`;
+  document.body.appendChild(el);
+  requestAnimationFrame(()=>el.classList.add("on"));
+  setTimeout(()=>{ el.classList.remove("on"); setTimeout(()=>el.remove(), 500); }, 3200);
+}
+let roseTaps = [];
+function roseEgg(){
+  const now = Date.now(); roseTaps = roseTaps.filter(x=>now-x<2500); roseTaps.push(now);
+  if(roseTaps.length >= 5){ roseTaps = []; meow(); eggPop(PHOTO.rose, "Meow. <i>(Rosé would like this on the record.)</i>"); }
+}
+document.addEventListener("input", e=>{
+  const t = e.target;
+  if(!t || t.tagName!=="INPUT" || t.type!=="text") return;
+  if(norm(t.value).includes("chestday")){
+    t.value = "";
+    tone(140,.12,"square",.12); setTimeout(()=>tone(140,.12,"square",.12),160); buzz([40,80,40]);
+    eggPop(PHOTO.marmot, "Did somebody say <b>CHEST DAY?</b>");
+  }
+});
+
+/* ============================ ambience per evidence ============================ */
+let amb = {kind:null, nodes:[], timer:null, gain:null};
+function ambKind(){
+  if(S.done || !introDone) return null;
+  const d = $("#drill"); if(d && !d.hidden) return null;
+  if(document.getElementById("xfer")) return amb.kind;
+  return S.act===1 ? "rain" : S.act===2 ? "paper" : "clock";
+}
+function ambStop(){
+  if(amb.timer){ clearInterval(amb.timer); clearTimeout(amb.timer); amb.timer = null; }
+  if(amb.gain && AC){ const g = amb.gain, t = AC.currentTime; g.gain.cancelScheduledValues(t); g.gain.setValueAtTime(g.gain.value, t); g.gain.linearRampToValueAtTime(0, t+0.8);
+    const ns = amb.nodes; setTimeout(()=>ns.forEach(n=>{ try{ n.stop(); }catch(e){} try{ n.disconnect(); }catch(e){} }), 900); }
+  amb = {kind:null, nodes:[], timer:null, gain:null};
+}
+function noiseBuf(c, secs){
+  const n = Math.floor(c.sampleRate*secs), b = c.createBuffer(1, n, c.sampleRate), d = b.getChannelData(0);
+  let last = 0; for(let i=0;i<n;i++){ const w = Math.random()*2-1; last = (last + 0.02*w)/1.02; d[i] = last*3.5 + w*0.15; }
+  return b;
+}
+function ambStartKind(kind){
+  const c = ac(); if(!c) return;
+  const g = c.createGain(); g.gain.value = 0; g.connect(c.destination);
+  amb = {kind, nodes:[], timer:null, gain:g};
+  if(kind==="rain"){
+    const s = c.createBufferSource(); s.buffer = noiseBuf(c, 4); s.loop = true;
+    const hp = c.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 400;
+    const lp = c.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 5200;
+    s.connect(hp); hp.connect(lp); lp.connect(g); s.start(); amb.nodes.push(s);
+    g.gain.linearRampToValueAtTime(0.16, c.currentTime + 2.5);
+    amb.timer = setInterval(()=>{ if(Math.random()<.5){ const o=c.createOscillator(), gg=c.createGain(); o.frequency.value = 1800+Math.random()*1600;
+      gg.gain.setValueAtTime(0.012,c.currentTime); gg.gain.exponentialRampToValueAtTime(0.0001,c.currentTime+0.05); o.connect(gg); gg.connect(g); o.start(); o.stop(c.currentTime+0.06);} }, 140);
+  } else if(kind==="paper"){
+    g.gain.linearRampToValueAtTime(1, c.currentTime + 0.5);
+    const rustle = ()=>{
+      if(amb.kind!=="paper") return;
+      const s = c.createBufferSource(); s.buffer = noiseBuf(c, 0.5);
+      const bp = c.createBiquadFilter(); bp.type = "bandpass"; bp.frequency.value = 2200 + Math.random()*1500; bp.Q.value = 0.8;
+      const gg = c.createGain(); const t = c.currentTime;
+      gg.gain.setValueAtTime(0.0001, t); gg.gain.linearRampToValueAtTime(0.05, t+0.06); gg.gain.linearRampToValueAtTime(0.02, t+0.2);
+      gg.gain.linearRampToValueAtTime(0.045, t+0.28); gg.gain.exponentialRampToValueAtTime(0.0001, t+0.48);
+      s.connect(bp); bp.connect(gg); gg.connect(g); s.start(); s.stop(t+0.5);
+      amb.timer = setTimeout(rustle, 2200 + Math.random()*3500);
+    };
+    amb.timer = setTimeout(rustle, 900);
+  } else if(kind==="clock"){
+    g.gain.linearRampToValueAtTime(1, c.currentTime + 0.5);
+    let tick = 0;
+    amb.timer = setInterval(()=>{
+      const t = c.currentTime, o = c.createOscillator(), gg = c.createGain();
+      o.type = "square"; o.frequency.value = (tick++ % 2) ? 1500 : 1900;
+      gg.gain.setValueAtTime(0.03, t); gg.gain.exponentialRampToValueAtTime(0.0001, t+0.03);
+      o.connect(gg); gg.connect(g); o.start(t); o.stop(t+0.04);
+    }, 1000);
+  }
+}
+function ambSync(){
+  const want = (bgmPlaying && bgmOn && !bgmEnded && !document.hidden) ? ambKind() : null;
+  if(want === amb.kind) return;
+  ambStop(); if(want) ambStartKind(want);
+}
+setInterval(ambSync, 1000);
+
+/* ============================ detective ID ============================ */
+const FACE_KEY = "case1004.face";
+function getFace(){ try{ return localStorage.getItem(FACE_KEY); }catch(e){ return null; } }
+function loadImg(src){ return new Promise((res,rej)=>{ const i = new Image(); i.onload = ()=>res(i); i.onerror = rej; i.src = src; }); }
+function squareFace(img, size){
+  const c = document.createElement("canvas"); c.width = c.height = size;
+  const x = c.getContext("2d"), m = Math.min(img.width, img.height);
+  x.drawImage(img, (img.width-m)/2, (img.height-m)/2, m, m, 0, 0, size, size);
+  return c;
+}
+function grayscale(cv){
+  const x = cv.getContext("2d"), d = x.getImageData(0,0,cv.width,cv.height), p = d.data;
+  for(let i=0;i<p.length;i+=4){ let v = .3*p[i]+.59*p[i+1]+.11*p[i+2]; v = (v-128)*1.12+128; p[i]=Math.min(255,v+10); p[i+1]=Math.min(255,v+4); p[i+2]=v-6; }
+  x.putImageData(d,0,0); return cv;
+}
+async function drawID(faceSrc){
+  try{ await document.fonts.ready; }catch(e){}
+  const W = 1000, H = 620, c = document.createElement("canvas"); c.width = W; c.height = H;
+  const x = c.getContext("2d");
+  const rr = (X,Y,w,h,r)=>{ x.beginPath(); x.moveTo(X+r,Y); x.arcTo(X+w,Y,X+w,Y+h,r); x.arcTo(X+w,Y+h,X,Y+h,r); x.arcTo(X,Y+h,X,Y,r); x.arcTo(X,Y,X+w,Y,r); x.closePath(); };
+  rr(0,0,W,H,34); x.fillStyle = "#efe6cf"; x.fill();
+  x.save(); rr(0,0,W,H,34); x.clip();
+  x.fillStyle = "#241f1a"; x.fillRect(0,0,W,110);
+  x.fillStyle = "#b32b21"; x.fillRect(0,110,W,8);
+  for(let i=0;i<H;i+=5){ x.fillStyle = "rgba(0,0,0,.018)"; x.fillRect(0,i,W,1); }
+  x.restore();
+  x.fillStyle = "#e9e1cd"; x.font = '700 30px "Courier Prime", monospace'; x.textBaseline = "middle";
+  x.fillText("NAMEGATA FIELD OFFICE", 44, 44);
+  x.fillStyle = "#d9902b"; x.font = '22px "Courier Prime", monospace'; x.fillText("BIRTHDAY RECOVERY DIVISION", 44, 80);
+  x.textAlign = "right"; x.fillStyle = "#e9e1cd"; x.font = '40px "Special Elite", monospace'; x.fillText("ID", W-44, 58); x.textAlign = "left";
+  // photo
+  const px = 44, py = 156, ps = 330;
+  x.fillStyle = "#d8cfbb"; x.fillRect(px, py, ps, ps);
+  if(faceSrc){ try{ const img = await loadImg(faceSrc); x.drawImage(grayscale(squareFace(img, ps)), px, py); }catch(e){} }
+  else { x.fillStyle = "#2b2521"; x.beginPath(); x.arc(px+ps/2, py+120, 62, 0, 7); x.fill(); x.beginPath(); x.ellipse(px+ps/2, py+ps+10, 120, 130, 0, Math.PI, 0); x.fill(); }
+  x.strokeStyle = "#241f1a"; x.lineWidth = 3; x.strokeRect(px, py, ps, ps);
+  // fields
+  const fx = 420; let fy = 176;
+  const field = (k, v, big)=>{ x.fillStyle = "#7d7367"; x.font = '20px "Courier Prime", monospace'; x.fillText(k, fx, fy);
+    x.fillStyle = "#241f1a"; x.font = (big?'46px':'30px') + ' "Special Elite", monospace'; x.fillText(v, fx, fy + (big?44:36)); fy += big ? 96 : 76; };
+  field("NAME", "NASSER", true);
+  field("RANK", "Detective, 1st class");
+  field("BADGE NO.", "N-1004");
+  field("ISSUED", "03 OCT 2026");
+  // signature
+  x.strokeStyle = "rgba(36,31,26,.4)"; x.lineWidth = 2; x.beginPath(); x.moveTo(px, 560); x.lineTo(px+ps, 560); x.stroke();
+  x.fillStyle = "#241f1a"; x.font = 'italic 40px "Special Elite", monospace'; x.fillText("Ange", px+10, 535);
+  x.fillStyle = "#7d7367"; x.font = '18px "Courier Prime", monospace'; x.fillText("ISSUING WITNESS", px, 584);
+  // stamp
+  x.save(); x.translate(820, 520); x.rotate(-0.22);
+  x.strokeStyle = "rgba(179,43,33,.85)"; x.fillStyle = "rgba(179,43,33,.85)"; x.lineWidth = 5;
+  x.beginPath(); x.arc(0,0,86,0,7); x.stroke(); x.lineWidth = 2; x.beginPath(); x.arc(0,0,74,0,7); x.stroke();
+  x.textAlign = "center"; x.font = '700 22px "Courier Prime", monospace'; x.fillText("VALID", 0, -14); x.fillText("FOREVER", 0, 16);
+  x.font = '14px "Courier Prime", monospace'; x.fillText("CASE #1004", 0, 44);
+  x.restore();
+  return c;
+}
+async function saveCanvas(cv, name){
+  const blob = await new Promise(r=>cv.toBlob(r, "image/png"));
+  const file = new File([blob], name, {type:"image/png"});
+  try{ if(navigator.canShare && navigator.canShare({files:[file]})){ await navigator.share({files:[file]}); return; } }catch(e){ if(e && e.name==="AbortError") return; }
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); a.remove();
+}
+function idStep(fromEditor){
+  const el = $("#drill");
+  el.innerHTML = `<div class="dr-in">
+    <p class="dr-kick">One last formality</p>
+    <p class="dr-title">Every detective needs an ID</p>
+    <p class="dr-rules">Look serious. This goes on file.</p>
+    <div class="dr-btns"><label class="btn" id="idShoot">Take ID photo<input type="file" accept="image/*" capture="user" id="idFile" hidden></label></div>
+    <button class="dr-skip" id="idSkip">no photo, just open the case file</button></div>`;
+  $("#idSkip").addEventListener("click", ()=>drillFinish(fromEditor, false));
+  $("#idFile").addEventListener("change", async e=>{
+    const f = e.target.files && e.target.files[0]; if(!f) return;
+    const url = URL.createObjectURL(f);
+    try{
+      const img = await loadImg(url);
+      const face = squareFace(img, 420).toDataURL("image/jpeg", .82);
+      try{ localStorage.setItem(FACE_KEY, face); }catch(err){}
+      el.querySelector(".dr-in").innerHTML = `<p class="dr-kick">Printing&hellip;</p>`;
+      const cv = await drawID(face);
+      showID(cv, fromEditor);
+    }catch(err){ drillFinish(fromEditor, false); }
+  });
+}
+function showID(cv, fromEditor){
+  const el = $("#drill");
+  el.innerHTML = `<div class="dr-in">
+    <p class="dr-kick">Identification issued</p>
+    <img class="idcard" id="idImg" alt="Detective ID">
+    <p class="dr-rules" style="margin-top:12px">Long-press the card to keep it, or tap Save.</p>
+    <div class="dr-btns"><button class="btn dark" id="idSave">Save ID</button><button class="btn" id="idOpen">Open the case file</button></div></div>`;
+  $("#idImg").src = cv.toDataURL("image/png");
+  requestAnimationFrame(()=>$("#idImg").classList.add("on")); sfx.stamp();
+  $("#idSave").addEventListener("click", ()=>saveCanvas(cv, "detective-id.png"));
+  $("#idOpen").addEventListener("click", ()=>drillFinish(fromEditor, false));
+}
+
+/* ============================ finale pieces ============================ */
+const CORK_SUS = [
+  {id:"rose", x:4, y:6, r:-4}, {id:"marmot", x:38, y:4, r:3}, {id:"junimo", x:72, y:6, r:-2},
+  {id:"sz", x:4, y:84, r:3}, {id:"bieber", x:38, y:86, r:-3}, {id:"fami", x:72, y:84, r:4},
+];
+const CORK_NOTES = [
+  {t:"MIDNIGHT", x:2, y:47, r:-5}, {t:"NAMEGATA", x:2, y:64, r:4}, {t:"1004", x:76, y:47, r:5}, {t:"OCT 4", x:76, y:64, r:-3},
+];
+const CORK_ANGE = {x:35, y:42, w:30};
+const CORK_H = 120;
+function corkHTML(){
+  const top = y => (y/CORK_H*100).toFixed(2) + "%";
+  const pins = [];
+  let h = CORK_SUS.map((p,i)=>{ pins.push([p.x+12, p.y+1.2]);
+    const s = byId(p.id);
+    return `<div class="pol" data-i="${i}" style="left:${p.x}%;top:${top(p.y)};width:24%;--r:${p.r}deg">
+      ${MUG[p.id]}<span>${s.name}</span><em class="clr">Cleared</em></div>`; }).join("");
+  h += CORK_NOTES.map((n,i)=>{ pins.push([n.x+11, n.y+1]);
+    return `<div class="stk" data-n="${i}" style="left:${n.x}%;top:${top(n.y)};--r:${n.r}deg">${n.t}</div>`; }).join("");
+  const ax = CORK_ANGE.x + CORK_ANGE.w/2, ay = CORK_ANGE.y + 1.4;
+  h += `<div class="pol big" id="corkAnge" style="left:${CORK_ANGE.x}%;top:${top(CORK_ANGE.y)};width:${CORK_ANGE.w}%;--r:-2deg">
+      ${MUG.ange}<span>Ange &middot; the witness</span><em class="chg">Charged</em></div>`;
+  const strings = pins.map(([x1,y1],i)=>{
+    const mx = (x1+ax)/2, my = (y1+ay)/2 + 5;
+    return `<path class="str" data-s="${i}" d="M${x1} ${y1} Q${mx.toFixed(1)} ${my.toFixed(1)} ${ax} ${ay}"/>`; }).join("");
+  const dots = pins.concat([[ax,ay]]).map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1.25"/>`).join("");
+  h += `<svg class="strings" viewBox="0 0 100 ${CORK_H}" preserveAspectRatio="none">${strings}<g class="pins">${dots}</g></svg>`;
+  return h;
+}
+function faceOrSilhouette(){
+  const f = getFace();
+  return f ? `<img src="${f}" alt="">` : MUG.bieber;
+}
+function newsHTML(){
+  return `<div class="nh-top"><span>Sunday, October 4, 2026</span><span>Late edition</span><span>Price: one (1) kiss</span></div>
+    <div class="nh-mast">The Namegata Gazette</div>
+    <div class="nh-rule"></div>
+    <h2 class="nh-head">Local man recovers birthday in Namegata</h2>
+    <p class="nh-sub">Witness confesses: &ldquo;I didn&rsquo;t steal it. I moved it.&rdquo;</p>
+    <div class="nh-body">
+      <figure class="nh-fig">${faceOrSilhouette()}<figcaption>Det. N., 28, at the scene.</figcaption></figure>
+      <p><b>NAMEGATA, Ibaraki</b> &mdash; October 4 was found intact late last night in a wooden house two hours northeast of Tokyo, ending a disappearance that had baffled no one except the detective.</p>
+      <p>All six suspects were released. A cat, a marmot, a Junimo, a can of chūhai, a piece of fried chicken and a person known only as lil Bieber have declined to press charges.</p>
+      <p>The witness, who was described throughout as &ldquo;extremely helpful,&rdquo; has been charged. Sentencing is expected to be lenient.</p>
+    </div>`;
+}
+function cakeSVG(){
+  return `<svg class="cake" viewBox="0 0 220 220" aria-hidden="true">
+    <ellipse cx="110" cy="204" rx="96" ry="11" fill="#d8cfbb" opacity=".25"/>
+    <rect x="30" y="128" width="160" height="70" rx="10" fill="#c98f5a" stroke="#241f1a" stroke-width="2"/>
+    <rect x="31" y="160" width="158" height="10" fill="#f6efe0"/><rect x="31" y="176" width="158" height="4" fill="#b32b21" opacity=".8"/>
+    <path d="M30 138 q0 -12 12 -12 h136 q12 0 12 12 v6 q-8 10 -16 0 q-8 10 -16 0 q-8 10 -16 0 q-8 10 -16 0 q-8 10 -16 0 q-8 10 -16 0 q-8 10 -16 0 q-8 10 -16 0 q-8 10 -16 0 q-8 10 -16 0 z" fill="#f6efe0" stroke="#241f1a" stroke-width="1.5"/>
+    <g font-family="Special Elite, monospace" font-size="74" text-anchor="middle">
+      <text x="82" y="128" fill="#d9902b" stroke="#241f1a" stroke-width="2">2</text>
+      <text x="140" y="128" fill="#d9902b" stroke="#241f1a" stroke-width="2">8</text>
+    </g>
+    <line x1="82" y1="72" x2="82" y2="62" stroke="#241f1a" stroke-width="2"/>
+    <line x1="140" y1="72" x2="140" y2="62" stroke="#241f1a" stroke-width="2"/>
+    <g transform="translate(82 60)"><g class="flame" data-f="0"><rect x="-16" y="-34" width="32" height="40" fill="transparent"/><path d="M0 -26 C9 -14 10 -6 0 2 C-10 -6 -9 -14 0 -26Z" fill="#ffcf5a"/><path d="M0 -16 C4 -10 4 -5 0 0 C-4 -5 -4 -10 0 -16Z" fill="#fff4c9"/></g></g>
+    <g transform="translate(140 60)"><g class="flame" data-f="1"><rect x="-16" y="-34" width="32" height="40" fill="transparent"/><path d="M0 -26 C9 -14 10 -6 0 2 C-10 -6 -9 -14 0 -26Z" fill="#ffcf5a"/><path d="M0 -16 C4 -10 4 -5 0 0 C-4 -5 -4 -10 0 -16Z" fill="#fff4c9"/></g></g>
+    <g transform="translate(82 56)"><g class="smoke" data-s="0"><path d="M0 0 q-6 -10 0 -20 q6 -10 0 -22"/></g></g>
+    <g transform="translate(140 56)"><g class="smoke" data-s="1"><path d="M0 0 q-6 -10 0 -20 q6 -10 0 -22"/></g></g>
+  </svg>`;
+}
+function confetti(){
+  const cv = document.createElement("canvas"); cv.className = "confetti";
+  cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio;
+  document.body.appendChild(cv);
+  const x = cv.getContext("2d"), cols = ["#d8483b","#d9902b","#e9e1cd","#5f8c56","#f3d36b"];
+  const P = Array.from({length:170}, ()=>({ x: cv.width/2 + (Math.random()-.5)*cv.width*.3, y: cv.height*.35,
+    vx:(Math.random()-.5)*16*devicePixelRatio, vy:(-Math.random()*16-6)*devicePixelRatio, r:Math.random()*6, s:(4+Math.random()*6)*devicePixelRatio,
+    c: cols[Math.floor(Math.random()*cols.length)], w: Math.random()*.3 }));
+  const t0 = performance.now();
+  const step = now=>{
+    const k = (now-t0)/1000; x.clearRect(0,0,cv.width,cv.height);
+    P.forEach(p=>{ p.vy += .45*devicePixelRatio; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.w;
+      x.save(); x.translate(p.x,p.y); x.rotate(p.r); x.globalAlpha = Math.max(0, 1 - Math.max(0,k-2.2)); x.fillStyle = p.c; x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2); x.restore(); });
+    if(k < 3.4) requestAnimationFrame(step); else cv.remove();
+  };
+  requestAnimationFrame(step);
+}
+function blowOut(i){
+  const svg = $("#cakeBox .cake"); if(!svg) return;
+  const f = svg.querySelector(`.flame[data-f="${i}"]`); if(!f || f.classList.contains("out")) return;
+  f.classList.add("out"); svg.querySelector(`.smoke[data-s="${i}"]`).classList.add("on");
+  noise(0.35, 0.3, 700); buzz([30]);
+  if(svg.querySelectorAll(".flame.out").length === 2) cakeDone(false);
+}
+let micStream = null;
+function micStop(){ if(micStream){ micStream.getTracks().forEach(t=>t.stop()); micStream = null; } }
+async function micListen(){
+  const hint = $("#cakeHint");
+  try{
+    micStream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false, noiseSuppression:false, autoGainControl:false}});
+  }catch(e){ hint.innerHTML = "No microphone? <b>Tap the flames</b> to blow them out."; return; }
+  hint.innerHTML = "<b>Blow</b> into the bottom of your phone.";
+  $("#cakeMic").hidden = true; $("#breath").hidden = false;
+  const c = ac(), src = c.createMediaStreamSource(micStream), an = c.createAnalyser();
+  an.fftSize = 1024; src.connect(an);
+  const buf = new Float32Array(an.fftSize);
+  let hot = 0, last = performance.now(), cooldown = 0, next = 0;
+  const loop = now=>{
+    if(!micStream) return;
+    const dt = now - last; last = now;
+    an.getFloatTimeDomainData(buf);
+    let sum = 0; for(let i=0;i<buf.length;i++) sum += buf[i]*buf[i];
+    const rms = Math.sqrt(sum/buf.length);
+    const bar = $("#breath i"); if(bar) bar.style.transform = `scaleX(${Math.min(1, rms/0.22)})`;
+    if(rms > 0.14) hot += dt; else hot = Math.max(0, hot - dt*2);
+    if(cooldown > 0) cooldown -= dt;
+    if(hot > 260 && cooldown <= 0 && next < 2){ blowOut(next++); hot = 0; cooldown = 450; }
+    if(next >= 2){ micStop(); return; }
+    requestAnimationFrame(loop);
+  };
+  requestAnimationFrame(loop);
+}
+function cakeDone(instant){
+  micStop();
+  const box = $("#cakeBox"); box.classList.add("done");
+  $("#cakeHint").innerHTML = "Wish recorded. <b>Case closed.</b>";
+  $("#cakeMic").hidden = true; $("#breath").hidden = true;
+  if(!instant){ S.candlesOut = true; save(); confetti(); sfx.good(); buzz(HAPT.big); tone(784,.3,"triangle",.12); }
+  if(cakeResolve){ const r = cakeResolve; cakeResolve = null; setTimeout(r, instant?0:1400); }
+}
+let cakeResolve = null;
+function showCake(instant){
+  const box = $("#cakeBox"); box.hidden = false; box.classList.remove("done");
+  box.innerHTML = `<h3>Before you go to the fridge</h3>
+    <p class="cake-lead">Make a wish, detective.</p>
+    ${cakeSVG()}
+    <div class="breath" id="breath" hidden><i></i></div>
+    <p class="cake-hint" id="cakeHint">Then blow out the candles.</p>
+    <button class="btn" id="cakeMic">Blow out the candles</button>`;
+  box.querySelectorAll(".flame").forEach(f=>f.addEventListener("click", ()=>blowOut(+f.dataset.f)));
+  $("#cakeMic").addEventListener("click", ()=>{ ac(); micListen(); });
+  if(instant && S.candlesOut){ box.querySelectorAll(".flame").forEach(f=>f.classList.add("out")); cakeDone(true); return Promise.resolve(); }
+  return new Promise(r=>{ cakeResolve = r; });
+}
+function keyTick(){ noise(0.018, 0.12, 4200); }
+let letterSkip = false;
+async function typeLetter(kids, token){
+  const conf = $("#confess");
+  conf.onclick = ()=>{ letterSkip = true; };
+  for(const el of kids){
+    if(token !== finaleToken) return;
+    if(el.classList.contains("rec")){ el.style.opacity = 1; continue; }
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    const nodes = []; let n; while((n = walker.nextNode())) nodes.push([n, n.textContent]);
+    nodes.forEach(([node])=>node.textContent = "");
+    el.style.opacity = 1; el.classList.add("typing");
+    el.scrollIntoView({behavior:"smooth", block:"nearest"});
+    letterSkip = false;
+    let words = 0;
+    for(const [node, text] of nodes){
+      for(let i=0;i<text.length;i++){
+        if(token !== finaleToken) return;
+        if(letterSkip){ node.textContent = text; break; }
+        const ch = text[i]; node.textContent += ch;
+        if(ch === " "){ if(++words % 2 === 0) buzz([6]); await sleep(18); continue; }
+        keyTick();
+        await sleep(/[.!?]/.test(ch) ? 260 : /[,;:—]/.test(ch) ? 150 : 36);
+      }
+      if(letterSkip) nodes.forEach(([nd, tx])=>nd.textContent = tx);
+    }
+    el.classList.remove("typing");
+    if(!letterSkip) await sleep(el.classList.contains("sig") ? 900 : 650);
+  }
+  conf.onclick = null;
+}
+
 /* ============================ the witness is watching ============================ */
 const NAGS = ["You left. I saw. — A.", "Still watching.", "Okay but was it worth it."];
 let awayAt = 0, nagged = 0;
@@ -1794,7 +2626,7 @@ function boot(){
   } else load();
   renderBoard(); paintFacts(0);
   $("#act1").classList.remove("locked");
-  if(edIntro || (!S.seen && !S.done)) showIntro(); else introDone = true;
+  if(edIntro || (!S.seen && !S.done)) showIntro(); else { introDone = true; if(!S.drillDone && !S.done && !EDITOR) showDrill(false); }
   if(S.act>=2){
     unlockAct(2);
     $("#in1").value="MIDNIGHT"; $("#in1").disabled=true; $("#go1").disabled=true;
@@ -1816,6 +2648,7 @@ function boot(){
     $("#calHint").textContent="It was never missing."; $("#openWrap").hidden=true;
     closeCase(true);
   }
+  paintFiled();
   if(EDITOR) editorDecorate();
 }
 $("#reset").addEventListener("click", ()=>{

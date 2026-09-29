@@ -1,7 +1,7 @@
 /* keeps the whole case playable offline once it has been opened once */
-const CACHE = "case1004-v1";
+const CACHE = "case1004-v3";
 const FILES = ["./", "index.html", "manifest.webmanifest", "apple-touch-icon.png", "icon-192.png", "icon-512.png",
-  "audio/clockwork.mp3", "photos/bieber.svg", "photos/famichiki.jpg", "photos/junimo.jpg",
+  "audio/clockwork.mp3", "photos/ange.jpg", "photos/bieber.svg", "photos/famichiki.jpg", "photos/junimo.jpg",
   "photos/marmot.jpg", "photos/rose.jpg", "photos/strongzero.jpg"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES))); self.skipWaiting(); });
 self.addEventListener("activate", e => {
