@@ -1,5 +1,5 @@
 /* keeps the whole case playable offline once it has been opened once */
-const CACHE = "case1004-v6";
+const CACHE = "case1004-v7";
 const FILES = ["./", "index.html", "manifest.webmanifest", "apple-touch-icon.png", "icon-192.png", "icon-512.png",
   "audio/clockwork.mp3", "photos/ange.jpg", "photos/bieber.svg", "photos/famichiki.jpg", "photos/junimo.jpg",
   "photos/marmot.jpg", "photos/rose.jpg", "photos/strongzero.jpg"];

@@ -2761,7 +2761,7 @@ function showCake(instant){
   if(instant && S.candlesOut){ box.querySelectorAll(".flame").forEach(f=>f.classList.add("out")); cakeDone(true); return Promise.resolve(); }
   return new Promise(r=>{ cakeResolve = r; });
 }
-function keyTick(){ noise(0.018, 0.12, 4200); }
+function keyTick(){ }
 let letterSkip = false;
 async function typeLetter(kids, token){
   const conf = $("#confess");
