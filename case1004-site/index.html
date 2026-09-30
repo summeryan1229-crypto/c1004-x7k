@@ -2469,7 +2469,7 @@ function ambKind(){
   if(S.done || !introDone) return null;
   const d = $("#drill"); if(d && !d.hidden) return null;
   if(document.getElementById("xfer")) return amb.kind;
-  return S.act===1 ? "rain" : S.act===2 ? "paper" : "clock";
+  return S.act===1 ? null : S.act===2 ? "paper" : "clock";
 }
 function ambStop(){
   if(amb.timer){ clearInterval(amb.timer); clearTimeout(amb.timer); amb.timer = null; }
